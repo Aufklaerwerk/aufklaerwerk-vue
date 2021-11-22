@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-faq-accordion": "^1.6.2",
+    "vue-recaptcha": "^1.3.0",
     "vue-router": "^3.5.3",
     "vue-toastr": "^2.1.2",
     "vuetify": "^2.6.0"
