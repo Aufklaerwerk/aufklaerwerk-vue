@@ -1,4 +1,4 @@
-# ui
+#AKW Frontend
 
 ## Project setup
 ```
