@@ -4,6 +4,7 @@ import router from './core/router/index'
 import "./plugins";
 import vuetify from "./plugins.js";
 
+
 Vue.config.productionTip = false
 
 new Vue({
