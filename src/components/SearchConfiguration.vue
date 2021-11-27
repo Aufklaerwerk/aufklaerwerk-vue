@@ -52,9 +52,13 @@
 </template>
 
 <script>
-import { cityNames } from "./seeds";
-import { tagList } from "./seeds";
-import { offeringTypeList } from "./seeds";
+//import { cityNames } from "./seeds";
+//import { tagList } from "./seeds";
+//import { offeringTypeList } from "./seeds";
+
+var cityNames = ["Karlsruhe", "Stuttgart"]
+var tagList = ["Rassismus", "Sexuelle Aufklärung", "Kriminalität", "Gewalt"]
+var offeringTypeList = ["Workshop", "Vortrag", "Führung"]
 
 export default {
   name: "searchConfiguration-component",
