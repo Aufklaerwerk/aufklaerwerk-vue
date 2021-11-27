@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <div>
+      <PageLoader />
       <Nav />
     </div>
     <div class="content">
@@ -14,11 +15,13 @@
 
 <script>
 import Nav from "./components/Nav.vue";
+import PageLoader from "./components/PageLoader.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
   components: {
     Nav,
+    PageLoader,
     Footer,
   },
 };
