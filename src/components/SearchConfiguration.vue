@@ -44,7 +44,7 @@
           <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
         </div>
         <v-btn @click="submit" id="form-submit-button" class="dark-orange">
-          <img src="assets/icons/search.png" id="search-icon-form" />
+          <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
     </form>
@@ -140,7 +140,7 @@ export default {
 <style lang="scss">
 #root-SC {
   padding-top: 25vh;
-  background-image: url(assets/banners/diversityHands.jpg);
+  background-image: url(../assets/banners/diversityHands.jpg);
   color: white;
   background-size: 100% 100%;
   height: 100vh;

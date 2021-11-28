@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div>
-      <PageLoader />
+     <PageLoader />
       <Nav />
     </div>
     <div class="content">
