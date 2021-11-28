@@ -179,7 +179,6 @@ export default {
 <style>
 #landingPage {
   background-color: #fffbf5;
-  margin-top: 4%;
 }
 
 #landingPage section {
