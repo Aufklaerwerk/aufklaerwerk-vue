@@ -1,9 +1,27 @@
 import VueRouter from "vue-router";
 
 import LandingPage from "../../pages/LandingPage.vue";
+import SearcherPage from "../../pages/SearcherPage.vue";
+import OffererPage from "../../pages/OffererPage.vue";
+import AboutUs from "../../pages/AboutUs.vue";
+import Contact from "../../pages/ContactPage.vue";
+import HowItWorksPage from "../../pages/HowItWorksPage.vue";
+
+import FAQ from "../../pages/informationpages/FAQ.vue";
+import Impressum from "../../pages/informationpages/Impressum.vue";
+import Datasec from "../../pages/informationpages/Datenschutz.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
+  { path: "/searcher", component: SearcherPage, name: "Searcher" },
+  { path: "/offerer", component: OffererPage, name: "Offerer" },
+  { path: "/aboutUs", component: AboutUs, name: "aboutus" },
+  { path: "/contact", component: Contact, name: "Contact" },
+  { path: "/howitworks", component: HowItWorksPage, name: "HowTo" },
+  
+  { path: "/impressum", component: Impressum, name: "Impressum" },
+  { path: "/datasec", component: Datasec, name: "datasec" },
+  { path: "/faq", component: FAQ, name: "FAQ" },
 ];
 
 const router = new VueRouter({

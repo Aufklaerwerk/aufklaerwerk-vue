@@ -2,7 +2,7 @@
   <div id="landingPage">
     <!-- Start Screen -->
 
-    <!-- Suchmaske
+    <!-- Suchmaske -->
 
     <section id="welcome">
       <SearchConfiguration
@@ -10,7 +10,7 @@
         v-bind:model="emptySearchParams"
         ref="searchConfiguration"
       />
-    </section> -->
+    </section>
 
     <!-- Celebration of Humanity -->
 
@@ -148,19 +148,37 @@
     </section>
     <!-- Kontaktformular -->
 
-    <!--<section id="contact">
+    <section id="contact">
       <ContactForm />
-    </section>-->
+    </section>
   </div>
 </template>
 
 <script>
+import SearchConfiguration from "../components/SearchConfiguration.vue";
+import ContactForm from "../components/DefaultContactForm";
+
+export default {
+  data: () => ({
+    isStartPage: true,
+    emptySearchParams: {
+      city: "",
+      choosenTags: "",
+      choosenOfferingTypes: "",
+      distance: "",
+    },
+  }),
+  components: {
+    ContactForm,
+    SearchConfiguration,
+  },
+  methods: {},
+};
 </script>
 
 <style>
 #landingPage {
   background-color: #fffbf5;
-  margin-top: 4%;
 }
 
 #landingPage section {

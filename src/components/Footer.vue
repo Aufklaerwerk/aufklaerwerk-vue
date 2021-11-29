@@ -23,7 +23,6 @@
         <a href="https://www.facebook.com/hinterteilprojekt/">
           <img src="../assets/icons/facebook.png" id="icon" />
         </a>
-
         <a href="https://www.instagram.com/hinterteil_projekt/">
           <img src="../assets/icons/instagram.png" id="icon1" />
         </a>
