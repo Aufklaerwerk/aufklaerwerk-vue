@@ -11,17 +11,59 @@ import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 
-const routes = [
-  { path: "/", component: LandingPage },
-  { path: "/searcher", component: SearcherPage, name: "Searcher" },
-  { path: "/offerer", component: OffererPage, name: "Offerer" },
-  { path: "/aboutUs", component: AboutUs, name: "aboutus" },
-  { path: "/contact", component: Contact, name: "Contact" },
-  { path: "/howitworks", component: HowItWorksPage, name: "HowTo" },
-  
-  { path: "/impressum", component: Impressum, name: "Impressum" },
-  { path: "/datasec", component: Datasec, name: "datasec" },
-  { path: "/faq", component: FAQ, name: "FAQ" },
+import Offering from "../../components/Offering.vue"
+
+const routes = [{
+    path: "/",
+    component: LandingPage
+  },
+  {
+    path: "/searcher",
+    component: SearcherPage,
+    name: "Searcher"
+  },
+  {
+    path: "/offerer",
+    component: OffererPage,
+    name: "Offerer"
+  },
+  {
+    path: "/aboutUs",
+    component: AboutUs,
+    name: "aboutus"
+  },
+  {
+    path: "/contact",
+    component: Contact,
+    name: "Contact"
+  },
+  {
+    path: "/howitworks",
+    component: HowItWorksPage,
+    name: "HowTo"
+  },
+
+  {
+    path: "/impressum",
+    component: Impressum,
+    name: "Impressum"
+  },
+  {
+    path: "/datasec",
+    component: Datasec,
+    name: "datasec"
+  },
+  {
+    path: "/faq",
+    component: FAQ,
+    name: "FAQ"
+  },
+
+  {
+    path: "/offering/:id",
+    component: Offering,
+    name: "Offering"
+  },
 ];
 
 const router = new VueRouter({
@@ -37,7 +79,10 @@ const router = new VueRouter({
             }
       */
     } else {
-      return { x: 0, y: 0 };
+      return {
+        x: 0,
+        y: 0
+      };
     }
   },
 });
