@@ -85,4 +85,12 @@ hr {
 a {
   text-decoration: none !important;
 }
+
+.akw-green {
+  color: #004c45;
+}
+
+.dark-orange {
+  color: #ff5100;
+}
 </style>

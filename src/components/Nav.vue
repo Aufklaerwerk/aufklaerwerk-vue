@@ -98,12 +98,8 @@ export default {
 </script>
 
 <style>
-.menu {
+.menu { 
   display: flex;
-}
-
-.dark-orange {
-  color: #ff5100;
 }
 
 #nav-bar {

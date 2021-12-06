@@ -10,6 +10,8 @@ import HowItWorksPage from "../../pages/HowItWorksPage.vue";
 import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
+import inConstruction from "../../pages/InConstruction.vue";
+import offering from "../../components/Offering.vue";
 
 import Offering from "../../components/Offering.vue"
 
