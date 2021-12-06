@@ -6,41 +6,41 @@
       <div id="offeringBox">
         <div id="offering-image-and-details">
           <!-- Hier sind Foto und Anschrift -->
-          <img id="offering-image" src="currentOffering.imageUrl" />
+          <img id="offering-image" src:="currentOffering.imageUrl" />
           <div id="offering-details">
             <h3 id="offering-name">{{ currentOffering.name }}</h3>
             <div id="icon-with-data" class="entry-with-gap">
-              <img src="assets/icons/three-bars.png" />
+              <img src="../assets/icons/three-bars.png" />
               <p>Organisationsname</p>
             </div>
             <div class="entry-without-gap">
-              <img src="assets/icons/location.png" />
+              <img src="../assets/icons/location.png" />
               <p>
                 {{ currentOffering.postcode }}
                 {{ currentOffering.city }}
               </p>
             </div>
             <div class="entry-with-gap">
-              <img src="assets/icons/blank-space.png" />
+              <img src="../assets/icons/blank-space.png" />
               <p>
                 {{ currentOffering.street }}
                 {{ currentOffering.houseNumber }}
               </p>
             </div>
             <div class="entry-with-gap">
-              <img src="assets/icons/phone.png" />
+              <img src="../assets/icons/phone.png" />
               <p>
                 {{ currentOffering.telefon }}
               </p>
             </div>
             <div class="entry-with-gap">
-              <img src="assets/icons/mail-box.png" />
+              <img src="../assets/icons/mail-box.png" />
               <p>
                 {{ currentOffering.mailAdress }}
               </p>
             </div>
             <div class="entry-with-gap">
-              <img src="assets/icons/price-tag.png" />
+              <img src="../assets/icons/price-tag.png" />
               <p>
                 {{ currentOffering.price }}
               </p>
