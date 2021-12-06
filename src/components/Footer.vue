@@ -39,6 +39,7 @@
   padding: 0%;
   width: 100vw;
   color: #004c45;
+  padding: 0.6em !important;
 }
 
 #footer-container {
