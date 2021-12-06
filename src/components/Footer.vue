@@ -17,10 +17,10 @@
         <a href="/contact"><strong>Kontakt</strong></a>
       </div>
       <div class="footer-col">
-        <a href="https://www.facebook.com/hinterteilprojekt/">
+        <a href="https://www.facebook.com/aufklaerwerk/">
           <img src="../assets/icons/facebook.png" id="icon" />
         </a>
-        <a href="https://www.instagram.com/hinterteil_projekt/">
+        <a href="https://www.instagram.com/aufklaerwerk/">
           <img src="../assets/icons/instagram.png" id="icon1" />
         </a>
         <a href="https://www.linkedin.com/company/71180590">
