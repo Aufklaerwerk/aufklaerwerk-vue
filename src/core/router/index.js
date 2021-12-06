@@ -10,6 +10,7 @@ import HowItWorksPage from "../../pages/HowItWorksPage.vue";
 import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
+import inConstruction from "../../pages/InConstruction.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
@@ -22,6 +23,8 @@ const routes = [
   { path: "/impressum", component: Impressum, name: "Impressum" },
   { path: "/datasec", component: Datasec, name: "datasec" },
   { path: "/faq", component: FAQ, name: "FAQ" },
+
+  { path: "/inConstruction", component: inConstruction, name: "inConstruction" },
 ];
 
 const router = new VueRouter({
