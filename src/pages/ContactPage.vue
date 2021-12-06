@@ -24,6 +24,7 @@ export default {
 #root-contact-page {
   width: 100%;
   background: rgba(0, 76, 69, 0.9);
+  padding: 6vh 0 6vh 0;
 }
 
 #contact-page-form {
@@ -31,8 +32,7 @@ export default {
   margin: auto;
   width: 50%;
   border: 3px solid #004c45;
-  margin-top: 18vh;
-  margin-bottom: 10vh;
+  margin-top: 4vh;
   padding-bottom: 2vh;
 }
 </style>
