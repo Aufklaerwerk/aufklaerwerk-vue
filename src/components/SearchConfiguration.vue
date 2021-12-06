@@ -147,6 +147,11 @@ export default {
   height: 100vh;
 }
 
+#root-SC h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 47px;
+}
+
 .seperation-container {
   display: flex;
   flex-direction: column;
