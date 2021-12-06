@@ -38,7 +38,7 @@
         >Kontakt</v-btn
       >
       <a href="/searcher">
-        <img src="assets/icons/search.png" id="search-icon" />
+        <img src="../assets/icons/search.png" id="search-icon" />
       </a>
     </v-toolbar-items>
   </v-app-bar>
