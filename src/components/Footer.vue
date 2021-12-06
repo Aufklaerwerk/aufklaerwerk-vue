@@ -14,9 +14,6 @@
         <a href="/faq"><strong>FAQ</strong></a>
       </div>
       <div class="footer-column">
-        <a href="#"> <strong>Angaben zum Unternehmen</strong></a>
-      </div>
-      <div class="footer-column">
         <a href="/contact"><strong>Kontakt</strong></a>
       </div>
       <div class="footer-col">
