@@ -129,6 +129,7 @@
 </template>
 
 <script>
+import OfferingDataService from "../services/OfferingDataService";
 
 export default {
   data: () => ({
@@ -143,12 +144,53 @@ export default {
         query: { organizationId: this.offering.organizationId },
       });
     },
-  },
-  computed: {
-    offering: function () {
-      return this.findOfferingById[0];
+    retrieveOfferings() {
+      OfferingDataService.getAll()
+        .then(response => {
+          this.Offerings = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+
+    refreshList() {
+      this.retrieveOfferings();
+      this.currentOffering = null;
+      this.currentIndex = -1;
+    },
+
+    setActiveOffering(Offering, index) {
+      this.currentOffering = Offering;
+      this.currentIndex = index;
+    },
+
+    removeAllOfferings() {
+      OfferingDataService.deleteAll()
+        .then(response => {
+          console.log(response.data);
+          this.refreshList();
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    
+    searchTitle() {
+      OfferingDataService.findByTitle(this.title)
+        .then(response => {
+          this.Offerings = response.data;
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
     },
   },
+  mounted() {
+    this.retrieveOfferings();
+  }
 };
 </script>
 

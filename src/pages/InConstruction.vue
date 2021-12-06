@@ -1,23 +1,17 @@
 <template>
   <div id="in-construction">
-    <h1 class="orange-font">Hallöchen!</h1>
-    <h2>Leider sind wir gerade dabei die Suche zu reparieren...</h2>
-    <h2>Falls es euch trotzdem interessiert, wie ein Angebot auf Aufklärwerk aussehen könnte, drückt hier!</h2>
-    <v-btn to="/inconstruction" id="to-angebotsseite">Beispiels-Angebotsseite</v-btn>
-    <h3>Seid ihr eine soziale Organisation?</h3>
-    <a href="/contact" id="schreibt-uns">Schreibt uns!!</a>
-    <section id="contact-bottom">
-      <ContactForm />
-    </section>
+    <h1 class="dark-orange">Hallöchen!</h1>
+    <h2 class="akw-green">Leider sind wir gerade dabei die Suche zu reparieren...</h2>
+    <h2 class="akw-green">Falls es euch trotzdem interessiert wie ein Angebot auf Aufklärwerk aussehen könnte, drückt hier:</h2>
+    <v-btn to="/OfferingPage" values=id id="to-angebotsseite">Beispiels-Angebotsseite</v-btn>
+    <h2 class="akw-green">Seid ihr eine soziale Organisation oder habt ihr Fragen?</h2>
+    <h3 class="dark-orange">Dann drück <a href="/contact" id="schreibt-uns">mich</a> und schreib uns!!</h3>
 </div>
 </template>
 
 <script>
-import ContactForm from "../components/DefaultContactForm";
-
 export default {
   components: {
-    ContactForm,
   },
   data () {
       return {id: "das-ist-die-id"}
@@ -27,8 +21,8 @@ export default {
 
 <style>
 #in-construction {
-    margin-top: 10em;
-    padding: 0em 8em;
+    padding: 6em 8em 0em 8em;
+    background: #fffbf5;
 }
 
 #in-construction h1 {
@@ -36,12 +30,17 @@ export default {
 }
 
 #in-construction h2 {
-    font-size: 3rem;
+    font-size: 2rem;
     padding-top: 1em;
 }
 
 #in-construction h3 {
     size: 2rem;
+    margin: 2em 0;
+}
+
+#schreibt-uns {
+    color: #004c45 !important;
 }
 
 #contact-bottom {
@@ -50,12 +49,13 @@ export default {
 
 #to-angebotsseite{
     margin: 4em;
-    width: 30vw;
-    height: 30vh;
+    width: 20vw;
+    height: 20vh;
     border-radius: 30%;
+    background-color: #004c45;
+    color: white;
+    font-size: 1.2em;
+    font-style: oblique;
 }
 
-.orange-font {
-    color: #ff5100
-}
 </style>
