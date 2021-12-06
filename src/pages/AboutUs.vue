@@ -70,12 +70,9 @@
             v-for="member in filteredList()"
             :key="member.id"
           >
-            <p class="description-above">
-              {{ member.name }}
-            </p>
-            <!--<img :src="convertToPath(member)" /> -->
-            <img src="../assets/members/felix.png" />
+            <img :src="convertToPath(member)" />
             <div class="description">
+              {{ member.name }}
               <p>{{ member.age }}</p>
               <p>{{ member.subject }}</p>
               <p>{{ member.roles }}</p>
@@ -84,12 +81,12 @@
         </div>
       </div>
     </div>
-    <!-- <a href="https://www.enactus.de/karlsruhe"
-        ><img
-          id="enactus-weltkarte"
-          class="center"
-          src="assets/enactus-world-map.png"
-      /></a> -->
+    <a href="https://www.enactus.de/karlsruhe"
+      ><img
+        id="enactus-weltkarte"
+        class="center"
+        src="../assets/enactus-world-map.png"
+    /></a>
     <p></p>
 
     <!--
@@ -268,7 +265,7 @@ export default {
   computed: {},
   methods: {
     convertToPath(member) {
-      return "../assets/members/" + member.portrait;
+      return require("../assets/members/" + member.portrait);
     },
     filteredList() {
       var choiceResp = "";
