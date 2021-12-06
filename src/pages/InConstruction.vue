@@ -3,19 +3,17 @@
     <h1 class="dark-orange">Hallöchen!</h1>
     <h2 class="akw-green">Leider sind wir gerade dabei die Suche zu reparieren...</h2>
     <h2 class="akw-green">Falls es euch trotzdem interessiert wie ein Angebot auf Aufklärwerk aussehen könnte, drückt hier:</h2>
-    <v-btn to="/OfferingPage" values=id id="to-angebotsseite">Beispiels-Angebotsseite</v-btn>
+    <v-btn to="/offering/6141ffa72f4c216c7a862ea2" id="to-angebotsseite">Beispiels-Angebotsseite</v-btn>
     <h2 class="akw-green">Seid ihr eine soziale Organisation oder habt ihr Fragen?</h2>
     <h3 class="dark-orange">Dann drück <a href="/contact" id="schreibt-uns">mich</a> und schreib uns!!</h3>
 </div>
 </template>
 
 <script>
+
 export default {
   components: {
   },
-  data () {
-      return {id: "das-ist-die-id"}
-  }
 };
 </script>
 

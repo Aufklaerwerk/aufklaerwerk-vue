@@ -11,7 +11,7 @@ import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 import inConstruction from "../../pages/InConstruction.vue";
-import OfferingPage from "../../pages/OfferingPage.vue";
+import offering from "../../components/Offering.vue";
 
 const routes = [
   { path: "/", component: LandingPage },
@@ -26,8 +26,11 @@ const routes = [
   { path: "/faq", component: FAQ, name: "FAQ" },
 
   { path: "/inConstruction", component: inConstruction, name: "inConstruction" },
-  { path: "/OfferingPage", component: OfferingPage, name: "OfferingPage" },
-];
+  { path: "/offering/:id",
+    component: offering,
+    name: "offering"
+  },]
+  ;
 
 const router = new VueRouter({
   mode: "history",
