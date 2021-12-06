@@ -11,8 +11,6 @@ import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 import inConstruction from "../../pages/InConstruction.vue";
-import offering from "../../components/Offering.vue";
-
 import Offering from "../../components/Offering.vue"
 
 const routes = [{
@@ -60,7 +58,11 @@ const routes = [{
     component: FAQ,
     name: "FAQ"
   },
-
+  {
+    path: "/inConstruction",
+    component: inConstruction,
+    name: "inConstruction"
+  },
   {
     path: "/offering/:id",
     component: Offering,
