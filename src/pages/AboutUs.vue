@@ -72,7 +72,7 @@
           >
             <img :src="convertToPath(member)" />
             <div class="description">
-              {{ member.name }}
+              <p>{{ member.name }}</p>
               <p>{{ member.age }}</p>
               <p>{{ member.subject }}</p>
               <p>{{ member.roles }}</p>
@@ -432,7 +432,7 @@ export default {
 }
 
 .description > p {
-  margin-bottom: 0.5vh;
+  margin-bottom: 0vh !important;
 }
 
 #about-us-header h3 {
