@@ -31,9 +31,7 @@ export default {
   data() {
     return {
       Offerings: [],
-      currentOffering: null,
       currentIndex: -1,
-      title: "Testangebot mongoDB2",
       searchParams: {
         city: "",
         choosenTags: "",
@@ -50,11 +48,31 @@ export default {
     startNewOfferingSearch() {
       this.retrieveOfferings();
     },
+
     retrieveOfferings() {
       OfferingDataService.getAll()
         .then((response) => {
           this.Offerings = response.data;
-          console.log(response.data);
+
+          //filter by Tags
+          this.Offerings = this.Offerings.filter((offeringEntry) =>
+            offeringEntry.tags.some((tag) => {
+              return this.searchParams.choosenTags.includes(tag.label);
+            })
+          );
+
+          //filter by Offering Types
+          this.Offerings = this.Offerings.filter((offeringEntry) =>
+            offeringEntry.offeringTypes.some((offeringType) => {
+              return this.searchParams.choosenOfferingTypes.includes(
+                offeringType.label
+              );
+            })
+          );
+
+          //TODO geolib muss noch nachgezogen werden.
+
+          console.log(this.Offerings);
         })
         .catch((e) => {
           console.log(e);
@@ -73,7 +91,18 @@ export default {
     },
   },
   mounted() {
-    this.searchTitle();
+    if (this.$route.params.landingPageParams) {
+      this.searchParams = {
+        city: this.$route.params.landingPageParams.city,
+        choosenTags: this.$route.params.landingPageParams.tags,
+        choosenOfferingTypes:
+          this.$route.params.landingPageParams.offeringTypes,
+        distance: this.$route.params.landingPageParams.distance,
+      };
+    }
+    setTimeout(() => {
+      this.retrieveOfferings();
+    }, 50); //50ms muss sein, ansonsten ist die meteor Methode leer
   },
 };
 </script>

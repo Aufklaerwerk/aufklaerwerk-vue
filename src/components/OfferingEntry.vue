@@ -55,6 +55,8 @@ export default {
   props: ["offering"],
   methods: {
     openOfferingPage() {
+      console.log("Das ist die offeringID: " + this.offeringId);
+      //TODO Der Router klappt noch nicht.
       this.$router.push({
         name: "Offering",
         query: { offeringId: this.offeringId },
