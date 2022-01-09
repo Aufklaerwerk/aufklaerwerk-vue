@@ -1,9 +1,9 @@
 <template>
   <div id="searcherPage">
-    <!-- OfferList 
+    <!-- OfferList -->
     <section id="offer-list">
       <OfferingList />
-    </section>-->
+    </section>
     <!-- Process -->
     <section id="searcher-flowchart">
       <div id="searcher-process-container">
@@ -35,7 +35,7 @@
 
 <script>
 import ContactForm from "../components/DefaultContactForm";
-//import OfferingList from "../components/OfferingList.vue";
+import OfferingList from "../components/OfferingList.vue";
 
 export default {
   data: () => ({
@@ -49,7 +49,7 @@ export default {
   }),
   components: {
     ContactForm,
-  //  OfferingList,
+    OfferingList,
   },
 };
 </script>

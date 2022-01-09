@@ -43,8 +43,8 @@
           ></v-slider>
           <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
         </div>
-<!--        <v-btn @click="submit" id="form-submit-button" class="dark-orange"> -->
-        <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange">
+        <v-btn @click="submit" id="form-submit-button" class="dark-orange">
+          <!--    <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
           <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
@@ -57,9 +57,9 @@
 //import { tagList } from "./seeds";
 //import { offeringTypeList } from "./seeds";
 
-var cityNames = ["Karlsruhe", "Stuttgart"]
-var tagList = ["Rassismus", "Sexuelle Aufklärung", "Kriminalität", "Gewalt"]
-var offeringTypeList = ["Workshop", "Vortrag", "Führung"]
+var cityNames = ["Karlsruhe", "Stuttgart"];
+var tagList = ["Rassismus", "Sexuelle Aufklärung", "Kriminalität", "Gewalt"];
+var offeringTypeList = ["Workshop", "Vortrag", "Führung"];
 
 export default {
   name: "searchConfiguration-component",
