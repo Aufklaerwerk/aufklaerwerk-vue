@@ -25,8 +25,8 @@ class OfferingDataService {
     return http.delete(`/offerings`);
   }
 
-  findByTitle(title) {
-    return http.get(`/offerings?title=${title}`);
+  findByCity(city) {
+    return http.get(`/offerings?city=${city}`);
   }
 }
 

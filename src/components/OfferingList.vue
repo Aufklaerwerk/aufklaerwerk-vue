@@ -50,7 +50,7 @@ export default {
     },
 
     retrieveOfferings() {
-      OfferingDataService.getAll()
+      OfferingDataService.findByCity(this.searchParams.city)
         .then((response) => {
           this.Offerings = response.data;
 
@@ -70,9 +70,7 @@ export default {
             })
           );
 
-          //TODO geolib muss noch nachgezogen werden.
-
-          console.log(this.Offerings);
+          //TODO für später: geolib muss noch nachgezogen werden.
         })
         .catch((e) => {
           console.log(e);
