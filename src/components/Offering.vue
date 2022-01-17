@@ -2,7 +2,8 @@
   <div>
     Hallo
     <div v-if="currentOffering" id="offeringPage">
-      <!-- Start Screen -->
+      <!-- Start Scree  -->
+
       <div id="offeringBox">
         <div id="offering-image-and-details">
           <!-- Hier sind Foto und Anschrift -->
