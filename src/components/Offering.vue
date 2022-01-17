@@ -148,13 +148,11 @@ export default {
   methods: {
     openOrganisation() {
       //TODO
-      /*
-      alert("Wechsel zur Organisation veranlasst.");
+
       this.$router.push({
         name: "Organization",
-        query: { organizationId: this.offering.organizationId },
+        params: { id: this.currentOffering.id },
       });
-     */
     },
     getOffering(id) {
       OfferingDataService.get(id)
@@ -209,6 +207,7 @@ export default {
   },
   mounted() {
     this.message = "";
+    console.log("übergebener Parameter: " + this.$route.params.id);
     this.getOffering(this.$route.params.id);
   },
 };

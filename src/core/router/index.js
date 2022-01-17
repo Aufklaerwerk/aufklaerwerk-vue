@@ -12,6 +12,7 @@ import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 import inConstruction from "../../pages/InConstruction.vue";
 import Offering from "../../components/Offering.vue"
+import Organization from "../../components/Organization.vue"
 
 const routes = [{
     path: "/",
@@ -67,6 +68,11 @@ const routes = [{
     path: "/offering/:id",
     component: Offering,
     name: "Offering"
+  },
+  {
+    path: "/organization/:id",
+    component: Organization,
+    name: "Organization"
   },
 ];
 

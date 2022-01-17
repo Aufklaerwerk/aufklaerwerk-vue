@@ -57,9 +57,18 @@ export default {
     openOfferingPage() {
       console.log("Das ist die offeringID: " + this.offeringId);
       //TODO Der Router klappt noch nicht.
+
+      /*
+      //Original aus Hinterteil
       this.$router.push({
         name: "Offering",
-        query: { offeringId: this.offeringId },
+        query: { offeringId: this.offering._id },
+      });
+      */
+
+      this.$router.push({
+        name: "Offering",
+        params: { id: this.offeringId },
       });
     },
   },

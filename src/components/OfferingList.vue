@@ -76,17 +76,6 @@ export default {
           console.log(e);
         });
     },
-
-    searchTitle() {
-      OfferingDataService.getAll()
-        .then((response) => {
-          this.Offerings = response.data;
-          console.log("Der Fund" + this.searchParams.city + response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
   },
   mounted() {
     if (this.$route.params.landingPageParams) {
