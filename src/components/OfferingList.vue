@@ -15,11 +15,12 @@
         v-for="(Offering, index) in Offerings"
         :key="index"
         :offering="Offering"
-        
       ></offeringEntry>
+      <!-- TODO: Fix this 
       <div v-if="Offerings.length = 0">
         <h4>Keine Angebote mit den ausgewählten Suchparametern</h4>
       </div>
+      -->
     </div>
   </div>
 </template>
