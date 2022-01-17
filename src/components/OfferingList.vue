@@ -9,14 +9,17 @@
       />
     </section>
 
-    <h4>Offerings List</h4>
     <div class="content">
       <offeringEntry
         :class="{ active: index == currentIndex }"
         v-for="(Offering, index) in Offerings"
         :key="index"
         :offering="Offering"
+        
       ></offeringEntry>
+      <div v-if="Offerings.length = 0">
+        <h4>Keine Angebote mit den ausgewählten Suchparametern</h4>
+      </div>
     </div>
   </div>
 </template>

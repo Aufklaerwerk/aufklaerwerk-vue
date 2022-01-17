@@ -503,6 +503,6 @@ export default {
 
 
 #contact-landing {
-    padding: 0 20em 10em 20em;
+  padding: 0 20em 10em 20em;
 }
 </style>
