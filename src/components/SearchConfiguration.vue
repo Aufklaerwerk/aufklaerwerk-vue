@@ -58,8 +58,15 @@
 //import { offeringTypeList } from "./seeds";
 
 var cityNames = ["Karlsruhe", "Stuttgart", "Hamburg"];
-var tagList = ["Rassismus", "Sexuelle Aufklärung", "Kriminalität", "Gewalt"];
-var offeringTypeList = ["Workshop", "Vortrag", "Führung"];
+var tagList = [
+  "Barrierefreiheit",
+  "Behinderung",
+  "Rassismus",
+  "Sexuelle Aufklärung",
+  "Kriminalität",
+  "Gewalt",
+];
+var offeringTypeList = ["Workshop", "Vortrag", "Führung", "Tour"];
 
 export default {
   name: "searchConfiguration-component",
