@@ -1,7 +1,11 @@
 <template>
   <div class="offering-entry-card" elevation="5" hover>
     <div class="img-with-description">
-      <img class="image" v-if="offering" :src="offering.imageUrl" />
+      <img
+        class="image"
+        v-if="offering"
+        src="../assets/orgaLogos/statttour.png"
+      />
       <div class="content">
         <div class="card-organisation">
           <img src="../assets/icons/school.png" />

@@ -6,7 +6,7 @@
       <div id="offeringBox">
         <div id="offering-image-and-details">
           <!-- Hier sind Foto und Anschrift -->
-          <img id="offering-image" src:="currentOffering.imageUrl" />
+          <img id="offering-image" src="../assets/orgaLogos/statttour.png" />
           <div id="offering-details">
             <h3 id="offering-name">{{ currentOffering.name }}</h3>
             <div id="icon-with-data" class="entry-with-gap">
@@ -30,7 +30,7 @@
             <div class="entry-with-gap">
               <img src="../assets/icons/phone.png" />
               <p>
-                {{ currentOffering.telefon }}
+                {{ currentOffering.telephone }}
               </p>
             </div>
             <div class="entry-with-gap">
@@ -46,17 +46,7 @@
               </p>
             </div>
             <p id="offering-descr">
-              {{ currentOffering.description }} aber die Beschreibung ist nicht
-              lang genug, deshalb knall ich hier noch bisschen mehr content rein
-              blablablbal hdjkef alkfvjklof Geegjerg
-            </p>
-            <ul id="pro-list">
-              <li>Punkt 1</li>
-              <li>Punkt 2</li>
-              <li>Punkt 3</li>
-            </ul>
-            <p id="offering-descr">
-              Geeignet ist der Workshop vor allem für Schulen, etc.
+              {{ currentOffering.description }}
             </p>
           </div>
         </div>
@@ -79,7 +69,7 @@
             style="border: 0"
             loading="lazy"
             allowfullscreen
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8WMga20Hl0cRuU8NdDkV99U&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
+            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJG8q0sQaPsUcRcaLiC61nvWY&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
             id="map"
           ></iframe>
         </div>
@@ -115,13 +105,13 @@
           <div id="offering-photos">
             <h2>Ein paar Impressionen:</h2>
             <v-carousel v-model="model">
-              <v-carousel-item v-for="(color, i) in colors" :key="color">
-                <v-sheet :color="color" height="100%" tile>
-                  <v-row class="fill-height" align="center" justify="center">
-                    <div class="display-3">Bilder {{ i + 1 }}</div>
-                  </v-row>
-                </v-sheet>
-              </v-carousel-item>
+              <v-carousel-item
+                v-for="(item, i) in items"
+                :key="i"
+                :src="item.src"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              ></v-carousel-item>
             </v-carousel>
           </div>
         </div>
@@ -143,6 +133,24 @@ export default {
       message: "",
       model: 0,
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
+
+      items: [
+        {
+          src: require("../assets/offeringPictures/statttourPicture1.jpg"),
+        },
+        {
+          src: require("../assets/offeringPictures/statttourPicture2.jpg"),
+        },
+        {
+          src: require("../assets/offeringPictures/statttourPicture3.jpg"),
+        },
+        {
+          src: require("../assets/offeringPictures/statttourPicture4.jpg"),
+        },
+        {
+          src: require("../assets/offeringPictures/statttourRoute.png"),
+        },
+      ],
     };
   },
   methods: {
