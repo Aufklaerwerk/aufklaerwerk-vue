@@ -105,9 +105,11 @@
             <h2>Du bist Teil einer sozialen Organisation in Deutschland?</h2>
             <p>Wir helfen dir dein Angebot für Suchende sichtbar zu machen</p>
           </div>
-          <img src="../assets/icons/arrow.png" id="arrow" />
+          <router-link to="/offerer">
+            <img src="../assets/icons/arrow.png" id="arrow" />
+          </router-link>
         </div>
-        <button to="/offerer">mehr Infos zum Buchungsablauf gibt's hier</button>
+        <button @click="$router.push('howitworks')">mehr Infos zum Buchungsablauf gibt's hier</button>
       </div>
     </section>
 
