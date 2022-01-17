@@ -150,7 +150,7 @@
     </section>
     <!-- Kontaktformular -->
 
-    <section id="contact">
+    <section id="contact-landing">
       <ContactForm />
     </section>
   </div>
@@ -499,5 +499,10 @@ export default {
 
 #dude-in-subway {
   height: 50em;
+}
+
+
+#contact-landing {
+    padding: 0 20em 10em 20em;
 }
 </style>
