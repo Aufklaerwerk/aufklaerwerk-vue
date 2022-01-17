@@ -57,7 +57,7 @@
 //import { tagList } from "./seeds";
 //import { offeringTypeList } from "./seeds";
 
-var cityNames = ["Karlsruhe", "Stuttgart"];
+var cityNames = ["Karlsruhe", "Stuttgart", "Hamburg"];
 var tagList = ["Rassismus", "Sexuelle Aufklärung", "Kriminalität", "Gewalt"];
 var offeringTypeList = ["Workshop", "Vortrag", "Führung"];
 
