@@ -26,7 +26,7 @@ export default {
 <style>
 #in-construction {
     padding: 6em 8em 0em 8em;
-    background: #fffbf5;
+    background: white;
 }
 
 #in-construction h1 {
