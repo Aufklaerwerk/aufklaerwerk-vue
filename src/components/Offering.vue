@@ -7,12 +7,12 @@
       <div id="offeringBox">
         <div id="offering-image-and-details">
           <!-- Hier sind Foto und Anschrift -->
-          <img id="offering-image" src="../assets/orgaLogos/statttour.png" />
+          <img id="offering-image" src="../assets/orgaLogos/statttour-logo.png" />
           <div id="offering-details">
             <h3 id="offering-name">{{ currentOffering.name }}</h3>
             <div id="icon-with-data" class="entry-with-gap">
               <img src="../assets/icons/three-bars.png" />
-              <p>Organisationsname</p>
+              <p>  {{ currentOffering.organame }} </p>
             </div>
             <div class="entry-without-gap">
               <img src="../assets/icons/location.png" />
@@ -46,10 +46,13 @@
                 {{ currentOffering.price }}
               </p>
             </div>
-            <p id="offering-descr">
+          </div>
+        </div>
+
+        <div id = "offering-description">
+                      <p id="offering-descr">
               {{ currentOffering.description }}
             </p>
-          </div>
         </div>
 
         <div id="organisation-and-map">
@@ -104,7 +107,7 @@
           </div>
 
           <div id="offering-photos">
-            <h2>Ein paar Impressionen:</h2>
+            <h2>Ein paar Impressionen</h2>
             <v-carousel v-model="model">
               <v-carousel-item
                 v-for="(item, i) in items"
@@ -114,6 +117,10 @@
                 transition="fade-transition"
               ></v-carousel-item>
             </v-carousel>
+          </div>
+
+          <div >
+            <v-btn id="booking-button">Angebot buchen</v-btn>
           </div>
         </div>
       </div>
@@ -231,10 +238,10 @@ export default {
 }
 
 #offeringBox {
-  margin: 4% 7% 4% 7%;
+  margin: 2% 7% 4% 7%;
   box-shadow: 1px 1px 15px grey;
   border-radius: 16px;
-  padding: 2% 6% 2% 6%;
+  padding: 2% 6% 2% 4%;
 }
 
 #offering-image-and-details {
@@ -247,21 +254,25 @@ export default {
 }
 
 #offering-image {
-  object-fit: cover;
-  width: 60%;
-  height: 20em;
+  width: 30vw;
+  height: 20%;
 }
 
 #offering-name {
   color: #ff5100;
-  margin-bottom: 4%;
+  padding-bottom: 1em;
   text-align: left;
+  font-size: 2em;
 }
 
 #offering-details {
   display: flex;
   flex-direction: column;
-  margin-left: 14%;
+  margin-left: 16%;
+}
+
+#offering-descr {
+  padding: 4em 2em;
 }
 
 .entry-with-gap,
@@ -349,6 +360,16 @@ export default {
 #offering-photos {
   width: 60%;
   margin: 1% auto 0 auto;
+}
+
+#booking-button {
+  min-width: 20%;
+  color: #fffbf5;
+  font-size: 1.5em;
+  margin: 6em 0 2em 0;
+  padding: 1.4em;
+  font-family: "DM Serif Text", serif;
+  background-color: #004c45;
 }
 
 #contact-offering {
