@@ -9,7 +9,6 @@
       />
     </section>
 
-    <h4>Offerings List</h4>
     <div class="content">
       <offeringEntry
         :class="{ active: index == currentIndex }"
@@ -17,6 +16,11 @@
         :key="index"
         :offering="Offering"
       ></offeringEntry>
+      <!-- TODO: Fix this 
+      <div v-if="Offerings.length = 0">
+        <h4>Keine Angebote mit den ausgewählten Suchparametern</h4>
+      </div>
+      -->
     </div>
   </div>
 </template>

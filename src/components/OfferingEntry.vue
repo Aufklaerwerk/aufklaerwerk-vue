@@ -7,10 +7,13 @@
         src="../assets/orgaLogos/statttour.png"
       />
       <div class="content">
+        <p id="offering-name">           
+          <strong> {{ offering.name }}</strong>
+        </p>
         <div class="card-organisation">
           <img src="../assets/icons/school.png" />
           <p id="orga-name">
-            <strong> {{ offering.organizationId }}</strong>
+            <strong> {{ offering.organame }}</strong>
           </p>
         </div>
         <div class="card-location">
@@ -39,7 +42,7 @@
           </div>
         </div>
 
-        <p class="card-descr">{{ offering.description }}</p>
+        <p class="card-descr">{{ offering.carddescription }}</p>
 
         <button @click="openOfferingPage">zum Angebot</button>
       </div>
@@ -159,5 +162,11 @@ export default {
       }
     }
   }
+}
+
+#offering-name {
+  font-size: 1.2em;
+  margin-bottom: 0em !important;
+  margin-top: 1em;
 }
 </style>

@@ -206,6 +206,10 @@ export default {
   font-size: 1.5em;
 }
 
+.radius-text {
+  margin-bottom: 1em;
+}
+
 .v-select-item {
   width: 100%;
 }
@@ -230,13 +234,14 @@ export default {
 }
 
 .v-messages {
-  min-height: 0em;
+  min-height: 0em !important;
 }
 .v-input__slot {
-  margin-bottom: 0em;
+  margin-bottom: 0em !important;
 }
 
 .v-subheader {
   height: 2em;
 }
+
 </style>

@@ -30,7 +30,7 @@
       <div class="about-us-sub-container">
         <div id="about-us-header">
           <h3>Wer steckt hinter Aufklärwerk?</h3>
-          <p>9 MITGLIEDER + 100 TASSEN KAFFEE + 1 MISSION</p>
+          <p>8 MITGLIEDER + 100 TASSEN KAFFEE + 1 MISSION</p>
         </div>
         <div class="buttons-container">
           <button
@@ -201,20 +201,6 @@ export default {
           },
           age: "25",
           subject: "Wirtschaftsinformatik",
-          roles: "IT",
-        },
-        {
-          name: "Sarvar",
-          id: 5,
-          portrait: "sarvar.jpeg",
-          responsibility: {
-            founder: false,
-            marketing: false,
-            it: true,
-            pr: false,
-          },
-          age: "21",
-          subject: "Informatik",
           roles: "IT",
         },
         {

@@ -33,8 +33,7 @@
     -->
 
     <!-- Kontaktformular -->
-    <span id="offerer-contact-span"></span>
-    <section id="contact">
+    <section id="contact-offerer">
       <ContactForm />
     </section>
   </div>
@@ -134,9 +133,9 @@ body,
   margin-bottom: 0em;
 }
 
-#contact {
+#contact-offerer {
   background-color: #fffbf5;
-  padding-bottom: 4em;
+  padding: 0 20em 4em 20em;
   color: #fffbf5 !important;
 }
 </style>
