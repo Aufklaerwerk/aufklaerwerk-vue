@@ -43,8 +43,8 @@
           ></v-slider>
           <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
         </div>
-        <v-btn @click="submit" id="form-submit-button" class="dark-orange">
-          <!--    <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
+        <!--<v-btn @click="submit" id="form-submit-button" class="dark-orange">-->
+              <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> 
           <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
