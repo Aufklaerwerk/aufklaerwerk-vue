@@ -23,24 +23,22 @@
           <h4>UNSER ZIEL</h4>
           <h3>Celebration of Humanity</h3>
           <p>
-            Wir sind ein Projekt, dass sich für mehr Offenheit und mehr
+            Wir sind eine studentische Initiative, welche sich für mehr Offenheit und
             Austausch in der Gesellschaft einsetzt.
           </p>
           <p>
-            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die
-            zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
+            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
           </p>
           <p>
-            Entdecke mit unserer Hilfe Organisationen in deiner Umgebung und
-            finde passende Begegnungsangebote zu finden!
+            Entdecke mit unserer Hilfe Organisationen in Deiner Umgebung und finde die passenden Begegnungsangebote für deine Bedürfnisse!
           </p>
           <ul>
             <li><strong>Schnelle und bequeme Suche</strong></li>
             <li>
-              <strong>Angebote zu verschiedenen Themen auf einem Platz</strong>
+              <strong>Angebote zu verschiedensten Themen - gesammelt an einem Ort</strong>
             </li>
             <li>
-              <strong>Einfacher Kontakt zu sozialen Organisationen</strong>
+              <strong>Einfacher, transparenter Kontakt zu sozialen Organisationen</strong>
             </li>
           </ul>
           <v-btn id="orange-button" to="/offerer">
@@ -103,7 +101,7 @@
         <div id="teil-werden-blauer-kasten">
           <div id="teil-werden-text">
             <h2>Du bist Teil einer sozialen Organisation in Deutschland?</h2>
-            <p>Wir helfen dir dein Angebot für Suchende sichtbar zu machen</p>
+            <p>Wir helfen dir Dein Angebot für Suchende sichtbar zu machen</p>
           </div>
           <router-link to="/offerer">
             <img src="../assets/icons/arrow.png" id="arrow" />
@@ -136,7 +134,7 @@
           </p>
           <p>
             Somit sollen Vorurteile und Diskriminierung in der Gesellschaft
-            abgebaut werden.
+            abgebaut und die Vorraussetzungen für ein Miteinander geschaffen werden.
           </p>
           <v-btn id="about-us-to-button" to="/aboutus">
             Mehr zu uns & unserer Vision

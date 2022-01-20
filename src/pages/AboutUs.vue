@@ -6,22 +6,22 @@
         <div class="inside-cover-text">
           <h2>Celebration of Humanity</h2>
           <h3 style="font-weight: normal">
-            Wir sind ein Projekt, dass sich für mehr
+            Wir sind ein Projekt, welches sich für mehr
             <span class="dark-orange">Offenheit</span> und mehr Austausch in der
-            Gesellschaft einsetzt. Dazu möchten wir aber nicht das Rad neu
-            erfinden, sondern die zahlreichen, tollen Projekte, die es bereits
-            gibt, unterstützen.
+            Gesellschaft einsetzt. Als digitale Plattform wollen wir existierenden Initiativen und Organisationen dabei helfen, die richtigen Teilnehmer für ihre Angebote zu finden. Dadurch können wir Austausch ermöglichen und Spaltung überwinden.
+          </h3>
+          <h3 style="font-weight: normal">
+            Langfristig wollen wir DIE Plattform gegen Diskriminierung und Vorurteile in Deutschland werden. Werden Sie ein Teil davon! 
           </h3>
         </div>
       </div>
     </div>
     <div class="about-us-subtext">
       <p style="font-weight: normal">
-        Aufklärwerk ist eine Initiative von Studierende für die gesamte
-        Gesellschaft. Wir sind davon überzeugt, dass durch Begegnungsangebote
-        Hass und Vorurteile in der Gesellschaft abgebaut werden können. Mit
-        unserer Plattform wollen wir die Suche und Buchung von
-        Begegnungsangeboten deutlich einfacher und transparenter gestalten.
+        Aufklärwerk ist eine Initiative von Studierenden für die gesamte Gesellschaft. Wir sind davon überzeugt, dass durch Begegnungsangebote Hass und Vorurteile in der Gesellschaft abgebaut werden können. Mit unserer Plattform wollen wir die Suche und Buchung von
+        Begegnungsangeboten deutlich einfacher und transparenter gestalten. Wir wollen sozialen Organisationen die Möglichkeit bieten, im Internet stattzufinden. Auf der anderen Seite möchten wir Suchenden das Auffinden von diesen Organisationen so barrierefrei wie möglich gestalten.</p>
+        <p>
+        Durch den Abbau von Buchungsbarrieren und dadurch vermehrte Buchungen von Begegnungsangeboten wollen wir 
         Somit sollen Vorurteile und Diskriminierung in der Gesellschaft abgebaut
         werden.
       </p>
@@ -204,6 +204,20 @@ export default {
           roles: "IT",
         },
         {
+          name: "Giuseppe",
+          id: 5,
+          portrait: "giuseppe.png",
+          responsibility: {
+            founder: false,
+            marketing: false,
+            it: false,
+            pr: true,
+          },
+          age: "25",
+          subject: "Wirtschaftspsychologie",
+          roles: "PR | Strategie",
+        },
+        {
           name: "Emelie",
           id: 6,
           portrait: "emelie.png",
@@ -244,6 +258,48 @@ export default {
           age: "23",
           subject: "Wirtschaftsinformatik",
           roles: "IT",
+        },
+        {
+          name: "Helena",
+          id: 9,
+          portrait: "helena.jpeg",
+          responsibility: {
+            founder: false,
+            marketing: true,
+            it: false,
+            pr: false,
+          },
+          age: "22",
+          subject: "Wirtschaftsingenieurwesen",
+          roles: "Marketing",
+        },
+        {
+          name: "Leonie",
+          id: 10,
+          portrait: "leonie.jpeg",
+          responsibility: {
+            founder: false,
+            marketing: true,
+            it: false,
+            pr: false,
+          },
+          age: "22",
+          subject: "Wirtschaftsingenieurwesen",
+          roles: "Marketing",
+        },
+        {
+          name: "Marike",
+          id: 11,
+          portrait: "marike.jpeg",
+          responsibility: {
+            founder: false,
+            marketing: true,
+            it: false,
+            pr: false,
+          },
+          age: "19",
+          subject: "Wirtschaftsingenieurwesen",
+          roles: "Marketing",
         },
       ],
     };

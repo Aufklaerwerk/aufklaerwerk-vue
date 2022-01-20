@@ -25,7 +25,7 @@
             Geben Sie den gewünschten Suchort inkl. Radius an.
           </li>
           <li class="left-column-item">
-            Wählen Sie den gesuchten Themenbereich aus.
+            Wählen Sie den gewünschten Themenbereich aus.
           </li>
           <li class="left-column-item">
             Klicken Sie auf das bevorzugte Format und starten Sie die Suche.

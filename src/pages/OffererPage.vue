@@ -5,7 +5,7 @@
     <section id="offer-upper">
       <img id="fistbump" src="../assets/fistbump.jpg" />
       <section id="offer-upper-right">
-        <h3>Du bist Teil einer sozialen Organisation in Deutschland?</h3>
+        <h1><strong>Du bist Teil einer sozialen Organisation in Deutschland?</strong></h1>
         <p>
           Wir helfen Dir dein Angebot für Suchende sichtbarer im Internet zu
           machen!
@@ -20,6 +20,7 @@
         />
       </section>
     </section>
+    <h2 style="strong">Melde dich bei uns in dem unten stehenden Formular!</h2>
 
     <!-- Bottom Part --><!--
     <section id="concave-delimiter-top"></section>
@@ -60,7 +61,7 @@ body,
 /* Upper part */
 
 #offer-upper {
-  padding: 8% 4% 10% 2%;
+  padding: 8% 4% 4% 2%;
   display: flex;
   flex-direction: row;
 }
@@ -78,14 +79,18 @@ body,
   text-align: right;
 }
 
-#offer-upper-right > h3 {
+#offer-upper-right > h1 {
   color: #ff5100;
   padding-bottom: 2em;
 }
 
-#offer-upper-right > h3,
+#offer-upper-right > h1,
 #offer-upper-right > p {
   padding-left: 2em;
+}
+
+#offer-upper-right > p {
+  color: #004c45;
 }
 
 #offerer-process-image {
@@ -131,6 +136,13 @@ body,
   color: white;
   font-size: 24px;
   margin-bottom: 0em;
+}
+
+#offererPage > h2 {
+  font-size: 2.8em;
+  margin-bottom: 2em;
+  color: #ff5100;  
+  font-weight: bold;
 }
 
 #contact-offerer {
