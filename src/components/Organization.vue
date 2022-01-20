@@ -1,55 +1,180 @@
 <template>
-  <div v-if="currentOrganization" class="edit-form">
-    <h4>Organization</h4>
-    <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title"
-          v-model="currentOrganization.title"
-        />
+  <div v-if="currentOrganization" id="organizationPage">
+    <div id="organizationBox">
+      <div id="two-columns">
+        <!-- Name und Beschreibung -->
+
+        <section id="left-column">
+          <h3>{{ currentOrganization.name }}</h3>
+          <p>
+            {{ currentOrganization.description }} __Das war die Beschreibung aus
+            den seeds__ Die Organisation ost bekannt für ihre Arbeit im Feld.
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
+            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
+            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+            no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
+            et ea rebum. Stet clita kasd gubergren, no
+          </p>
+        </section>
+
+        <!-- Bild mit Themen und Button -->
+
+        <section id="right-column">
+          <img
+            class="organziation-logo"
+            v-if="currentOrganization"
+            :src="currentOrganization.imageUrl"
+          />
+
+          <div id="themengebiete">
+            <div id="themen-header-logo">
+              <h4>Themengebiete</h4>
+              <img src="assets/icons/three-bars.png" />
+            </div>
+            <ul>
+              <li>Thema 1</li>
+              <li>Thema 2</li>
+              <li>Thema 3</li>
+            </ul>
+          </div>
+
+          <v-btn id="to-offer-on-orga">Zu den Angeboten -></v-btn>
+        </section>
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" class="form-control" id="description"
-          v-model="currentOrganization.description"
-        />
+
+      <!-- Untere Leiste -->
+
+      <div id="map-and-address">
+        <iframe
+          width="100%"
+          height="450"
+          style="border: 0"
+          loading="lazy"
+          allowfullscreen
+          src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8WMga20Hl0cRuU8NdDkV99U&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
+          id="organization-map"
+        ></iframe>
+
+        <div id="organization-anschrift">
+          <h4>Anschrift</h4>
+          <p>
+            {{ currentOrganization.street }}
+            {{ currentOrganization.houseNumber }}
+          </p>
+          <p>
+            {{ currentOrganization.postcode }} {{ currentOrganization.city }}
+          </p>
+          <p>Deutschland</p>
+        </div>
+
+        <div id="kontakt">
+          <h4>Kontakt</h4>
+          <div id="name-and-person">
+            <p>{{ currentOrganization.name }}</p>
+            <p>Contact Person</p>
+          </div>
+          <div id="organization-contact-details">
+            <p>www.INSERWEBSITE.de</p>
+            <p>{{ currentOrganization.telefon }}</p>
+            <p>{{ currentOrganization.mailAdress }}</p>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentOrganization.published ? "Published" : "Pending" }}
+      <div id="not-in-ux-orga">
+        <h2>Themenbereiche</h2>
+        <div id="themen-tags-orga">
+          <v-chip
+            class="chip"
+            v-for="tag in currentOrganization.tags"
+            :key="tag._id"
+            color="blue"
+            text-color="white"
+          >
+            {{ tag.label }}</v-chip
+          >
+        </div>
+
+        <div id="orga-photos">
+          <h2>Ein paar Impressionen:</h2>
+          <v-carousel v-model="model">
+            <v-carousel-item v-for="(color, i) in colors" :key="color">
+              <v-sheet :color="color" height="100%" tile>
+                <v-row class="fill-height" align="center" justify="center">
+                  <div class="display-3">Bilder {{ i + 1 }}</div>
+                </v-row>
+              </v-sheet>
+            </v-carousel-item>
+          </v-carousel>
+        </div>
       </div>
-    </form>
+      <!--
+            <div class="descr-item-organization" id="angebotsliste">
+              <h2>Angebote:</h2>
 
-    <button class="badge badge-primary mr-2"
-      v-if="currentOrganization.published"
-      @click="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button v-else class="badge badge-primary mr-2"
-      @click="updatePublished(true)"
-    >
-      Publish
-    </button>
+              <h1>Hier kommen Angebote hin</h1>
+              <div v-if="filteredOfferings">
+                <offeringEntry
+                  v-for="offeringEntry in filteredOfferings"
+                  :key="offeringEntry._id"
+                  :offeringId="offeringEntry._id"
+                />
+              </div>
+            </div>
 
-    <button class="badge badge-danger mr-2"
-      @click="deleteOrganization"
-    >
-      Delete
-    </button>
-
-    <button type="submit" class="badge badge-success"
-      @click="updateOrganization"
-    >
-      Update
-    </button>
-    <p>{{ message }}</p>
-  </div>
-
-  <div v-else>
-    <br />
-    <p>Please click on a Organization...</p>
+            <div class="descr-item-organization" id="orga-fotos">
+              <h2>Ein paar Impressionen:</h2>
+              <v-carousel v-model="model">
+                <v-carousel-item v-for="(color, i) in colors" :key="color">
+                  <v-sheet :color="color" height="100%" tile>
+                    <v-row class="fill-height" align="center" justify="center">
+                      <div class="display-3">Bilder {{ i + 1 }}</div>
+                    </v-row>
+                  </v-sheet>
+                </v-carousel-item>
+              </v-carousel>
+            </div>
+            <h2>Themenbereiche</h2>
+            <div class="descr-item-organization" id="themen-tags">
+              <v-chip
+                class="chip"
+                v-for="tag in organization.tags"
+                :key="tag._id"
+                color="blue"
+                text-color="white"
+              >
+                {{ tag.label }}
+              </v-chip>
+            </div>
+          </div>
+          <iframe
+            width="100%"
+            height="450"
+            style="border: 0"
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8WMga20Hl0cRuU8NdDkV99U&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
+          ></iframe>
+        </section>
+ -->
+    </div>
+    <section id="contact-offerer">
+      <ContactForm />
+    </section>
   </div>
 </template>
 
@@ -61,71 +186,216 @@ export default {
   data() {
     return {
       currentOrganization: null,
-      message: ''
+      message: "",
     };
   },
   methods: {
     getOrganization(id) {
       OrganizationDataService.get(id)
-        .then(response => {
+        .then((response) => {
           this.currentOrganization = response.data;
           console.log(response.data);
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
-
     updatePublished(status) {
       var data = {
         id: this.currentOrganization.id,
         title: this.currentOrganization.title,
         description: this.currentOrganization.description,
-        published: status
+        published: status,
       };
 
       OrganizationDataService.update(this.currentOrganization.id, data)
-        .then(response => {
+        .then((response) => {
           this.currentOrganization.published = status;
           console.log(response.data);
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
 
     updateOrganization() {
-      OrganizationDataService.update(this.currentOrganization.id, this.currentOrganization)
-        .then(response => {
+      OrganizationDataService.update(
+        this.currentOrganization.id,
+        this.currentOrganization
+      )
+        .then((response) => {
           console.log(response.data);
-          this.message = 'The Organization was updated successfully!';
+          this.message = "The Organization was updated successfully!";
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
     },
 
     deleteOrganization() {
       OrganizationDataService.delete(this.currentOrganization.id)
-        .then(response => {
+        .then((response) => {
           console.log(response.data);
           this.$router.push({ name: "Organizations" });
         })
-        .catch(e => {
+        .catch((e) => {
           console.log(e);
         });
-    }
+    },
   },
   mounted() {
-    this.message = '';
+    this.message = "";
+    console.log("übergebener Parameter: " + this.$route.params.id);
     this.getOrganization(this.$route.params.id);
-  }
+  },
 };
 </script>
 
 <style>
-.edit-form {
-  max-width: 300px;
+#organizationPage {
+  height: 100%;
+  color: black;
+  background: #fffbf5;
+  padding-top: 6%;
+}
+
+#organizationBox {
+  margin: 2% 14% 4% 14%;
+  box-shadow: 1px 1px 15px grey;
+  border-radius: 16px;
+  text-align: left;
+  padding: 4% 6% 4% 6%;
+}
+
+#two-columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* Name und Beschreibung */
+
+#left-column {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 44%;
+  padding-top: 4%;
+}
+
+#left-column h3 {
+  color: #ff5100;
+  padding-bottom: 4%;
+}
+
+#left-column p {
+  padding-bottom: 2%;
+}
+
+/* Bild mit Themen und Button */
+
+#right-column {
+  width: 44%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+#right-column > img {
+  height: 30%;
+  margin-bottom: 10%;
+}
+
+#themen-header-logo > img {
+  margin-left: 1em;
+  width: 3em;
+  height: 3em;
+}
+
+#themen-header-logo {
+  display: flex;
+  flex-direction: row;
+}
+
+#to-offer-on-orga {
+  background-color: transparent;
+  color: #004c45;
+  font-family: "DM Serif Text", serif;
+  margin: 3em 0 4em 0;
+  padding: 1em 1em 1em 1em;
+  max-width: 18em;
+  font-size: 1.5em;
+}
+/* Untere Leiste */
+
+#map-and-address {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#organization-map {
+  max-height: 20em;
+  max-width: 40%;
+}
+
+#organization-anschrift,
+#kontakt {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4% 0 8%;
+  width: 20%;
+}
+
+#organization-anschrift h4,
+#kontakt h4,
+#right-column h4 {
+  color: #f0956a;
+  padding-bottom: 3%;
+  font-size: 2em;
+}
+
+#organization-anschrift p,
+#name-and-person p,
+#organization-contact-details p {
+  margin-bottom: 0;
+}
+
+#name-and-person {
+  margin-bottom: 10%;
+}
+/* Not in UX Design */
+
+#not-in-ux-orga {
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 6% 0 4% 0;
+  text-align: center;
+}
+
+#themen-tags-orga {
+  flex-direction: row;
+  margin: 1%;
+}
+
+.chip {
+  margin: 0 0.5% 0 0.5%;
+}
+
+#orga-photos {
+  width: 60%;
+  margin: 2% auto 0 auto;
+}
+
+#contact-offerer {
+  border-top: dashed;
+}
+
+/* Auskommentiertes Zeug */
+
+#angebotsliste {
+  background: #004c45;
+  color: #fffbf5;
 }
 </style>

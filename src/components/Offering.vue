@@ -2,17 +2,20 @@
   <div>
     Hallo
     <div v-if="currentOffering" id="offeringPage">
-      <!-- Start Scree  -->
+      <!-- Start Screen  -->
 
       <div id="offeringBox">
         <div id="offering-image-and-details">
           <!-- Hier sind Foto und Anschrift -->
-          <img id="offering-image" src="../assets/orgaLogos/statttour-logo.png" />
+          <img
+            id="offering-image"
+            src="../assets/orgaLogos/statttour-logo.png"
+          />
           <div id="offering-details">
             <h3 id="offering-name">{{ currentOffering.name }}</h3>
             <div id="icon-with-data" class="entry-with-gap">
               <img src="../assets/icons/three-bars.png" />
-              <p>  {{ currentOffering.organame }} </p>
+              <p>{{ currentOffering.organame }}</p>
             </div>
             <div class="entry-without-gap">
               <img src="../assets/icons/location.png" />
@@ -49,10 +52,10 @@
           </div>
         </div>
 
-        <div id = "offering-description">
-                      <p id="offering-descr">
-              {{ currentOffering.description }}
-            </p>
+        <div id="offering-description">
+          <p id="offering-descr">
+            {{ currentOffering.description }}
+          </p>
         </div>
 
         <div id="organisation-and-map">
@@ -119,7 +122,7 @@
             </v-carousel>
           </div>
 
-          <div >
+          <div>
             <v-btn id="booking-button">Angebot buchen</v-btn>
           </div>
         </div>
@@ -163,8 +166,6 @@ export default {
   },
   methods: {
     openOrganisation() {
-      //TODO
-
       this.$router.push({
         name: "Organization",
         params: { id: this.currentOffering.id },
@@ -182,7 +183,6 @@ export default {
     },
     updatePublished(status) {
       var data = {
-        //TODO
         id: this.currentOffering.id,
         title: this.currentOffering.title,
         description: this.currentOffering.description,
