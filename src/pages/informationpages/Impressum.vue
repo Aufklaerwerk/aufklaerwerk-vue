@@ -3,9 +3,12 @@
     <h1>Impressum</h1>
     <span style="white-space: pre-line">
       <h2>Adresse</h2>
-      Ludwig-Wilhelm-Straße 18 76131 Karlsruhe Deutschland Wir sind Teil des
+      <p class="impr-address">Ludwig-Wilhelm-Straße 18</p>
+      <p class="impr-address">76131 Karlsruhe</p>
+      <p>Deutschland</p>
+      <p> Wir sind Teil des
       Vereins Enactus KIT e.V. und demnach Mitglied gesamten Enactus Germany
-      Netzwerks.
+      Netzwerks.</p>
 
       <h2>Enactus Germany:</h2>
 
@@ -50,5 +53,9 @@
 #impr-page h1 {
   padding: 10vh;
   color: #004c45;
+}
+
+.impr-address {
+  margin-bottom: 0px !important;
 }
 </style>
