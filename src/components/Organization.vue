@@ -111,6 +111,7 @@
 
         <div id="orga-photos">
           <h2>Ein paar Impressionen:</h2>
+          <!--ToDo carousel noch einbauen
           <v-carousel v-model="model">
             <v-carousel-item v-for="(color, i) in colors" :key="color">
               <v-sheet :color="color" height="100%" tile>
@@ -120,6 +121,7 @@
               </v-sheet>
             </v-carousel-item>
           </v-carousel>
+          -->
         </div>
       </div>
       <!--

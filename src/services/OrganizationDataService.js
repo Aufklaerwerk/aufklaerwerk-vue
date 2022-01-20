@@ -1,33 +1,33 @@
 import http from "../http-common";
 
-class OfferingDataService {
+class OrganizationDataService {
   getAll() {
-    return http.get("/offerings");
+    return http.get("/organizations");
   }
 
   get(id) {
-    return http.get(`/offerings/${id}`);
+    return http.get(`/organizations/${id}`);
   }
 
   create(data) {
-    return http.post("/offerings", data);
+    return http.post("/organizations", data);
   }
 
   update(id, data) {
-    return http.put(`/offerings/${id}`, data);
+    return http.put(`/organizations/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/offerings/${id}`);
+    return http.delete(`/organizations/${id}`);
   }
 
   deleteAll() {
-    return http.delete(`/offerings`);
+    return http.delete(`/organizations`);
   }
 
   findByCity(city) {
-    return http.get(`/offerings?city=${city}`);
+    return http.get(`/organizations?city=${city}`);
   }
 }
 
-export default new OfferingDataService();
+export default new OrganizationDataService();
