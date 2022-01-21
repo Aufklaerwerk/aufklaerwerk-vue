@@ -123,7 +123,7 @@
           </div>
 
           <div>
-            <v-btn id="booking-button">Angebot buchen</v-btn>
+            <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
           </div>
         </div>
       </div>
