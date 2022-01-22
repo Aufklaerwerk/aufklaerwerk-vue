@@ -57,16 +57,22 @@
 //import { tagList } from "./seeds";
 //import { offeringTypeList } from "./seeds";
 
-var cityNames = ["Karlsruhe", "Stuttgart", "Hamburg"];
+//var cityNames = ["Karlsruhe", "Stuttgart", "Hamburg"];
+var cityNames = ["Hamburg"];
 var tagList = [
   "Barrierefreiheit",
   "Behinderung",
-  "Rassismus",
-  "Sexuelle Aufklärung",
-  "Kriminalität",
-  "Gewalt",
+  //"Rassismus",
+  //"Sexuelle Aufklärung",
+  //"Kriminalität",
+  //"Gewalt",
 ];
-var offeringTypeList = ["Workshop", "Vortrag", "Führung", "Tour"];
+var offeringTypeList = [
+  //"Vortrag", 
+  "Workshop", 
+  "Führung", 
+  "Tour"
+];
 
 export default {
   name: "searchConfiguration-component",
