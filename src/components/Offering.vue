@@ -168,7 +168,7 @@ export default {
     openOrganisation() {
       this.$router.push({
         name: "Organization",
-        params: { id: this.currentOffering.id },
+        params: { id: this.currentOffering.organizationId },
       });
     },
     getOffering(id) {
