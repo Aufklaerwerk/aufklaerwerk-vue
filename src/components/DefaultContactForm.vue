@@ -66,7 +66,7 @@
 //import VueRecaptcha from "vue-recaptcha";
 
 export default {
-//  components: {VueRecaptcha},
+  //  components: {VueRecaptcha},
   name: "contact",
 
   data() {
@@ -80,9 +80,9 @@ export default {
       email: "",
       emailRules: [
         (v) => !!v || "E-mail is required",
-   //     (v) =>
-   //       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-   //       "E-mail must be valid",
+        (v) =>
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(v) ||
+          "E-mail must be valid",
       ],
       organization: "",
       organizationRules: [
@@ -104,7 +104,7 @@ export default {
       );
 
       nativeForm.submit();
-      */alert("Mail wurde versendet.");
+      */ alert("Mail wurde versendet.");
     },
   },
 };
