@@ -71,12 +71,12 @@
             :key="member.id"
           >
             <img :src="convertToPath(member)" />
-            <div class="description">
-              <p>{{ member.name }}</p>
-              <p>{{ member.age }}</p>
-              <p>{{ member.subject }}</p>
-              <p>{{ member.roles }}</p>
-            </div>
+            <v-card class="description">
+              <v-card-subtitle>{{ member.name }}</v-card-subtitle>
+              <v-card-text>{{ member.age }}</v-card-text>
+              <v-card-text>{{ member.subject }}</v-card-text>
+              <v-card-text>{{ member.roles }}</v-card-text>
+            </v-card>
           </div>
         </div>
       </div>
@@ -435,7 +435,7 @@ export default {
   margin: 0 3.5em 2vh 3.5em;
 }
 
-.img-with-text img {
+.img-with-text > img {
   margin: 1em auto;
   margin-bottom: 0px;
   display: block;
@@ -444,38 +444,34 @@ export default {
   object-fit: cover;
   border-radius: 20px 20px 0px 0px;
 }
-.description-above {
-  border-radius: 0.3em;
-  font-weight: bold;
-  font-size: 1.5em;
-  background-color: #fffbf5;
-  color: #f0956a;
-  position: relative;
-  top: 65%;
-  left: 0%;
-  display: inline-block;
-  width: max-content;
-  padding: 0.1em 1.5em 0.1em 1.5em;
-}
+
 .description {
   font-size: 1.3vw;
   margin: auto;
   background-color: #fffbf5;
   color: #f0956a;
   width: 21rem;
-  height: 6em;
   padding: 0.4em;
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .description > p {
   margin-bottom: 0vh !important;
 }
+.description > .v-card__subtitle, .v-card__text, .v-card__title {
+  padding: 0.4em !important;
+  color: #f0956a !important;
+
+}
+
+.description > .v-card__subtitle {
+  font-size: 1.4em;
+ }
+
+ .description > .v-card__text {
+   font-size: 0.6em;
+ }
 
 #about-us-header h3 {
   padding-top: 1em;

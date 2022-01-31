@@ -54,7 +54,21 @@
 
         <div id="offering-description">
           <p id="offering-descr">
-            {{ currentOffering.description }}
+            <!--{{ currentOffering.description }}-->
+            Hamburg aus einer anderen Perspektive erleben – das ist bei StattTour möglich. 
+            <p/><p id="offering-descr-middle">
+Dieser Rollenwechsel lässt dich das maritime Hamburg im Rollstuhl erkunden und dich Barrieren begegnen, die für dich im Alltag wahrscheinlich gar nicht auffallen. Bei uns zeigen RollstuhfahrerInnen die Metropole Hamburg aus ihrer Perspektive. Die Besonderheit: Auch FußgängerInnen erleben die Stadt im Rollstuhl! Als Teilnehmender unserer Stattour sitzt du selbst in einem Rollstuhl und erhältst so einen Einblick in das Leben eines Rollstuhlfahrers.
+<p/><p id="offering-descr-middle">
+Gemeinsam mit dem Tourguide geht es auf Erkundungstour durch das schöne Hamburg – entlang bekannter Sightseeing-Attraktionen wie der Elbphilharmonie und der Speicherstadt. Diese Hamburger Highlights bleiben in unserer alternativen Stadtführung aber nicht unkommentiert:
+<p/>
+  <ul id="offering-descr-middle">
+<li>Wo sind Barrieren schon bestmöglich abgebaut?</li>
+<li>Wo müssen sie noch überwunden werden?</li>
+<li>Welche Angebote gibt es für RollstuhlfahrerInnen?</li>
+<li id="offering-descr-middle">Wo ist noch besonders viel zu tun?</li>
+<p id="offering-descr-middle">Teil der Tour ist auch immer eine Einführung in den Umgang mit dem Rollstuhl und eine abschließende Diskussionsrunde, da uns ein reflektierter Umgang mit dem Thema sehr am Herzen liegt! Diese Stadttour bietet die einzigartige Möglichkeit, einen Perspektivwechsel zu erleben und Einblicke, in die Situation von rollstuhlfahrenden Menschen zu erhalten.
+</p><p id=offering-desc-end>
+Wir arbeiten in Form eines Buddysystems, das bedeutet, es kommen zwei Personen auf einen Rollstuhl. So baust du Vertrauen zu deinem Buddy auf und übergibst Verantwortung, wenn du zum Beispiel bei einer Hürde Unterstützung brauchst.
           </p>
         </div>
 
@@ -62,9 +76,7 @@
           <div id="organisation-descr">
             <h3 class="left">Organisation</h3>
             <p class="left">
-              Die Organisation ost bekannt für ihre Arbeit im Feld. Lorem ipsum
-              dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-              eirmod tempor invidunt ut labore et dolore magna aliquyam
+              StattTour ist eine studentische Initiative zum besseren Verständnis für die Bedürfnisse und Probleme von Rollstuhlfahrern im Alltag. Wir bieten verschiedenste Touren mit verschiedenen Guides durch verschiedene Teile Hamburgs an. Kommt auf unsere Seite und findet mehr über uns heraus!  
             </p>
             <v-btn id="to-orga" @click="openOrganisation"
               >Mehr zur Organisation</v-btn
@@ -272,7 +284,15 @@ export default {
 }
 
 #offering-descr {
-  padding: 4em 2em;
+  padding: 4em 2em 0em 2em;
+}
+
+#offering-descr-middle {
+  padding: 0em 2em;
+}
+
+#offering-desc-end {
+  padding: 0em 2em 4em 2em;
 }
 
 .entry-with-gap,
