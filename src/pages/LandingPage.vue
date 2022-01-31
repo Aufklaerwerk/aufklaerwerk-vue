@@ -203,6 +203,7 @@ export default {
 <style>
 #landingPage {
   background-color: #fffbf5;
+  width: 100%;
 }
 
 #landingPage section {

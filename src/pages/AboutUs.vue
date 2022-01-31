@@ -470,7 +470,7 @@ export default {
  }
 
  .description > .v-card__text {
-   font-size: 0.8em
+   font-size: 0.6em;
  }
 
 #about-us-header h3 {

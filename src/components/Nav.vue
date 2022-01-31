@@ -37,9 +37,9 @@
         id="toolbar-button"
         >Kontakt</v-btn
       >
-      <a href="/searcher">
+    <!--  <a href="/searcher">
         <img src="../assets/icons/search.png" id="search-icon" />
-      </a>
+      </a>-->
     </v-toolbar-items>
   </v-app-bar>
 </template>

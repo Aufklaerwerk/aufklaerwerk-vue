@@ -158,6 +158,7 @@ export default {
   color: white;
   background-size: 100% 100%;
   height: 100vh;
+  width: 100%;
 }
 
 #root-SC h3 {
