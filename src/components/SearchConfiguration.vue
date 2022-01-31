@@ -2,7 +2,7 @@
   <!-- -->
   <div id="root-SC" class="seperation-container">
     <h3>mit Vorurteilen aufräumen.</h3>
-    <form class="actual-form">
+    <v-form class="actual-form">
       <div class="form-item-left form-item">
         <strong class="dark-orange">Themengebiet?</strong>
         <v-select
@@ -48,7 +48,7 @@
           <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
-    </form>
+    </v-form>
   </div>
 </template>
 
@@ -192,18 +192,21 @@ export default {
 }
 
 .form-item-left {
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
-  padding-left: 10%;
-  width: 25%;
+  border-top-left-radius: 8%;
+  border-bottom-left-radius: 8%;
+  //padding-left: 10%;
+  //width: 25%;
+  width: 22%;
 }
 
 .form-item-right {
   display: flex;
   flex-direction: row;
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
-  width: 25%;
+  border-top-right-radius: 8%;
+  border-bottom-right-radius: 8%;
+  //border-bottom-right-radius: 50%;
+  //width: 25%;
+  width: 22%;
 }
 
 .form-item > strong,
@@ -224,7 +227,7 @@ export default {
   width: 7em;
   background-color: #ff5100;
   border-radius: 50%;
-  margin-left: 6%;
+  margin-left: 20%;
 }
 
 #search-icon-form {
