@@ -207,8 +207,7 @@ export default {
 }
 
 #landingPage section {
-  min-height: 80vh;
-  min-width: 100%;
+min-width: 100%;
 }
 
 /* Are you Interested? */
@@ -264,7 +263,7 @@ export default {
 }
 
 .box {
-  width: 84%;
+  width: 100%;
   background-color: #f0956a;
   color: white;
   display: flex;
@@ -301,6 +300,7 @@ export default {
 
 #huggingPeople {
   height: 32rem;
+  width: 60rem;
 }
 
 #orange-button {
@@ -519,12 +519,12 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 6% 0 6% 0;
+  padding: 10% 0 6% 0;
 }
 
 #ueber-akw {
   background-color: #f0956a;
-  min-height: 80%;
+  padding-bottom: 10rem;
 }
 
 .ueber-akw-box {
