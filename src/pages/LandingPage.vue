@@ -86,9 +86,39 @@
         <h3>Wusstest du ... ?</h3>
       </div>
       <div id="fun-fact-container">
-        <img src="../assets/startpage/blm.jpg" />
-        <img src="../assets/startpage/equality.jpg" />
-        <img src="../assets/startpage/wheelchair.jpg" />
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
+            </div>
+            <div class="flip-box-back">
+              <h2>Test</h2>
+              <p>Test</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
+            </div>
+            <div class="flip-box-back">
+              <h2>Test</h2>
+              <p>Test</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
+            </div>
+            <div class="flip-box-back">
+              <h2>Test</h2>
+              <p>Test</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -190,11 +220,11 @@ export default {
       choosenTags: "",
       choosenOfferingTypes: "",
       distance: "",
-    },
+    }
   }),
   components: {
     ContactForm,
-    SearchConfiguration,
+    SearchConfiguration
   },
   methods: {},
 };
@@ -378,10 +408,56 @@ min-width: 100%;
   padding: 6% 0 8% 0;
 }
 
-#fun-fact-container img {
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+  background-color: transparent;
   padding: 0 4% 0 4%;
   width: 25%;
-  height: 30rem;
+  height: 30%;
+  perspective: 1000px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-box-front img {
+  width: 100%;
+  height: auto;
+  size: cover;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
 }
 
 /* Wavy Transition */
