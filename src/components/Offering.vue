@@ -69,7 +69,7 @@ Gemeinsam mit dem Tourguide geht es auf Erkundungstour durch das schöne Hamburg
 <p id="offering-descr-middle">Teil der Tour ist auch immer eine Einführung in den Umgang mit dem Rollstuhl und eine abschließende Diskussionsrunde, da uns ein reflektierter Umgang mit dem Thema sehr am Herzen liegt! Diese Stadttour bietet die einzigartige Möglichkeit, einen Perspektivwechsel zu erleben und Einblicke, in die Situation von rollstuhlfahrenden Menschen zu erhalten.
 </p><p id=offering-desc-end>
 Wir arbeiten in Form eines Buddysystems, das bedeutet, es kommen zwei Personen auf einen Rollstuhl. So baust du Vertrauen zu deinem Buddy auf und übergibst Verantwortung, wenn du zum Beispiel bei einer Hürde Unterstützung brauchst.
-          </p>
+          </p></ul>
         </div>
 
         <div id="organisation-and-map">

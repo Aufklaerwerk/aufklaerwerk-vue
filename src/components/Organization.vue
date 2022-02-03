@@ -39,11 +39,10 @@
             v-if="currentOrganization"
             :src="currentOrganization.imageUrl"
           />
-
           <div id="themengebiete">
             <div id="themen-header-logo">
               <h4>Themengebiete</h4>
-              <img src="assets/icons/three-bars.png" />
+              <img src="../assets/icons/three-bars.png" />
             </div>
             <ul>
               <li>Thema 1</li>
@@ -85,7 +84,6 @@
           <h4>Kontakt</h4>
           <div id="name-and-person">
             <p>{{ currentOrganization.name }}</p>
-            <p>Contact Person</p>
           </div>
           <div id="organization-contact-details">
             <p>www.INSERWEBSITE.de</p>
@@ -256,17 +254,17 @@ export default {
 <style>
 #organizationPage {
   height: 100%;
-  color: black;
+  color: #004c45;;
   background: #fffbf5;
   padding-top: 6%;
 }
 
 #organizationBox {
-  margin: 2% 14% 4% 14%;
+  margin: 2% 7% 4% 7%;
   box-shadow: 1px 1px 15px grey;
   border-radius: 16px;
   text-align: left;
-  padding: 4% 6% 4% 6%;
+  padding: 2% 6% 2% 4%;
 }
 
 #two-columns {
@@ -334,6 +332,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding-top: 4%;
 }
 
 #organization-map {
