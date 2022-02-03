@@ -405,6 +405,7 @@ min-width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  height: 45%;
   padding: 6% 0 8% 0;
 }
 
@@ -412,8 +413,8 @@ min-width: 100%;
 .flip-box {
   background-color: transparent;
   padding: 0 4% 0 4%;
-  width: 25%;
-  height: 30%;
+  width: 30%;
+  height: 45%;
   perspective: 1000px;
 }
 
@@ -449,13 +450,13 @@ min-width: 100%;
 
 /* Style the front side (fallback if image is missing) */
 .flip-box-front {
-  background-color: #bbb;
-  color: black;
+  background-color: #ff5100;
+  color: white;
 }
 
 /* Style the back side */
 .flip-box-back {
-  background-color: dodgerblue;
+  background-color: #004c45;
   color: white;
   transform: rotateY(180deg);
 }
