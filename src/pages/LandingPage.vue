@@ -92,8 +92,8 @@
               <img src="../assets/startpage/blm.jpg" alt="BLM">
             </div>
             <div class="flip-box-back">
-              <h2>Test</h2>
-              <p>Test</p>
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
+              <p>Dass die Zahl der Anfragen im Zusammenhang mit rassistischer Diskriminierung 2020 ein Drittel (33 Prozent) aller Anfragen ausmachte?</p>
             </div>
           </div>
         </div>
@@ -103,8 +103,8 @@
               <img src="../assets/startpage/equality.jpg" alt="Equality">
             </div>
             <div class="flip-box-back">
-              <h2>Test</h2>
-              <p>Test</p>
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
+              <p>Dass über 80 Prozent der Bevölkerung  wissen, dass Homo- und Bisexuelle  in Deutschland diskriminiert werden?</p>
             </div>
           </div>
         </div>
@@ -114,8 +114,8 @@
               <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
             </div>
             <div class="flip-box-back">
-              <h2>Test</h2>
-              <p>Test</p>
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
+              <p>Dass in Deutschland ein  Fehlbedarf von 386.000 barrierefreier  Wohnungen für Rollstuhlfahrer herrscht?</p>
             </div>
           </div>
         </div>
@@ -234,6 +234,7 @@ export default {
 #landingPage {
   background-color: #fffbf5;
   width: 100%;
+  height: 100%;
 }
 
 #landingPage section {
@@ -385,6 +386,8 @@ min-width: 100%;
 
 #did-you-know {
   background-color: #95aba9;
+  height: 8%;
+  text-align: center;
 }
 
 #did-you-know-headers {
@@ -393,7 +396,6 @@ min-width: 100%;
 }
 
 #did-you-know h4 {
-  padding-top: 4%;
   color: #004c45;
 }
 
@@ -403,18 +405,20 @@ min-width: 100%;
 
 #fun-fact-container {
   display: flex;
+  position: relative;
+  height: 100%;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 45%;
   padding: 6% 0 8% 0;
 }
 
 /* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-box {
   background-color: transparent;
+  margin: 0 4% 0 4%;
   padding: 0 4% 0 4%;
-  width: 30%;
-  height: 45%;
+  width: 100%;
+  height: 100%;
   perspective: 1000px;
 }
 
@@ -435,6 +439,7 @@ min-width: 100%;
 
 /* Position the front and back side */
 .flip-box-front, .flip-box-back {
+  border-radius: 5px;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -442,23 +447,39 @@ min-width: 100%;
   backface-visibility: hidden;
 }
 
-.flip-box-front img {
-  width: 100%;
-  height: auto;
+.flip-box-front img, .flip-box-back img{
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
   size: cover;
+}
+
+.flip-box-back img{
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  opacity: 0.6;
 }
 
 /* Style the front side (fallback if image is missing) */
 .flip-box-front {
-  background-color: #ff5100;
   color: white;
 }
 
 /* Style the back side */
 .flip-box-back {
-  background-color: #004c45;
-  color: white;
+  position: relative;
+  text-align: center;
+  background-color: #95aba9;
   transform: rotateY(180deg);
+}
+
+.flip-box-back p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 /* Wavy Transition */
