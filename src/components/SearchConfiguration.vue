@@ -156,7 +156,7 @@ export default {
   padding-top: 25vh;
   background-image: url(../assets/banners/diversityHands.jpg);
   color: white;
-  background-size: 100% 100%;
+  background-size: cover;
   height: 100vh;
   width: 100%;
 }
