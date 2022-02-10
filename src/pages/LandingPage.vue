@@ -86,9 +86,39 @@
         <h3>Wusstest du ... ?</h3>
       </div>
       <div id="fun-fact-container">
-        <img src="../assets/startpage/blm.jpg" />
-        <img src="../assets/startpage/equality.jpg" />
-        <img src="../assets/startpage/wheelchair.jpg" />
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
+            </div>
+            <div class="flip-box-back">
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
+              <p>Dass die Zahl der Anfragen im Zusammenhang mit rassistischer Diskriminierung 2020 ein Drittel (33 Prozent) aller Anfragen ausmachte?</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
+            </div>
+            <div class="flip-box-back">
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
+              <p>Dass über 80 Prozent der Bevölkerung  wissen, dass Homo- und Bisexuelle  in Deutschland diskriminiert werden?</p>
+            </div>
+          </div>
+        </div>
+        <div class="flip-box">
+          <div class="flip-box-inner">
+            <div class="flip-box-front">
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
+            </div>
+            <div class="flip-box-back">
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
+              <p>Dass in Deutschland ein  Fehlbedarf von 386.000 barrierefreier  Wohnungen für Rollstuhlfahrer herrscht?</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -190,11 +220,11 @@ export default {
       choosenTags: "",
       choosenOfferingTypes: "",
       distance: "",
-    },
+    }
   }),
   components: {
     ContactForm,
-    SearchConfiguration,
+    SearchConfiguration
   },
   methods: {},
 };
@@ -204,6 +234,7 @@ export default {
 #landingPage {
   background-color: #fffbf5;
   width: 100%;
+  height: 100%;
 }
 
 #landingPage section {
@@ -355,6 +386,8 @@ min-width: 100%;
 
 #did-you-know {
   background-color: #95aba9;
+  height: 8%;
+  text-align: center;
 }
 
 #did-you-know-headers {
@@ -363,7 +396,6 @@ min-width: 100%;
 }
 
 #did-you-know h4 {
-  padding-top: 4%;
   color: #004c45;
 }
 
@@ -373,15 +405,81 @@ min-width: 100%;
 
 #fun-fact-container {
   display: flex;
+  position: relative;
+  height: 100%;
   flex-direction: row;
   justify-content: space-evenly;
   padding: 6% 0 8% 0;
 }
 
-#fun-fact-container img {
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+  background-color: transparent;
+  margin: 0 4% 0 4%;
   padding: 0 4% 0 4%;
-  width: 25%;
-  height: 30rem;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+}
+
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front, .flip-box-back {
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-box-front img, .flip-box-back img{
+  border-radius: 5px;
+  max-width: 100%;
+  max-height: 100%;
+  size: cover;
+}
+
+.flip-box-back img{
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  opacity: 0.6;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  color: white;
+}
+
+/* Style the back side */
+.flip-box-back {
+  position: relative;
+  text-align: center;
+  background-color: #95aba9;
+  transform: rotateY(180deg);
+}
+
+.flip-box-back p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 100%;
+  transform: translate(-50%, -50%);
+  color: white;
 }
 
 /* Wavy Transition */
