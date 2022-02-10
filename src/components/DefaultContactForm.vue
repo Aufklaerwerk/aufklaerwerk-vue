@@ -64,6 +64,7 @@
 
 <script>
 //import VueRecaptcha from "vue-recaptcha";
+import MailDataService from "../services/MailDataService";
 
 export default {
   //  components: {VueRecaptcha},
@@ -95,16 +96,18 @@ export default {
   },
   methods: {
     submit() {
-      /*Meteor.call(
-        "sendEmail",
-        "hinterteil.projekt@gmail.com",
-        this.email,
-        this.organization + this.email,
-        this.message
-      );
+      MailDataService.sendMail({
+        email: this.email,
+        message: this.message,
+        organization: this.organization,
+      });
 
-      nativeForm.submit();
-      */ alert("Mail wurde versendet.");
+      this.name = "";
+      this.email = "";
+      this.organization = "";
+      this.message = "";
+
+      alert("Mail wurde versendet.");
     },
   },
 };
