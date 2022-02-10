@@ -2,6 +2,32 @@
   <div id="landingPage">
     <!-- Start Screen -->
 
+    <!-- Kontaktweiterleitung -->
+   <!-- <section id="areyouinterested">
+      <h2>Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote sozialer Organisationen</h2>
+      <div id="interested-weiterleitung">
+        <div>
+          <div id="interested-text">
+            <h3>Seid ihr eine soziale Organisation?</h3>
+            <p>Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand eure existierenden Angebote auf unserer Plattform zu platzieren</p>
+            <p>Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen, um euren Angeboten noch mehr Menschen zugänglich zu machen!</p>
+            <p>Kontaktiert uns gerne, falls euch interessiert wie genau das ganze funktioniert und welche Daten wir dafür von euch benötigen!</p>
+          </div>
+          <v-btn to="/contact"><strong>Zum Kontaktformular für Organisationen</strong></v-btn>
+        </div>
+        <div>
+          <div id="interested-text">
+            <h3>Seid ihr auf der Suche nach Angeboten?</h3>
+            <p>Schluss mit mühsamer Suche nach dem passenden Angebot über herkömmliche Suchmaschinen!</p>
+            <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die passenden Angebote in eurer Nähe zu finden!</p>
+            <p>Wir wollen die inklusive Suchplattform für alle sein - ganz ohne technische Vorkenntnisse</p>
+            <p>Probiert es gerne unten in der Suchmaske aus!</p>
+            <p>Falls ihr sonst Fragen habt - oder Interesse an <strong>unserem Newsletter</strong> - dann kontaktiert uns gerne!</p>
+          </div>
+          <v-btn to="/contact"><strong>Zum Kontaktformular für Suchende</strong></v-btn>
+        </div>
+      </div>
+    </section>-->
     <!-- Suchmaske -->
 
     <section id="welcome">
@@ -43,7 +69,6 @@
           </ul>
           <v-btn id="orange-button" to="/offerer">
             jetzt Teil werden
-            <img src="../assets/icons/arrow.png" id="arrow-on-orange-box" />
           </v-btn>
         </div>
       </div>
@@ -138,7 +163,6 @@
           </p>
           <v-btn id="about-us-to-button" to="/aboutus">
             Mehr zu uns & unserer Vision
-            <img src="../assets/icons/arrow.png" id="arrow-on-orange-box" />
           </v-btn>
         </div>
         <div>
@@ -179,13 +203,55 @@ export default {
 <style>
 #landingPage {
   background-color: #fffbf5;
+  width: 100%;
 }
 
 #landingPage section {
-  min-height: 80vh;
-  min-width: 100%;
+min-width: 100%;
 }
 
+/* Are you Interested? */
+
+#areyouinterested {
+  padding-top: 16vh;
+  height: 100vh;
+}
+
+#areyouinterested h2{
+  color:#ff5100;
+  font-size: 2.5em;
+}
+
+#interested-weiterleitung {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 8vh 0 0 0;
+}
+
+#interested-weiterleitung h3 {
+  max-width: 30vw;
+  text-align: center;
+  padding-bottom: 2vh; 
+}
+
+#interested-weiterleitung p {
+  color: #004c45;
+  max-width: 30vw;
+  text-align: center; 
+}
+
+#interested-text {
+  min-height: 50vh
+}
+
+#interested-weiterleitung .v-btn {
+  background-color: #004c45;
+  color:#fffbf5;
+  padding: 2em;
+  min-width: 32em;
+  font-size: 1.2em;
+}
 /* Celebration of Humanity */
 
 #box-container {
@@ -197,7 +263,7 @@ export default {
 }
 
 .box {
-  width: 84%;
+  width: 100%;
   background-color: #f0956a;
   color: white;
   display: flex;
@@ -234,6 +300,7 @@ export default {
 
 #huggingPeople {
   height: 32rem;
+  width: 60rem;
 }
 
 #orange-button {
@@ -452,12 +519,12 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 6% 0 6% 0;
+  padding: 10% 0 6% 0;
 }
 
 #ueber-akw {
   background-color: #f0956a;
-  min-height: 80%;
+  padding-bottom: 10rem;
 }
 
 .ueber-akw-box {
