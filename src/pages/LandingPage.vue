@@ -386,7 +386,7 @@ min-width: 100%;
 
 #did-you-know {
   background-color: #95aba9;
-  height: 8%;
+  height: 10%;
   text-align: center;
 }
 
@@ -477,9 +477,10 @@ min-width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 100%;
+  font-size: 1.3rem;
   transform: translate(-50%, -50%);
   color: white;
+  font-weight: bolder;
 }
 
 /* Wavy Transition */
