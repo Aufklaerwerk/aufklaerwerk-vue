@@ -104,7 +104,7 @@
             </div>
             <div class="flip-box-back">
               <img src="../assets/startpage/equality.jpg" alt="Equality">
-              <p>Dass über 80 Prozent der Bevölkerung  wissen, dass Homo- und Bisexuelle  in Deutschland diskriminiert werden?</p>
+              <p>Dass über 80 Prozent der Bevölkerung wissen, dass Homo- und Bisexuelle in Deutschland diskriminiert werden?</p>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@
             </div>
             <div class="flip-box-back">
               <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
-              <p>Dass in Deutschland ein  Fehlbedarf von 386.000 barrierefreier  Wohnungen für Rollstuhlfahrer herrscht?</p>
+              <p>Dass in Deutschland ein Fehlbedarf von 386.000 barrierefreier Wohnungen für Rollstuhlfahrer herrscht?</p>
             </div>
           </div>
         </div>
