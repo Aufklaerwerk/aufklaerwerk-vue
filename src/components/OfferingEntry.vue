@@ -7,7 +7,7 @@
         src="../assets/orgaLogos/statttour.png"
       />
       <div class="content">
-        <p id="offering-name">           
+        <p id="offering-name">
           <strong> {{ offering.name }}</strong>
         </p>
         <div class="card-organisation">
@@ -63,15 +63,6 @@ export default {
   methods: {
     openOfferingPage() {
       console.log("Das ist die offeringID: " + this.offeringId);
-      //TODO Der Router klappt noch nicht.
-
-      /*
-      //Original aus Hinterteil
-      this.$router.push({
-        name: "Offering",
-        query: { offeringId: this.offering._id },
-      });
-      */
 
       this.$router.push({
         name: "Offering",
