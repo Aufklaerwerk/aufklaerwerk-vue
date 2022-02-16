@@ -31,7 +31,7 @@
             <h3>Sucht ihr nach Angeboten?</h3>
             <p>Schluss mit mühsamer Suche nach dem passenden Angebot!</p>
             <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die richtigen Angebote in Eurer Nähe zu finden!</p>
-            <p>Probiert es gerne unten in der Suchmaske aus!</p>
+            <p>Probiert es gerne oben in der Suchmaske aus!</p>
             <p>Über unseren <strong> Newsletter</strong> könnt ihr auf dem Laufenden bleiben - was bei uns passiert, welche meue Organisationen mit dabei sind etc.!</p>
           </div>
           <v-btn href="https://mailchi.mp/605ff69ea1bd/newsletter-aufklrwerk"><strong>Zum Newsletter</strong></v-btn>
@@ -247,13 +247,13 @@ export default {
 /* Are you Interested? */
 
 #areyouinterested {
-  padding: 12vh 4% 0 4%;
-  min-height: 100vh;
+  padding: 8vh 4% 0 4%;
+  min-height: 90vh;
 }
 
 #areyouinterested h2{
   color:#ff5100;
-  font-size: 2.5em;
+  font-size: 3em;
   padding: 0 8vw;
   font-family: 'Rubik', sans-serif;
 }
@@ -273,17 +273,14 @@ export default {
   color: #004c45
 }
 
-#interested-weiterleitung p {
+#interested-text > p {
   color: #004c45;
   max-width: 30vw;
   text-align: left; 
 }
 
 #interested-text {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  min-height: 50vh;
 }
 
 #interested-weiterleitung .v-btn {
