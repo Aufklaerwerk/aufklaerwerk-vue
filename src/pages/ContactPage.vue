@@ -11,12 +11,6 @@ import ContactForm from "../components/DefaultContactForm";
 
 export default {
   components: { ContactForm },
-  meteor: {
-    $subscribe: {
-      organizations: [],
-      userPreferences: [],
-    },
-  },
 };
 </script>
 

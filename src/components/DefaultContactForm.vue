@@ -64,9 +64,10 @@
 
 <script>
 //import VueRecaptcha from "vue-recaptcha";
+import MailDataService from "../services/MailDataService";
 
 export default {
-//  components: {VueRecaptcha},
+  //  components: {VueRecaptcha},
   name: "contact",
 
   data() {
@@ -80,9 +81,9 @@ export default {
       email: "",
       emailRules: [
         (v) => !!v || "E-mail is required",
-   //     (v) =>
-   //       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-   //       "E-mail must be valid",
+        (v) =>
+          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(v) ||
+          "E-mail must be valid",
       ],
       organization: "",
       organizationRules: [
@@ -95,16 +96,18 @@ export default {
   },
   methods: {
     submit() {
-      /*Meteor.call(
-        "sendEmail",
-        "hinterteil.projekt@gmail.com",
-        this.email,
-        this.organization + this.email,
-        this.message
-      );
+      MailDataService.sendMail({
+        email: this.email,
+        message: this.message,
+        organization: this.organization,
+      });
 
-      nativeForm.submit();
-      */alert("Mail wurde versendet.");
+      this.name = "";
+      this.email = "";
+      this.organization = "";
+      this.message = "";
+
+      alert("Mail wurde versendet.");
     },
   },
 };
