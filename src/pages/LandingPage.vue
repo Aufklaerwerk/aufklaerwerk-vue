@@ -2,32 +2,7 @@
   <div id="landingPage">
     <!-- Start Screen -->
 
-    <!-- Kontaktweiterleitung -->
-   <!-- <section id="areyouinterested">
-      <h2>Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote sozialer Organisationen</h2>
-      <div id="interested-weiterleitung">
-        <div>
-          <div id="interested-text">
-            <h3>Seid ihr eine soziale Organisation?</h3>
-            <p>Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand eure existierenden Angebote auf unserer Plattform zu platzieren</p>
-            <p>Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen, um euren Angeboten noch mehr Menschen zugänglich zu machen!</p>
-            <p>Kontaktiert uns gerne, falls euch interessiert wie genau das ganze funktioniert und welche Daten wir dafür von euch benötigen!</p>
-          </div>
-          <v-btn to="/contact"><strong>Zum Kontaktformular für Organisationen</strong></v-btn>
-        </div>
-        <div>
-          <div id="interested-text">
-            <h3>Seid ihr auf der Suche nach Angeboten?</h3>
-            <p>Schluss mit mühsamer Suche nach dem passenden Angebot über herkömmliche Suchmaschinen!</p>
-            <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die passenden Angebote in eurer Nähe zu finden!</p>
-            <p>Wir wollen die inklusive Suchplattform für alle sein - ganz ohne technische Vorkenntnisse</p>
-            <p>Probiert es gerne unten in der Suchmaske aus!</p>
-            <p>Falls ihr sonst Fragen habt - oder Interesse an <strong>unserem Newsletter</strong> - dann kontaktiert uns gerne!</p>
-          </div>
-          <v-btn to="/contact"><strong>Zum Kontaktformular für Suchende</strong></v-btn>
-        </div>
-      </div>
-    </section>-->
+    
     <!-- Suchmaske -->
 
     <section id="welcome">
@@ -36,6 +11,32 @@
         v-bind:model="emptySearchParams"
         ref="searchConfiguration"
       />
+    </section>
+
+    <!-- Kontaktweiterleitung -->
+   <section id="areyouinterested">
+      <h2>Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote sozialer Organisationen</h2>
+      <div id="interested-weiterleitung">
+        <div>
+          <div id="interested-text">
+            <h3>Seid ihr eine soziale Organisation?</h3>
+            <p>Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand eure existierenden Angebote auf unserer Plattform zu platzieren.</p>
+            <p>Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen, um eure Angeboten für noch mehr Menschen zugänglich zu machen!</p>
+            <p>Falls euch interessiert, wie das ganze funktioniert und welche Daten wir dafür von euch benötigen - meldet euch bei uns!</p>
+          </div>
+          <v-btn to="/contact"><strong>Kontaktformular</strong></v-btn>
+        </div>
+        <div>
+          <div id="interested-text">
+            <h3>Sucht ihr nach Angeboten?</h3>
+            <p>Schluss mit mühsamer Suche nach dem passenden Angebot!</p>
+            <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die richtigen Angebote in Eurer Nähe zu finden!</p>
+            <p>Probiert es gerne unten in der Suchmaske aus!</p>
+            <p>Über unseren <strong> Newsletter</strong> könnt ihr auf dem Laufenden bleiben - was bei uns passiert, welche meue Organisationen mit dabei sind etc.!</p>
+          </div>
+          <v-btn href="https://mailchi.mp/605ff69ea1bd/newsletter-aufklrwerk"><strong>Zum Newsletter</strong></v-btn>
+        </div>
+      </div>
     </section>
 
     <!-- Celebration of Humanity -->
@@ -231,6 +232,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
 #landingPage {
   background-color: #fffbf5;
   width: 100%;
@@ -238,50 +241,58 @@ export default {
 }
 
 #landingPage section {
-min-width: 100%;
+  min-width: 100%;
 }
 
 /* Are you Interested? */
 
 #areyouinterested {
-  padding-top: 16vh;
-  height: 100vh;
+  padding: 12vh 4% 0 4%;
+  min-height: 100vh;
 }
 
 #areyouinterested h2{
   color:#ff5100;
   font-size: 2.5em;
+  padding: 0 8vw;
+  font-family: 'Rubik', sans-serif;
 }
 
 #interested-weiterleitung {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 8vh 0 0 0;
+  padding: 6vh 0 0 0;
 }
 
 #interested-weiterleitung h3 {
   max-width: 30vw;
-  text-align: center;
+  text-align: left;
   padding-bottom: 2vh; 
+  font-family: 'Rubik', sans-serif;
+  color: #004c45
 }
 
 #interested-weiterleitung p {
   color: #004c45;
   max-width: 30vw;
-  text-align: center; 
+  text-align: left; 
 }
 
 #interested-text {
-  min-height: 50vh
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #interested-weiterleitung .v-btn {
   background-color: #004c45;
   color:#fffbf5;
   padding: 2em;
-  min-width: 32em;
+  min-width: 16em;
   font-size: 1.2em;
+  margin-bottom: 2em;
 }
 /* Celebration of Humanity */
 
