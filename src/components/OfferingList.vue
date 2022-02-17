@@ -93,7 +93,7 @@ export default {
     }
     setTimeout(() => {
       this.retrieveOfferings();
-    }, 50); //50ms muss sein, ansonsten ist die meteor Methode leer
+    }, 50);
   },
 };
 </script>
