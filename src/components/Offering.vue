@@ -9,8 +9,10 @@
           <!-- Hier sind Foto und Anschrift -->
           <img
             id="offering-image"
+            v-if="currentOffering"
             src="../assets/orgaLogos/statttour-logo.png"
           />
+          <!--        :src="currentOffering.imageUrl"-->
           <div id="offering-details">
             <h3 id="offering-name">{{ currentOffering.name }}</h3>
             <div id="icon-with-data" class="entry-with-gap">
@@ -54,22 +56,7 @@
 
         <div id="offering-description">
           <p id="offering-descr">
-            <!--{{ currentOffering.description }}-->
-            Hamburg aus einer anderen Perspektive erleben – das ist bei StattTour möglich. 
-            <p/><p id="offering-descr-middle">
-Dieser Rollenwechsel lässt dich das maritime Hamburg im Rollstuhl erkunden und dich Barrieren begegnen, die für dich im Alltag wahrscheinlich gar nicht auffallen. Bei uns zeigen RollstuhfahrerInnen die Metropole Hamburg aus ihrer Perspektive. Die Besonderheit: Auch FußgängerInnen erleben die Stadt im Rollstuhl! Als Teilnehmender unserer Stattour sitzt du selbst in einem Rollstuhl und erhältst so einen Einblick in das Leben eines Rollstuhlfahrers.
-<p/><p id="offering-descr-middle">
-Gemeinsam mit dem Tourguide geht es auf Erkundungstour durch das schöne Hamburg – entlang bekannter Sightseeing-Attraktionen wie der Elbphilharmonie und der Speicherstadt. Diese Hamburger Highlights bleiben in unserer alternativen Stadtführung aber nicht unkommentiert:
-<p/>
-  <ul id="offering-descr-middle">
-<li>Wo sind Barrieren schon bestmöglich abgebaut?</li>
-<li>Wo müssen sie noch überwunden werden?</li>
-<li>Welche Angebote gibt es für RollstuhlfahrerInnen?</li>
-<li id="offering-descr-middle">Wo ist noch besonders viel zu tun?</li>
-  </ul>
-<p id="offering-descr-middle">Teil der Tour ist auch immer eine Einführung in den Umgang mit dem Rollstuhl und eine abschließende Diskussionsrunde, da uns ein reflektierter Umgang mit dem Thema sehr am Herzen liegt! Diese Stadttour bietet die einzigartige Möglichkeit, einen Perspektivwechsel zu erleben und Einblicke, in die Situation von rollstuhlfahrenden Menschen zu erhalten.
-</p><p id=offering-desc-end>
-Wir arbeiten in Form eines Buddysystems, das bedeutet, es kommen zwei Personen auf einen Rollstuhl. So baust du Vertrauen zu deinem Buddy auf und übergibst Verantwortung, wenn du zum Beispiel bei einer Hürde Unterstützung brauchst.
+              {{ currentOffering.description }}
           </p>
         </div>
 
@@ -286,6 +273,8 @@ export default {
 
 #offering-descr {
   padding: 4em 2em 0em 2em;
+  margin-top: 3%;
+  white-space: pre-wrap;
 }
 
 #offering-descr-middle {
@@ -319,10 +308,6 @@ export default {
 #offering-details p {
   text-align: left;
   margin-bottom: 0px;
-}
-
-#offering-descr {
-  margin-top: 3%;
 }
 
 #pro-list {
