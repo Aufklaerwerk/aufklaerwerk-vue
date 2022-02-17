@@ -7,27 +7,7 @@
         <section id="left-column">
           <h3>{{ currentOrganization.name }}</h3>
           <p>
-            {{ currentOrganization.description }} __Das war die Beschreibung aus
-            den seeds__ Die Organisation ost bekannt für ihre Arbeit im Feld.
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-            Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore
-            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-            accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-            no sea takimata sanctus est Lorem ipsum dolor sit amet.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-            et ea rebum. Stet clita kasd gubergren, no
+            {{ currentOrganization.description }} 
           </p>
         </section>
 
@@ -37,7 +17,7 @@
           <img
             class="organziation-logo"
             v-if="currentOrganization"
-            :src="currentOrganization.imageUrl"
+            src="../assets/orgaLogos/statttour-logo.png"
           />
           <div id="themengebiete">
             <div id="themen-header-logo">
@@ -45,9 +25,9 @@
               <img src="../assets/icons/three-bars.png" />
             </div>
             <ul>
-              <li>Thema 1</li>
-              <li>Thema 2</li>
-              <li>Thema 3</li>
+              <li>Behinderungen</li>
+              <li>Barrierefreiheit</li>
+              <li>Stadttouren</li>
             </ul>
           </div>
 
@@ -86,7 +66,7 @@
             <p>{{ currentOrganization.name }}</p>
           </div>
           <div id="organization-contact-details">
-            <p>www.INSERWEBSITE.de</p>
+            <p>{{ currentOrganization.websiteURL }}</p>
             <p>{{ currentOrganization.telefon }}</p>
             <p>{{ currentOrganization.mailAdress }}</p>
           </div>
