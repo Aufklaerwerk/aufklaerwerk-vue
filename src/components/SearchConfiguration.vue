@@ -175,7 +175,6 @@ export default {
 .actual-form {
   margin-top: 6%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   width: 100%;
   padding: 0 4em 0 4em;
@@ -254,4 +253,12 @@ export default {
   height: 2em;
 }
 
+@media (max-width: 1200px) {
+  .actual-form {
+    flex-direction: column;
+  }
+  .form-item-left {
+    width: 40%;
+  }
+}
 </style>
