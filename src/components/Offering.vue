@@ -76,7 +76,7 @@
             style="border: 0"
             loading="lazy"
             allowfullscreen
-            :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOffering.organame.replace(' ', '+') + ',' + currentOffering.city.replace(' ', '+') + ',' + currentOffering.postcode.replace(' ', '+') + ',' + currentOffering.street.replace(' ', '+') + ',' + currentOffering.houseNumber.replace(' ', '+') "
+            :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOffering.city.replace(' ', '+') + ',' + currentOffering.postcode.replace(' ', '+') + ',' + currentOffering.street.replace(' ', '+') + ',' + currentOffering.houseNumber.replace(' ', '+') "
             id="map"
           ></iframe>
         </div>
