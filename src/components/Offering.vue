@@ -89,7 +89,7 @@ Wir arbeiten in Form eines Buddysystems, das bedeutet, es kommen zwei Personen a
             style="border: 0"
             loading="lazy"
             allowfullscreen
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJG8q0sQaPsUcRcaLiC61nvWY&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
+            :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOffering.organame.replace(' ', '+') + ',' + currentOffering.city.replace(' ', '+') + ',' + currentOffering.postcode.replace(' ', '+') + ',' + currentOffering.street.replace(' ', '+') + ',' + currentOffering.houseNumber.replace(' ', '+') "
             id="map"
           ></iframe>
         </div>
@@ -233,6 +233,8 @@ export default {
           console.log(e);
         });
     },
+
+
   },
   mounted() {
     this.message = "";
