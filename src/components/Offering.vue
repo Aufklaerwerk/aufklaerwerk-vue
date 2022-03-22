@@ -115,15 +115,15 @@
               <v-carousel-item
                 v-for="(image, i) in require_imgs"
                 :key="i"
-                :src="image"
+                :src="image.src"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
               ></v-carousel-item>
             </v-carousel>
           </div>
 
-          <p v-for="(image, i) in images" :key="i">
-            {{a + imageDir + i.substr(1) + b}}
+          <p v-for="(image, i) in require_imgs" :key="i">
+            {{image.src}}
             </p>
           <div>
             <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
@@ -138,6 +138,7 @@
 
 <script>
 import OfferingDataService from "../services/OfferingDataService";
+const fs = require('fs')
 
 export default {
   name: "Offering",
@@ -183,9 +184,20 @@ export default {
         .then((response) => {
           this.currentOffering = response.data;
           console.log("Offering data: " + response.data);
-          this.imageDir = this.currentOffering.images;
-          console.log(this.imageDir)
-          this.getImages(require.context("../assets/orgaLogos/statttour", true, /\.(png|jpg|jpeg)$/))
+          this.imageDir = this.currentOffering.image_folder_name;
+          var imageDirectory = this.imageDir
+          // Require Context erlaubt keine Variablen. Also ist die Lösung:
+          
+          //this.getImages(require.context(`../assets/orgaLogos/${imageDirectory}`, true, /\.(png|jpg|jpeg)$/))
+          
+          // nicht möglich leider. Habe noch das hier versucht: 
+          
+          // const files = fs.readdirSync("../assets/orgaLogos/statttour")
+          // Source: https://stackoverflow.com/questions/2727167/how-do-you-get-a-list-of-the-names-of-all-files-present-in-a-directory-in-node-j
+          
+          // Hat aber auch nicht geklappt. Wir müssen eigentlich nur die Filenames als Parameter in die getImages Methode packen. Dann sind wir good to go
+          // Die hardcoded Lösung unten geht.
+          this.getImages(require.context(`../assets/orgaLogos/statttour}`, true, /\.(png|jpg|jpeg)$/))
         })
         .catch((e) => {
           console.log(e);
@@ -237,7 +249,10 @@ export default {
       console.log(this.images)
       for (var imagepath in this.images) {
         console.log("Image paths: " + imagepath)
-        this.require_imgs.push("require('" +this.imageDir + imagepath.substr(1)+"')")
+        this.require_imgs.push({
+          src: require(`../assets/orgaLogos/${this.imageDir}${imagepath.substr(1)}`)
+            }
+          )
       }
       console.log("Require Images: " + this.require_imgs)
     },
