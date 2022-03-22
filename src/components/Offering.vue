@@ -1,6 +1,5 @@
 <template>
   <div>
-    Hallo
     <div v-if="currentOffering" id="offeringPage">
       <!-- Start Screen  -->
 
@@ -121,10 +120,6 @@
               ></v-carousel-item>
             </v-carousel>
           </div>
-
-          <p v-for="(image, i) in require_imgs" :key="i">
-            {{image.src}}
-            </p>
           <div>
             <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
           </div>
@@ -138,7 +133,6 @@
 
 <script>
 import OfferingDataService from "../services/OfferingDataService";
-const fs = require('fs')
 
 export default {
   name: "Offering",
@@ -168,7 +162,6 @@ export default {
           src: require("../assets/offeringPictures/statttourRoute.png"),
         },
       ],
-      images: {},
       require_imgs : [],
     };
   },
@@ -185,7 +178,6 @@ export default {
           this.currentOffering = response.data;
           console.log("Offering data: " + response.data);
           this.imageDir = this.currentOffering.image_folder_name;
-          var imageDirectory = this.imageDir
           // Require Context erlaubt keine Variablen. Also ist die Lösung:
           
           //this.getImages(require.context(`../assets/orgaLogos/${imageDirectory}`, true, /\.(png|jpg|jpeg)$/))
@@ -197,7 +189,7 @@ export default {
           
           // Hat aber auch nicht geklappt. Wir müssen eigentlich nur die Filenames als Parameter in die getImages Methode packen. Dann sind wir good to go
           // Die hardcoded Lösung unten geht.
-          this.getImages(require.context(`../assets/orgaLogos/statttour}`, true, /\.(png|jpg|jpeg)$/))
+          this.getImages(require.context(`../assets/orgaLogos`, true, /\.(png|jpg|jpeg)$/))
         })
         .catch((e) => {
           console.log(e);
@@ -245,14 +237,16 @@ export default {
     getImages(path) {
       var imgs = {}
       path.keys().forEach(key => (imgs[key] = path(key)))
-      this.images = imgs
-      console.log(this.images)
-      for (var imagepath in this.images) {
-        console.log("Image paths: " + imagepath)
-        this.require_imgs.push({
-          src: require(`../assets/orgaLogos/${this.imageDir}${imagepath.substr(1)}`)
+      console.log(imgs)
+      console.log("Starts with: " + "./" + this.imageDir + "/")
+      for (var imagepath in imgs) {
+        if (imagepath.startsWith("./" + this.imageDir + "/")) {
+          console.log("Image paths: " + imagepath)
+          this.require_imgs.push({
+            src: require(`../assets/orgaLogos${imagepath.substr(1)}`)
             }
           )
+        }
       }
       console.log("Require Images: " + this.require_imgs)
     },
