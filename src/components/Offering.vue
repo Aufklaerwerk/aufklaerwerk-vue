@@ -113,15 +113,18 @@
             <h2>Ein paar Impressionen</h2>
             <v-carousel v-model="model">
               <v-carousel-item
-                v-for="(item, i) in items"
+                v-for="(image, i) in require_imgs"
                 :key="i"
-                :src="item.src"
+                :src="image"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
               ></v-carousel-item>
             </v-carousel>
           </div>
 
+          <p v-for="(image, i) in images" :key="i">
+            {{a + imageDir + i.substr(1) + b}}
+            </p>
           <div>
             <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
           </div>
@@ -143,8 +146,10 @@ export default {
       currentOffering: null,
       message: "",
       model: 0,
+      a: 'require(',
+      b: ')',
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
-
+      imageDir: "",
       items: [
         {
           src: require("../assets/offeringPictures/statttourPicture1.jpg"),
@@ -162,6 +167,8 @@ export default {
           src: require("../assets/offeringPictures/statttourRoute.png"),
         },
       ],
+      images: {},
+      require_imgs : [],
     };
   },
   methods: {
@@ -175,7 +182,10 @@ export default {
       OfferingDataService.get(id)
         .then((response) => {
           this.currentOffering = response.data;
-          console.log(response.data);
+          console.log("Offering data: " + response.data);
+          this.imageDir = this.currentOffering.images;
+          console.log(this.imageDir)
+          this.getImages(require.context("../assets/orgaLogos/statttour", true, /\.(png|jpg|jpeg)$/))
         })
         .catch((e) => {
           console.log(e);
@@ -219,6 +229,17 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    getImages(path) {
+      var imgs = {}
+      path.keys().forEach(key => (imgs[key] = path(key)))
+      this.images = imgs
+      console.log(this.images)
+      for (var imagepath in this.images) {
+        console.log("Image paths: " + imagepath)
+        this.require_imgs.push("require('" +this.imageDir + imagepath.substr(1)+"')")
+      }
+      console.log("Require Images: " + this.require_imgs)
     },
   },
   mounted() {
