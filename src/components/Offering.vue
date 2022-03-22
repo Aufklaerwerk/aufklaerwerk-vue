@@ -237,11 +237,8 @@ export default {
     getImages(path) {
       var imgs = {}
       path.keys().forEach(key => (imgs[key] = path(key)))
-      console.log(imgs)
-      console.log("Starts with: " + "./" + this.imageDir + "/")
       for (var imagepath in imgs) {
         if (imagepath.startsWith("./" + this.imageDir + "/")) {
-          console.log("Image paths: " + imagepath)
           this.require_imgs.push({
             src: require(`../assets/orgaLogos${imagepath.substr(1)}`)
             }
