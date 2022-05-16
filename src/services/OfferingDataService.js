@@ -28,6 +28,19 @@ class OfferingDataService {
   findByCity(city) {
     return http.get(`/offerings?city=${city}`);
   }
+
+  getAllTags() {
+    return http.get("/offerings/tags");
+  }
+
+  getAllTypes() {
+    return http.get("/offerings/types");
+  }
+
+  getAllCities() {
+    return http.get("/offerings/cities");
+  }
+
 }
 
 export default new OfferingDataService();
