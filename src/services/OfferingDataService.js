@@ -6,19 +6,19 @@ class OfferingDataService {
   }
 
   get(id) {
-    return http.get(`/offerings/${id}`);
+    return http.get(`/offerings/offering/${id}`);
   }
 
   create(data) {
-    return http.post("/offerings", data);
+    return http.post("/offerings/offering", data);
   }
 
   update(id, data) {
-    return http.put(`/offerings/${id}`, data);
+    return http.put(`/offerings/offering/${id}`, data);
   }
 
   delete(id) {
-    return http.delete(`/offerings/${id}`);
+    return http.delete(`/offerings/offering/${id}`);
   }
 
   deleteAll() {
@@ -30,15 +30,15 @@ class OfferingDataService {
   }
 
   getAllTags() {
-    return http.get("/offerings/tags");
+    return http.get("/offerings/tags").data;
   }
 
   getAllTypes() {
-    return http.get("/offerings/types");
+    return http.get("/offerings/types").data;
   }
 
   getAllCities() {
-    return http.get("/offerings/cities");
+    return http.get("/offerings/cities").data;
   }
 
 }
