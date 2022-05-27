@@ -53,26 +53,7 @@
 </template>
 
 <script>
-//import { cityNames } from "./seeds";
-//import { tagList } from "./seeds";
-//import { offeringTypeList } from "./seeds";
-
-//var cityNames = ["Karlsruhe", "Stuttgart", "Hamburg"];
-var cityNames = ["Hamburg"];
-var tagList = [
-  "Barrierefreiheit",
-  "Behinderung",
-  //"Rassismus",
-  //"Sexuelle Aufklärung",
-  //"Kriminalität",
-  //"Gewalt",
-];
-var offeringTypeList = [
-  //"Vortrag", 
-  "Workshop", 
-  "Führung", 
-  "Tour"
-];
+import OfferingDataService from "../services/OfferingDataService";
 
 export default {
   name: "searchConfiguration-component",
@@ -80,13 +61,36 @@ export default {
   components: {},
   data() {
     return {
-      cityNames: cityNames,
-      tagList: tagList,
-      offeringTypeList: offeringTypeList,
+      cityNames: [],
+      tagList: [],
+      offeringTypeList: [],
     };
   },
 
   methods: {
+    fillSearchBarSelectOptions(){
+      OfferingDataService.getAllCities()
+        .then((response) => {
+          this.cityNames = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      OfferingDataService.getAllTags()
+        .then((response) => {
+          this.tagList = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      OfferingDataService.getAllTypes()
+        .then((response) => {
+          this.offeringTypeList = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     checkInputsAndCreateErrorList() {
       let errorList = [];
 
@@ -147,6 +151,9 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    this.fillSearchBarSelectOptions();
   },
 };
 </script>
