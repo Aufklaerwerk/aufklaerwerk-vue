@@ -30,15 +30,15 @@ class OfferingDataService {
   }
 
   getAllTags() {
-    return http.get("/offerings/tags").data;
+    return http.get("/offerings/tags");
   }
 
   getAllTypes() {
-    return http.get("/offerings/types").data;
+    return http.get("/offerings/types");
   }
 
   getAllCities() {
-    return http.get("/offerings/cities").data;
+    return http.get("/offerings/cities");
   }
 
 }

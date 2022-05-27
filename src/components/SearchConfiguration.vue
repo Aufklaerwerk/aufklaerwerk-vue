@@ -55,23 +55,42 @@
 <script>
 import OfferingDataService from "../services/OfferingDataService";
 
-var cityNames = OfferingDataService.getAllCities();
-var tagList = OfferingDataService.getAllTags();
-var offeringTypeList = OfferingDataService.getAllTypes();
-
 export default {
   name: "searchConfiguration-component",
   props: ["isStartPage", "model"],
   components: {},
   data() {
     return {
-      cityNames: cityNames,
-      tagList: tagList,
-      offeringTypeList: offeringTypeList,
+      cityNames: [],
+      tagList: [],
+      offeringTypeList: [],
     };
   },
 
   methods: {
+    fillSearchBarSelectOptions(){
+      OfferingDataService.getAllCities()
+        .then((response) => {
+          this.cityNames = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      OfferingDataService.getAllTags()
+        .then((response) => {
+          this.tagList = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      OfferingDataService.getAllTypes()
+        .then((response) => {
+          this.offeringTypeList = response.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     checkInputsAndCreateErrorList() {
       let errorList = [];
 
@@ -132,6 +151,9 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    this.fillSearchBarSelectOptions();
   },
 };
 </script>
