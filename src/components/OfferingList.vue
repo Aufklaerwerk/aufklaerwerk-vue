@@ -54,7 +54,7 @@ export default {
     },
 
     retrieveOfferings() {
-      OfferingDataService.findByCity(this.searchParams.city)
+      OfferingDataService.findByCityAndDistance(this.searchParams.city, this.searchParams.distance)
         .then((response) => {
           this.Offerings = response.data;
 
@@ -73,8 +73,7 @@ export default {
               );
             })
           );
-
-          //TODO für später: geolib muss noch nachgezogen werden.
+          return this.Offerings;
         })
         .catch((e) => {
           console.log(e);
