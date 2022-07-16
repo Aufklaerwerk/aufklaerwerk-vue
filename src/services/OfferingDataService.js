@@ -41,6 +41,10 @@ class OfferingDataService {
     return http.get("/offerings/cities");
   }
 
+  findByCityAndDistance(city, distance){
+    return http.get(`/offerings/${city}/${distance}`)
+  }
+
 }
 
 export default new OfferingDataService();
