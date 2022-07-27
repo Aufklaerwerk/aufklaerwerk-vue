@@ -69,7 +69,7 @@
               >Mehr zur Organisation</v-btn
             >
           </div>
-          <iframe
+          <iframe v-if="currentOffering.city"
             width="100%"
             height="450"
             style="border: 0"
