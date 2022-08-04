@@ -227,7 +227,6 @@ export default {
     this.message = "";
     console.log("übergebener Parameter: " + this.$route.params.id);
     this.getOrganization(this.$route.params.id);
-    console.log(this.currentOrganization);
   },
 };
 </script>
