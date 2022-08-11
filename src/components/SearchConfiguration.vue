@@ -38,6 +38,7 @@
           <v-slider
             v-model="model.distance"
             :thumb-size="24"
+            :disabled = "!model.city"
             thumb-label
             class="slider"
           ></v-slider>
