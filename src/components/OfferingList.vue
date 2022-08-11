@@ -54,25 +54,31 @@ export default {
     },
 
     retrieveOfferings() {
-      OfferingDataService.findByCityAndDistance(this.searchParams.city, this.searchParams.distance)
-        .then((response) => {
+      function searchFunction(searchParams) {
+        return searchParams.city ? OfferingDataService.findByCityAndDistance(searchParams.city, searchParams.distance) : OfferingDataService.getAll();
+      }
+      searchFunction(this.searchParams).then((response) => {
           this.Offerings = response.data;
 
           //filter by Tags
-          this.Offerings = this.Offerings.filter((offeringEntry) =>
-            offeringEntry.tags.some((tag) => {
-              return this.searchParams.choosenTags.includes(tag.label);
-            })
-          );
+          if (this.searchParams.choosenTags.length > 0) {
+            this.Offerings = this.Offerings.filter((offeringEntry) =>
+              offeringEntry.tags.some((tag) => {
+                return this.searchParams.choosenTags.includes(tag.label);
+              })
+            );
+          }
 
           //filter by Offering Types
-          this.Offerings = this.Offerings.filter((offeringEntry) =>
-            offeringEntry.offeringTypes.some((offeringType) => {
-              return this.searchParams.choosenOfferingTypes.includes(
-                offeringType.label
-              );
-            })
-          );
+          if (this.searchParams.choosenOfferingTypes.length > 0) {
+            this.Offerings = this.Offerings.filter((offeringEntry) =>
+              offeringEntry.offeringTypes.some((offeringType) => {
+                return this.searchParams.choosenOfferingTypes.includes(
+                  offeringType.label
+                );
+              })
+            );
+          }
           return this.Offerings;
         })
         .catch((e) => {

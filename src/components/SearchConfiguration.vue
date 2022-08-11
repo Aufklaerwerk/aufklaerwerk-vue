@@ -91,64 +91,25 @@ export default {
           console.log(e);
         });
     },
-    checkInputsAndCreateErrorList() {
-      let errorList = [];
-
-      if (!this.model.choosenTags || this.model.choosenTags.length === 0) {
-        errorList.push("Bitte mindestens ein Themengebiet mitangeben.");
-      }
-      if (
-        !this.model.choosenOfferingTypes ||
-        this.model.choosenOfferingTypes.length === 0
-      ) {
-        errorList.push("Bitte mindestens einen Angebotstyp mitangeben.");
-      }
-      if (!this.model.city) {
-        errorList.push("Bitte eine Stadt angeben.");
-      }
-      return errorList;
-    },
     submit() {
-      let errorList = this.checkInputsAndCreateErrorList();
-      if (errorList.length === 0) {
-        let paramsAsJSON = {
-          tags: this.model.choosenTags,
-          offeringTypes: this.model.choosenOfferingTypes,
-          city: this.model.city,
-          distance: this.model.distance,
-        };
+      let paramsAsJSON = {
+        tags: this.model.choosenTags,
+        offeringTypes: this.model.choosenOfferingTypes,
+        city: this.model.city,
+        distance: this.model.distance,
+      };
 
-        if (this.isStartPage) {
-          //befindet sich auf der LandingPage
-          this.$router.push({
-            name: "Searcher",
-            hash: "#offer-list",
-            params: { landingPageParams: paramsAsJSON },
-          });
-        } else {
-          //befindet sich auf der SearcherPage
-          this.$emit("update:searchparams", this.model);
-          this.$emit("search-offering");
-        }
+      if (this.isStartPage) {
+        //befindet sich auf der LandingPage
+        this.$router.push({
+          name: "Searcher",
+          hash: "#offer-list",
+          params: { landingPageParams: paramsAsJSON },
+        });
       } else {
-        for (const idx in errorList) {
-          this.$toastr.Add({
-            name: "Warnung",
-
-            title: "Fehlende Angabe", // Toast Title
-
-            msg: errorList[idx], // Toast Message
-
-            clickClose: true, // Click Close Disable
-
-            timeout: 4000, // Remember defaultTimeout is 5 sec.(5000) in this case the toast won't close automatically
-
-            position: "toast-top-right", // Toast Position.
-
-            type: "warning", // Toast type,
-            style: { backgroundColor: "orange", width: "300px" },
-          });
-        }
+        //befindet sich auf der SearcherPage
+        this.$emit("update:searchparams", this.model);
+        this.$emit("search-offering");
       }
     },
   },
