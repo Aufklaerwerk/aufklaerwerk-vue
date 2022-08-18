@@ -5,32 +5,77 @@
     <v-form class="actual-form">
       <div class="form-item-left form-item">
         <strong class="dark-orange">Themengebiet?</strong>
-        <v-select
+        <v-autocomplete
           v-model="model.choosenTags"
           :items="tagList"
           label="Themengebiete"
           multiple
-          class="v-select-item"
-        ></v-select>
+          menu-props="closeOnContentClick"
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.choosenTags.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item">
         <strong class="dark-orange">Angebotsart?</strong>
-        <v-select
+        <v-autocomplete
           v-model="model.choosenOfferingTypes"
           :items="offeringTypeList"
           label="Angebotsart"
           multiple
-          class="v-select-item"
-        ></v-select>
+          menu-props="closeOnContentClick"
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.choosenOfferingTypes.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item">
         <strong class="dark-orange">Standort?</strong>
-        <v-select
+        <v-autocomplete
           v-model="model.city"
           :items="cityNames"
-          label="Standort"
-          class="v-select-item"
-        ></v-select>
+          label="Angebotsart"
+          menu-props="closeOnContentClick"
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.city.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item form-item-right">
         <div>
@@ -38,14 +83,14 @@
           <v-slider
             v-model="model.distance"
             :thumb-size="24"
-            :disabled = "!model.city"
+            :disabled="!model.city"
             thumb-label
             class="slider"
           ></v-slider>
           <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
         </div>
-            <v-btn @click="submit" id="form-submit-button" class="dark-orange">
-             <!-- <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
+        <v-btn @click="submit" id="form-submit-button" class="dark-orange">
+          <!-- <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
           <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
@@ -69,7 +114,7 @@ export default {
   },
 
   methods: {
-    fillSearchBarSelectOptions(){
+    fillSearchBarSelectOptions() {
       OfferingDataService.getAllCities()
         .then((response) => {
           this.cityNames = response.data;
@@ -133,6 +178,10 @@ export default {
 #root-SC h3 {
   font-family: "DM Serif Text", serif;
   font-size: 47px;
+}
+
+.v-label--active {
+  display: none;
 }
 
 .seperation-container {
