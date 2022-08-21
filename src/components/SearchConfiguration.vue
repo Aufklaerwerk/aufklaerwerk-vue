@@ -10,7 +10,6 @@
           :items="tagList"
           label="Themengebiet wählen"
           multiple
-          menu-props="closeOnContentClick"
           clearable
         >
           >
@@ -35,7 +34,6 @@
           :items="offeringTypeList"
           label="Angebotsart wählen"
           multiple
-          menu-props="closeOnContentClick"
           clearable
         >
           >
