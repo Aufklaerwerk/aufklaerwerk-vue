@@ -1,6 +1,5 @@
 <template>
   <div>
-    Hallo
     <div v-if="currentOffering" id="offeringPage">
       <!-- Start Screen  -->
 
@@ -113,15 +112,14 @@
             <h2>Ein paar Impressionen</h2>
             <v-carousel v-model="model">
               <v-carousel-item
-                v-for="(item, i) in items"
+                v-for="(image, i) in require_imgs"
                 :key="i"
-                :src="item.src"
+                :src="image.src"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
               ></v-carousel-item>
             </v-carousel>
           </div>
-
           <div>
             <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
           </div>
@@ -143,8 +141,10 @@ export default {
       currentOffering: null,
       message: "",
       model: 0,
+      a: 'require(',
+      b: ')',
       colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
-
+      imageDir: "",
       items: [
         {
           src: require("../assets/offeringPictures/statttourPicture1.jpg"),
@@ -162,6 +162,7 @@ export default {
           src: require("../assets/offeringPictures/statttourRoute.png"),
         },
       ],
+      require_imgs : [],
     };
   },
   methods: {
@@ -175,7 +176,20 @@ export default {
       OfferingDataService.get(id)
         .then((response) => {
           this.currentOffering = response.data;
-          console.log(response.data);
+          console.log("Offering data: " + response.data);
+          this.imageDir = this.currentOffering.image_folder_name;
+          // Require Context erlaubt keine Variablen. Also ist die Lösung:
+          
+          //this.getImages(require.context(`../assets/orgaLogos/${imageDirectory}`, true, /\.(png|jpg|jpeg)$/))
+          
+          // nicht möglich leider. Habe noch das hier versucht: 
+          
+          // const files = fs.readdirSync("../assets/orgaLogos/statttour")
+          // Source: https://stackoverflow.com/questions/2727167/how-do-you-get-a-list-of-the-names-of-all-files-present-in-a-directory-in-node-j
+          
+          // Hat aber auch nicht geklappt. Wir müssen eigentlich nur die Filenames als Parameter in die getImages Methode packen. Dann sind wir good to go
+          // Die hardcoded Lösung unten geht.
+          this.getImages(require.context(`../assets/orgaLogos`, true, /\.(png|jpg|jpeg)$/))
         })
         .catch((e) => {
           console.log(e);
@@ -220,8 +234,19 @@ export default {
           console.log(e);
         });
     },
-
-
+    getImages(path) {
+      var imgs = {}
+      path.keys().forEach(key => (imgs[key] = path(key)))
+      for (var imagepath in imgs) {
+        if (imagepath.startsWith("./" + this.imageDir + "/")) {
+          this.require_imgs.push({
+            src: require(`../assets/orgaLogos${imagepath.substr(1)}`)
+            }
+          )
+        }
+      }
+      console.log("Require Images: " + this.require_imgs)
+    },
   },
   mounted() {
     this.message = "";

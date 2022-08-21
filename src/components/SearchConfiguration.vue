@@ -4,47 +4,91 @@
     <h3>mit Vorurteilen aufräumen.</h3>
     <v-form class="actual-form">
       <div class="form-item-left form-item">
-        <strong class="dark-orange">Themengebiet?</strong>
-        <v-select
+        <strong class="dark-orange">Themengebiet</strong>
+        <v-autocomplete
           v-model="model.choosenTags"
           :items="tagList"
-          label="Themengebiete"
+          label="Themengebiet wählen"
           multiple
-          class="v-select-item"
-        ></v-select>
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.choosenTags.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item">
-        <strong class="dark-orange">Angebotsart?</strong>
-        <v-select
+        <strong class="dark-orange">Angebotsart</strong>
+        <v-autocomplete
           v-model="model.choosenOfferingTypes"
           :items="offeringTypeList"
-          label="Angebotsart"
+          label="Angebotsart wählen"
           multiple
-          class="v-select-item"
-        ></v-select>
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.choosenOfferingTypes.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item">
-        <strong class="dark-orange">Standort?</strong>
-        <v-select
+        <strong class="dark-orange">Standort</strong>
+        <v-autocomplete
           v-model="model.city"
           :items="cityNames"
-          label="Standort"
-          class="v-select-item"
-        ></v-select>
+          label="Standort wählen"
+          menu-props="closeOnContentClick"
+          clearable
+        >
+          >
+          <template v-slot:selection="{ item, index }">
+            <v-chip small v-if="index === 0">
+              <span>{{ item }}</span>
+            </v-chip>
+            <span
+              v-if="index === 1"
+              class="grey--text text-caption"
+              style="margin-left: 0.25rem"
+            >
+              (+{{ model.city.length - 1 }})
+            </span>
+          </template>
+        </v-autocomplete>
       </div>
       <div class="form-item form-item-right">
         <div>
-          <strong class="dark-orange radius-text">Radius?</strong>
+          <strong class="dark-orange radius-text">Radius</strong>
           <v-slider
             v-model="model.distance"
             :thumb-size="24"
+            :disabled="!model.city"
             thumb-label
             class="slider"
           ></v-slider>
           <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
         </div>
-            <v-btn @click="submit" id="form-submit-button" class="dark-orange">
-             <!-- <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
+        <v-btn @click="submit" id="form-submit-button" class="dark-orange">
+          <!-- <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
           <img src="../assets/icons/search.png" id="search-icon-form" />
         </v-btn>
       </div>
@@ -68,7 +112,7 @@ export default {
   },
 
   methods: {
-    fillSearchBarSelectOptions(){
+    fillSearchBarSelectOptions() {
       OfferingDataService.getAllCities()
         .then((response) => {
           this.cityNames = response.data;
@@ -91,64 +135,25 @@ export default {
           console.log(e);
         });
     },
-    checkInputsAndCreateErrorList() {
-      let errorList = [];
-
-      if (!this.model.choosenTags || this.model.choosenTags.length === 0) {
-        errorList.push("Bitte mindestens ein Themengebiet mitangeben.");
-      }
-      if (
-        !this.model.choosenOfferingTypes ||
-        this.model.choosenOfferingTypes.length === 0
-      ) {
-        errorList.push("Bitte mindestens einen Angebotstyp mitangeben.");
-      }
-      if (!this.model.city) {
-        errorList.push("Bitte eine Stadt angeben.");
-      }
-      return errorList;
-    },
     submit() {
-      let errorList = this.checkInputsAndCreateErrorList();
-      if (errorList.length === 0) {
-        let paramsAsJSON = {
-          tags: this.model.choosenTags,
-          offeringTypes: this.model.choosenOfferingTypes,
-          city: this.model.city,
-          distance: this.model.distance,
-        };
+      let paramsAsJSON = {
+        tags: this.model.choosenTags,
+        offeringTypes: this.model.choosenOfferingTypes,
+        city: this.model.city,
+        distance: this.model.distance,
+      };
 
-        if (this.isStartPage) {
-          //befindet sich auf der LandingPage
-          this.$router.push({
-            name: "Searcher",
-            hash: "#offer-list",
-            params: { landingPageParams: paramsAsJSON },
-          });
-        } else {
-          //befindet sich auf der SearcherPage
-          this.$emit("update:searchparams", this.model);
-          this.$emit("search-offering");
-        }
+      if (this.isStartPage) {
+        //befindet sich auf der LandingPage
+        this.$router.push({
+          name: "Searcher",
+          hash: "#offer-list",
+          params: { landingPageParams: paramsAsJSON },
+        });
       } else {
-        for (const idx in errorList) {
-          this.$toastr.Add({
-            name: "Warnung",
-
-            title: "Fehlende Angabe", // Toast Title
-
-            msg: errorList[idx], // Toast Message
-
-            clickClose: true, // Click Close Disable
-
-            timeout: 4000, // Remember defaultTimeout is 5 sec.(5000) in this case the toast won't close automatically
-
-            position: "toast-top-right", // Toast Position.
-
-            type: "warning", // Toast type,
-            style: { backgroundColor: "orange", width: "300px" },
-          });
-        }
+        //befindet sich auf der SearcherPage
+        this.$emit("update:searchparams", this.model);
+        this.$emit("search-offering");
       }
     },
   },
@@ -171,6 +176,10 @@ export default {
 #root-SC h3 {
   font-family: "DM Serif Text", serif;
   font-size: 47px;
+}
+
+.v-label--active {
+  display: none;
 }
 
 .seperation-container {

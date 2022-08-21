@@ -44,7 +44,7 @@
           style="border: 0"
           loading="lazy"
           allowfullscreen
-          src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8WMga20Hl0cRuU8NdDkV99U&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
+          :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOrganization.city.replace(' ', '+') + ',' + currentOrganization.postcode.replace(' ', '+') + ',' + currentOrganization.street.replace(' ', '+') + ',' + currentOrganization.houseNumber.replace(' ', '+') "
           id="organization-map"
         ></iframe>
 
