@@ -4,11 +4,11 @@
     <h3>mit Vorurteilen aufräumen.</h3>
     <v-form class="actual-form">
       <div class="form-item-left form-item">
-        <strong class="dark-orange">Themengebiet?</strong>
+        <strong class="dark-orange">Themengebiet</strong>
         <v-autocomplete
           v-model="model.choosenTags"
           :items="tagList"
-          label="Themengebiete"
+          label="Themengebiet wählen"
           multiple
           menu-props="closeOnContentClick"
           clearable
@@ -29,11 +29,11 @@
         </v-autocomplete>
       </div>
       <div class="form-item">
-        <strong class="dark-orange">Angebotsart?</strong>
+        <strong class="dark-orange">Angebotsart</strong>
         <v-autocomplete
           v-model="model.choosenOfferingTypes"
           :items="offeringTypeList"
-          label="Angebotsart"
+          label="Angebotsart wählen"
           multiple
           menu-props="closeOnContentClick"
           clearable
@@ -54,11 +54,11 @@
         </v-autocomplete>
       </div>
       <div class="form-item">
-        <strong class="dark-orange">Standort?</strong>
+        <strong class="dark-orange">Standort</strong>
         <v-autocomplete
           v-model="model.city"
           :items="cityNames"
-          label="Angebotsart"
+          label="Standort wählen"
           menu-props="closeOnContentClick"
           clearable
         >
@@ -79,7 +79,7 @@
       </div>
       <div class="form-item form-item-right">
         <div>
-          <strong class="dark-orange radius-text">Radius?</strong>
+          <strong class="dark-orange radius-text">Radius</strong>
           <v-slider
             v-model="model.distance"
             :thumb-size="24"
