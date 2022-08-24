@@ -360,28 +360,27 @@ export default {
 /*TODO: media query */
 #inside-cover img {
   display: block;
-  height: 100%;
   width: 100%;
   object-fit: cover;
+  grid-column: 1;
+  grid-row: 1;
+  filter: blur(5px);
+  height: 70vh;
 }
 #inside-cover {
+  display: grid;
   margin-bottom: 2em;
   height: 70vh;
   background-size: 100%;
 }
-#about-us-cover img {
-  filter: blur(5px);
-  width: 100%;
-}
 .inside-cover-text {
+  grid-column: 1;
+  grid-row: 1;
   color: white;
-  position: absolute;
   text-align: center;
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 20%;
-  position: absolute;
-  top: -4vh;
+  width: 60%;
+  margin-left: 20%;
+  margin-top: 16rem;
 }
 #inside-cover h3 {
   font-size: 0.7em;
@@ -410,7 +409,7 @@ export default {
   padding-bottom: 1vh;
 }
 .about-us-container {
-  padding-top: 5em;
+  padding-top: 2em;
   background-color: #004c45;
   border-radius: 10% 30% 50% 70%;
   margin-bottom: 5em;
