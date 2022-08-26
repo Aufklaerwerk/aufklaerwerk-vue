@@ -18,7 +18,7 @@ export default {
 #root-contact-page {
   width: 100%;
   background: rgba(0, 76, 69, 0.9);
-  padding: 6vh 0 6vh 0;
+  padding: 2vh 0 6vh 0;
 }
 
 #contact-page-form {

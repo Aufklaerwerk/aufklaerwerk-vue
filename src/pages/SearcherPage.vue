@@ -63,10 +63,6 @@ body,
   background-color: #fffbf5;
 }
 
-#searcherPage {
-  padding-top: 2em;
-}
-
 /* Searcher Process */
 
 #searcher-process-container {

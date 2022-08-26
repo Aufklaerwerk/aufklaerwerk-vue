@@ -62,7 +62,7 @@ body,
 /* Upper part */
 
 #offer-upper {
-  padding: 8% 4% 4% 2%;
+  padding: 3em 4% 4% 2%;
   display: flex;
   flex-direction: row;
 }
