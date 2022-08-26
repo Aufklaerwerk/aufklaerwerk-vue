@@ -192,6 +192,10 @@ export default {
   margin-bottom: 6rem !important;
 }
 
+.v-menu__content {
+  text-align: left;
+}
+
 .v-label--active {
   display: none;
 }
