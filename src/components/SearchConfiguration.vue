@@ -1,7 +1,11 @@
 <template>
   <!-- -->
-  <div id="root-SC" class="seperation-container">
-    <h3>mit Vorurteilen aufräumen.</h3>
+  <div
+    id="root-SC"
+    class="seperation-container"
+    :class="{ 'reduced-height': !isStartPage }"
+  >
+    <h3 v-if="isStartPage">mit Vorurteilen aufräumen.</h3>
     <v-form class="actual-form">
       <div class="form-item-left form-item">
         <strong class="dark-orange">Themengebiet</strong>
@@ -165,17 +169,29 @@ export default {
 
 <style lang="scss">
 #root-SC {
-  padding-top: 25vh;
   background-image: url(../assets/banners/diversityHands.jpg);
+  background-position: 0 -12vh;
   color: white;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
+.reduced-height {
+  height: 40vh !important;
+  justify-content: center !important;
+}
 #root-SC h3 {
   font-family: "DM Serif Text", serif;
   font-size: 47px;
+  margin-top: 6rem !important;
+  margin-bottom: 6rem !important;
+}
+
+.v-menu__content {
+  text-align: left;
 }
 
 .v-label--active {
@@ -189,7 +205,6 @@ export default {
 }
 
 .actual-form {
-  margin-top: 6%;
   display: flex;
   justify-content: center;
   width: 100%;

@@ -68,7 +68,7 @@ body,
 
 #welcome-howitworks {
   text-align: left;
-  padding: 8em 0 0 5em;
+  padding: 2em 0 0 5em;
   margin: auto;
 }
 

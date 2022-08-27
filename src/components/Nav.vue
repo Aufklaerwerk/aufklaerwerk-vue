@@ -104,6 +104,7 @@ export default {
 
 #nav-bar {
   height: 12vh;
+  position: relative;
 }
 
 #page-title {
