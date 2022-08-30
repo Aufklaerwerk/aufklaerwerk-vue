@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <Nav />
     <div>
       <PageLoader />
+      <Nav />
     </div>
     <div class="content">
       <router-view />

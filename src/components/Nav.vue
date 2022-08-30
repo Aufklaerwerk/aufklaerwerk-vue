@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style = "position: absolute">
     <v-app-bar color="#004c45" app id="nav-bar">
       <v-app-bar-nav-icon
         color="#ff5100"
@@ -9,7 +9,6 @@
       <v-toolbar-title id="page-title"
         ><a href="/"><strong id="akw">Aufklärwerk</strong></a></v-toolbar-title
       >
-      <v-spacer></v-spacer>
       <v-toolbar-items id="toolbar-items">
         <v-btn
           v-bind:color="clickedAboutUs ? '#ff5100' : '#f0956a'"
@@ -161,12 +160,19 @@ export default {
 #nav-bar {
   height: 12vh;
   position: relative;
+  display: flex;
+}
+
+.v-toolbar__content {
+  width: 100% !important;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #page-title {
   font-family: "Lato", sans-serif;
   font-size: 40px;
-  padding: 2vh 0 2vh 4vw;
+  padding: 2vh;
 }
 
 #akw {
@@ -174,7 +180,7 @@ export default {
 }
 
 #toolbar-button {
-  margin-block-end: 30px;
+  padding: 2vh;
   font-family: "DM Serif Text", serif;
   font-size: 24px;
 }
@@ -199,6 +205,11 @@ export default {
   top: 0;
   left: 0;
   height: 100% !important;
+  width: 100vw !important;
+}
+
+.nav-icon {
+  padding: 2vh !important;
 }
 
 @media only screen and (min-width: 1250px) {
