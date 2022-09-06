@@ -7,7 +7,7 @@
         <section id="left-column">
           <h3>{{ currentOrganization.name }}</h3>
           <p>
-            {{ currentOrganization.description }} 
+            {{ currentOrganization.description }}
           </p>
         </section>
 
@@ -44,7 +44,7 @@
           style="border: 0"
           loading="lazy"
           allowfullscreen
-          :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOrganization.city.replace(' ', '+') + ',' + currentOrganization.postcode.replace(' ', '+') + ',' + currentOrganization.street.replace(' ', '+') + ',' + currentOrganization.houseNumber.replace(' ', '+') "
+          :src="this.googleMapString"
           id="organization-map"
         ></iframe>
 
@@ -152,9 +152,11 @@
         </section>
  -->
     </div>
-    <section id="contact-offerer">
+
+    <!-- <section id="contact-offerer">
       <ContactForm />
     </section>
+-->
   </div>
 </template>
 
@@ -166,6 +168,7 @@ export default {
   data() {
     return {
       currentOrganization: null,
+      googleMapString: "",
       message: "",
     };
   },
@@ -175,6 +178,7 @@ export default {
         .then((response) => {
           this.currentOrganization = response.data;
           console.log(response.data);
+          this.setGoogleMapString();
         })
         .catch((e) => {
           console.log(e);
@@ -222,6 +226,25 @@ export default {
           console.log(e);
         });
     },
+
+    setGoogleMapString() {
+      console.log(this.currentOrganization.city);
+      this.googleMapString =
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=" +
+        this.currentOrganization.city.replace(" ", "+") +
+        ",";
+
+      if (this.currentOrganization.postcode) {
+        this.googleMapString +=
+          this.currentOrganization.postcode.replace(" ", "+") + ",";
+      }
+      this.googleMapString +=
+        this.currentOrganization.street.replace(" ", "+") +
+        "," +
+        this.currentOrganization.houseNumber.replace(" ", "+");
+
+      console.log("GoogleMapsSuchstring: " + this.googleMapString);
+    },
   },
   mounted() {
     this.message = "";
@@ -234,7 +257,7 @@ export default {
 <style>
 #organizationPage {
   height: 100%;
-  color: #004c45;;
+  color: #004c45;
   background: #fffbf5;
   padding-top: 6%;
 }
