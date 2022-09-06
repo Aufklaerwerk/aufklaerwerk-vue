@@ -223,7 +223,7 @@ export default {
       OfferingDataService.update(this.currentOffering.id, data)
         .then((response) => {
           this.currentOffering.published = status;
-          //console.log(response.data);
+          console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
@@ -233,7 +233,7 @@ export default {
     updateOffering() {
       OfferingDataService.update(this.currentOffering.id, this.currentOffering)
         .then((response) => {
-          //console.log(response.data);
+          console.log(response.data);
           this.message = "The Offering was updated successfully!";
         })
         .catch((e) => {
@@ -244,7 +244,7 @@ export default {
     deleteOffering() {
       OfferingDataService.delete(this.currentOffering.id)
         .then((response) => {
-          //console.log(response.data);
+          console.log(response.data);
           this.$router.push({ name: "Offerings" });
         })
         .catch((e) => {
