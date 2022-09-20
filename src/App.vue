@@ -5,7 +5,9 @@
       <Nav />
     </div>
     <div class="content">
-      <router-view />
+      <v-main>
+        <router-view />
+      </v-main>
     </div>
     <div class="footer">
       <Footer />
@@ -48,13 +50,39 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
+}
+
+h4 {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
+
+h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 47px;
+}
+
+h5 {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: normal;
+
+}
+
+h6 {
+  font-family: "Lato",sans-serif;
+  font-size: 20px;
+  line-height: normal;
+  font-weight: bold;
+
 }
 
 p,
 li {
   font-family: "Lato", sans-serif;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 h4 {
@@ -84,10 +112,10 @@ a {
 }
 
 .akw-green {
-  color: #004c45;
+  color: var(--v-primary-base);
 }
 
 .dark-orange {
-  color: #ff5100;
+  color: var(--v-secondary-base);
 }
 </style>

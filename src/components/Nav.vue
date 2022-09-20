@@ -1,11 +1,6 @@
 <template>
-  <div style = "position: absolute">
-    <v-app-bar color="#004c45" app id="nav-bar">
-      <v-app-bar-nav-icon
-        color="#ff5100"
-        @click="drawer = true"
-        class="nav-icon"
-      ></v-app-bar-nav-icon>
+  <div style="position: absolute">
+    <v-app-bar color="primary lighten-1" app id="nav-bar">
       <v-toolbar-title id="page-title"
         ><a href="/"><strong id="akw">Aufklärwerk</strong></a></v-toolbar-title
       >
@@ -46,12 +41,11 @@
         <img src="../assets/icons/search.png" id="search-icon" />
       </a>-->
       </v-toolbar-items>
+      <v-icon color="white" @click="drawer = true" class="nav-icon">{{
+        drawer ? "mdi-close" : "mdi-menu"
+      }}</v-icon>
     </v-app-bar>
-    <v-navigation-drawer
-      class="nav-drawer"
-      absolute
-      temporary
-      v-model="drawer"
+    <v-navigation-drawer class="nav-drawer" absolute temporary v-model="drawer"
       ><v-list nav>
         <v-list-item-group
           v-model="group"
@@ -158,8 +152,7 @@ export default {
 }
 
 #nav-bar {
-  height: 12vh;
-  position: relative;
+  position: fixed;
   display: flex;
 }
 
@@ -171,16 +164,14 @@ export default {
 
 #page-title {
   font-family: "Lato", sans-serif;
-  font-size: 40px;
-  padding: 2vh;
+  font-size: 36px;
 }
 
 #akw {
-  color: #ff5100;
+  color: var(v--secondary-base);
 }
 
 #toolbar-button {
-  padding: 2vh;
   font-family: "DM Serif Text", serif;
   font-size: 24px;
 }
@@ -201,18 +192,12 @@ export default {
 }
 
 .nav-drawer {
-  position: sticky !important;
-  top: 0;
-  left: 0;
-  height: 100% !important;
+  position: fixed !important;
   width: 100vw !important;
+  top: 64px !important;
 }
 
-.nav-icon {
-  padding: 2vh !important;
-}
-
-@media only screen and (min-width: 1250px) {
+@media only screen and (min-width: 1200px) {
   .nav-icon {
     display: none !important;
   }
