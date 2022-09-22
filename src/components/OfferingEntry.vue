@@ -1,50 +1,56 @@
 <template>
-  <div class="offering-entry-card" elevation="5" hover>
-    <div class="img-with-description">
+  <div class="offering-entry-card" elevation="5" hover @click="openOfferingPage">
+    <div class="offering-content">
       <img
         class="image"
         v-if="offering"
         src="../assets/orgaLogos/statttour.png"
       />
-      <div class="content">
-        <p id="offering-name">
-          <strong> {{ offering.name }}</strong>
-        </p>
-        <div class="card-organisation">
-          <img src="../assets/icons/school.png" />
-          <p id="orga-name">
-            <strong> {{ offering.organame }}</strong>
-          </p>
-        </div>
-        <div class="card-location">
-          <img src="../assets/icons/location.png" />
-          <p id="city-name">
-            <strong> {{ offering.city }}</strong>
-          </p>
-        </div>
-        <div class="card-topics">
-          <img src="../assets/icons/three-bars.png" />
-          <div class="taglist">
-            <p v-for="tag in offering.tags" :key="tag._id">
-              {{ tag.label }}
-            </p>
-          </div>
-        </div>
-        <div class="card-types">
-          <img src="../assets/icons/knowledge.png" />
-          <div class="taglist">
-            <p
-              v-for="offeringType in offering.offeringTypes"
-              :key="offeringType._id"
-            >
-              {{ offeringType.label }}
-            </p>
-          </div>
-        </div>
-
-        <p class="card-descr">{{ offering.carddescription }}</p>
-
-        <button @click="openOfferingPage">zum Angebot</button>
+      <h5 class="offering-title">{{ offering.name }}</h5>
+      <p class="offering-description">{{ offering.carddescription }}</p>
+      <div class="offering-organization">
+        <v-icon>mdi-charity</v-icon>{{ offering.organame }}
+      </div>
+      <div class="offering-location">
+        <v-icon>mdi-map-marker</v-icon>{{ offering.city }}
+      </div>
+      <div class="offering-tags">
+        <v-chip
+          small
+          text-color="white"
+          color="#ff5100"
+          v-for="tag in offering.tags.slice(0, 3)"
+          :key="tag.label"
+          ><span class="textwrap">{{ tag.label }}</span></v-chip
+        >
+        <v-chip
+          small
+          text-color="white"
+          color="#ff5100"
+          v-if="offering.offeringTypes.length > 3"
+          style="margin-left: 0.25rem"
+        >
+          +{{ offering.offeringTypes.length - 3 }}
+        </v-chip>
+      </div>
+      <div class="offering-types">
+        <v-chip
+          small
+          text-color="white"
+          color="#ff5100"
+          v-for="offeringType in offering.offeringTypes.slice(0, 3)"
+          :key="offeringType.label"
+          ><span class="textwrap">{{ offeringType.label }}</span>
+        </v-chip>
+        <v-chip
+          small
+          text-color="white"
+          color="secondary-base"
+          v-if="offering.offeringTypes.length > 3"
+          style="margin-left: 0.25rem"
+        >
+          +{{ offering.offeringTypes.length - 3 }}
+        </v-chip>
       </div>
     </div>
   </div>
@@ -53,7 +59,6 @@
 <script>
 export default {
   name: "offering-component",
-  components: {},
   data() {
     return {
       offeringId: this.offering.id,
@@ -62,8 +67,6 @@ export default {
   props: ["offering"],
   methods: {
     openOfferingPage() {
-      console.log("Das ist die offeringID: " + this.offeringId);
-
       this.$router.push({
         name: "Offering",
         params: { id: this.offeringId },
@@ -73,91 +76,88 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .offering-entry-card {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  width: 44%;
+  width: 100%;
   box-shadow: 0 0.4em 0.8em lightgrey;
   border-radius: 10px;
-  margin: 2vw;
-  h2 {
-    padding: 0.6vh;
-  }
-  .img-with-description {
-    display: flex;
-    flex-direction: row;
-    .image {
-      width: 350px;
-      height: auto;
-      margin: 1em;
-    }
-    .content {
-      display: flex;
-      justify-content: left;
-      flex-direction: column;
-      width: 100%;
-      h2,
-      p {
-        text-align: left;
-        font-size: 1em;
-        margin-bottom: 0;
-      }
-      .card-topics,
-      .card-types {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .taglist {
-          display: flex;
-          flex-direction: row;
-          margin: 0.5em 1em 0 1em;
-          p {
-            font-size: 0.6em;
-            margin-left: 0.6em;
-            padding: 0.4em;
-            border-radius: 16px;
-            background-color: #f0956a;
-            color: white;
-          }
-        }
-        img {
-          width: 1.2vw;
-        }
-      }
-      .card-organisation,
-      .card-location {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        p {
-          font-size: 0.8em;
-          margin: 0.5em 1em 0 1.6em;
-          padding: 0.4em;
-        }
-        img {
-          width: 1.2vw;
-        }
-      }
-      .card-descr {
-        margin-top: 2vh;
-      }
-      button {
-        background-color: #004c45;
-        color: white;
-        border-radius: 8px;
-        padding: 0.3em;
-        width: 40%;
-        align-self: center;
-        margin: 4vh 0 2vh 0;
-      }
-    }
-  }
+  padding: 1rem;
+  text-align: left;
 }
 
-#offering-name {
-  font-size: 1.2em;
-  margin-bottom: 0em !important;
-  margin-top: 1em;
+.offering-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+}
+
+.offering-title {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  overflow: clip;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.offering-description {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  line-height: normal;
+  overflow: clip;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.offering-organization {
+  grid-column: 1;
+}
+
+.offering-location {
+  grid-column: 1;
+}
+
+.offering-tags {
+  grid-column-start: span 2;
+  grid-row: 6;
+  display: flex;
+  max-width: 100%;
+}
+.offering-types {
+  grid-column-start: span 2;
+  grid-row: 7;
+  display: flex;
+  max-width: 100%;
+}
+
+.image {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  width: 100%;
+  height: auto;
+  border-radius: 0.625rem;
+}
+
+.v-chip {
+  margin-right: 0.25rem !important;
+}
+
+.v-icon {
+  margin-right: 0.25rem !important;
+  margin-top: -0.25rem !important;
+}
+
+.textwrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

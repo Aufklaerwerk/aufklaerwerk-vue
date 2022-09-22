@@ -1,6 +1,6 @@
 <template>
   <div style="position: absolute">
-    <v-app-bar color="primary lighten-1" app id="nav-bar">
+    <v-app-bar color="primary base" app id="nav-bar">
       <v-toolbar-title id="page-title"
         ><a href="/"><strong id="akw">Aufklärwerk</strong></a></v-toolbar-title
       >
@@ -41,7 +41,7 @@
         <img src="../assets/icons/search.png" id="search-icon" />
       </a>-->
       </v-toolbar-items>
-      <v-icon color="white" @click="drawer = true" class="nav-icon">{{
+      <v-icon color="secondary base" @click="drawer = true" class="nav-icon">{{
         drawer ? "mdi-close" : "mdi-menu"
       }}</v-icon>
     </v-app-bar>
@@ -168,7 +168,7 @@ export default {
 }
 
 #akw {
-  color: var(v--secondary-base);
+  color: var(--v-secondary-base);
 }
 
 #toolbar-button {
@@ -194,7 +194,7 @@ export default {
 .nav-drawer {
   position: fixed !important;
   width: 100vw !important;
-  top: 64px !important;
+  top: 56px !important;
 }
 
 @media only screen and (min-width: 1200px) {

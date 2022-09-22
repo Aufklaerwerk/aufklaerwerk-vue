@@ -2,7 +2,7 @@
   <div class="list-wrapper">
     <!-- Suchmaske -->
     <section id="searchConfiguration">
-      <SearchConfigurationTwo
+      <SearchConfiguration
         @search-offering="startNewOfferingSearch"
         :model.sync="searchParams"
         ref="searchConfiguration"
@@ -17,12 +17,12 @@
     </section>
 
     <div class="offering-list">
-      <OfferingEntryTwo
+      <OfferingEntry
         :class="{ active: index == currentIndex }"
         v-for="(Offering, index) in Offerings"
         :key="index"
         :offering="Offering"
-      ></OfferingEntryTwo>
+      ></OfferingEntry>
       <!-- TODO: Fix this 
       <div v-if="Offerings.length = 0">
         <h4>Keine Angebote mit den ausgewählten Suchparametern</h4>
@@ -34,9 +34,9 @@
 
 <script>
 import OfferingDataService from "../services/OfferingDataService";
-import OfferingEntryTwo from "./OfferingEntryTwo.vue";
+import OfferingEntry from "./OfferingEntry.vue";
 import SearchConfiguration from "./SearchConfiguration.vue";
-import SearchConfigurationTwo from "./SearchConfigurationTwo.vue";
+
 
 export default {
   name: "Offerings-list",
@@ -54,9 +54,8 @@ export default {
     };
   },
   components: {
-    OfferingEntryTwo,
     SearchConfiguration,
-    SearchConfigurationTwo,
+    OfferingEntry,
   },
   methods: {
     startNewOfferingSearch() {
@@ -132,7 +131,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1rem;
+  margin: 0 0 1rem 0;
 }
 
 #searchConfigurationDesktop {

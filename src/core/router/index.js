@@ -6,13 +6,12 @@ import OffererPage from "../../pages/OffererPage.vue";
 import AboutUs from "../../pages/AboutUs.vue";
 import Contact from "../../pages/ContactPage.vue";
 import HowItWorksPage from "../../pages/HowItWorksPage.vue";
-import TestPage from "../../pages/TestPage.vue"
 
 import FAQ from "../../pages/informationpages/FAQ.vue";
 import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 import inConstruction from "../../pages/InConstruction.vue";
-import OfferingTwo from "../../components/OfferingTwo.vue"
+import Offering from "../../components/Offering.vue"
 import Organization from "../../components/Organization.vue"
 
 const routes = [{
@@ -67,7 +66,7 @@ const routes = [{
   },
   {
     path: "/offering/:id",
-    component: OfferingTwo,
+    component: Offering,
     name: "Offering"
   },
 
@@ -75,11 +74,6 @@ const routes = [{
     path: "/organization/:id",
     component: Organization,
     name: "Organization"
-  },
-  {
-    path: "/test",
-    component: TestPage,
-    name: "Test"
   },
 ];
 

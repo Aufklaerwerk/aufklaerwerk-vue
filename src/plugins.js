@@ -14,17 +14,18 @@ export default new Vuetify({
     options: { customProperties: true },
     themes: {
       light: {
-        /*primary: {
+        primary: {
           base: "#004c45",
           lighten1: "#397870",
           darken1: "#00241e",
         },
-        **/
+        /*
         primary: {
           base: "#1a237e",
           lighten1: "#000051",
           darken1: "#000051",
         },
+        **/
         secondary: {
           base: "#ff5100",
           lighten1: "#ff853c",

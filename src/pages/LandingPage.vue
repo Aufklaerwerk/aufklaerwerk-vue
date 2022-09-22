@@ -2,17 +2,11 @@
   <div id="landingPage">
     <!-- Start Screen -->
 
+    
     <!-- Suchmaske -->
 
-    <section id="welcomeDesktop">
+    <section id="welcome">
       <SearchConfiguration
-        v-bind:isStartPage="isStartPage"
-        v-bind:model="emptySearchParams"
-        ref="searchConfiguration"
-      />
-    </section>
-    <section id="welcomeMobile">
-      <SearchConfigurationTwo
         v-bind:isStartPage="isStartPage"
         v-bind:model="emptySearchParams"
         ref="searchConfiguration"
@@ -20,98 +14,74 @@
     </section>
 
     <!-- Kontaktweiterleitung -->
-    <section id="areyouinterested">
-      <h2>
-        Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote
-        sozialer Organisationen
-      </h2>
-      <h3>Seid ihr eine soziale Organisation?</h3>
-      <div class="interested-text">
-        <p>
-          Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand
-          eure existierenden Angebote auf unserer Plattform zu platzieren.
-        </p>
-        <p>
-          Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen,
-          um eure Angeboten für noch mehr Menschen zugänglich zu machen!
-        </p>
-        <p>
-          Falls euch interessiert, wie das ganze funktioniert und welche Daten
-          wir dafür von euch benötigen - meldet euch bei uns!
-        </p>
+   <section id="areyouinterested">
+      <h2>Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote sozialer Organisationen</h2>
+      <div id="interested-weiterleitung">
+        <div>
+          <div id="interested-text">
+            <h3>Seid ihr eine soziale Organisation?</h3>
+            <p>Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand eure existierenden Angebote auf unserer Plattform zu platzieren.</p>
+            <p>Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen, um eure Angeboten für noch mehr Menschen zugänglich zu machen!</p>
+            <p>Falls euch interessiert, wie das ganze funktioniert und welche Daten wir dafür von euch benötigen - meldet euch bei uns!</p>
+          </div>
+          <v-btn to="/contact"><strong>Kontaktformular</strong></v-btn>
+        </div>
+        <div>
+          <div id="interested-text">
+            <h3>Sucht ihr nach Angeboten?</h3>
+            <p>Schluss mit mühsamer Suche nach dem passenden Angebot!</p>
+            <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die richtigen Angebote in Eurer Nähe zu finden!</p>
+            <p>Probiert es gerne oben in der Suchmaske aus!</p>
+            <p>Über unseren <strong> Newsletter</strong> könnt ihr auf dem Laufenden bleiben - was bei uns passiert, welche meue Organisationen mit dabei sind etc.!</p>
+          </div>
+          <v-btn href="https://mailchi.mp/605ff69ea1bd/newsletter-aufklrwerk"><strong>Zum Newsletter</strong></v-btn>
+        </div>
       </div>
-      <v-btn to="/contact"><strong>Kontaktformular</strong></v-btn>
-      <h3>Sucht ihr nach Angeboten?</h3>
-      <div class="interested-text">
-        <p>Schluss mit mühsamer Suche nach dem passenden Angebot!</p>
-        <p>
-          Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die richtigen
-          Angebote in Eurer Nähe zu finden!
-        </p>
-        <p>Probiert es gerne oben in der Suchmaske aus!</p>
-        <p>
-          Über unseren <strong> Newsletter</strong> könnt ihr auf dem Laufenden
-          bleiben - was bei uns passiert, welche meue Organisationen mit dabei
-          sind etc.!
-        </p>
-      </div>
-      <v-btn href="https://mailchi.mp/605ff69ea1bd/newsletter-aufklrwerk"
-        ><strong>Zum Newsletter</strong></v-btn
-      >
     </section>
 
     <!-- Celebration of Humanity -->
 
-    <section id="orange-boxes" style="display: none">
+    <section id="orange-boxes">
       <div id="box-container">
         <div id="hugging-people-div">
-          <img
-            id="huggingPeople"
-            src="../assets/startpage/hugging-people.jpg"
-          />
+          <img id="huggingPeople" src="../assets/startpage/hugging-people.jpg" />
         </div>
         <div class="box">
           <h4>UNSER ZIEL</h4>
           <h3>Celebration of Humanity</h3>
           <p>
-            Wir sind eine studentische Initiative, welche sich für mehr
-            Offenheit und Austausch in der Gesellschaft einsetzt.
+            Wir sind eine studentische Initiative, welche sich für mehr Offenheit und
+            Austausch in der Gesellschaft einsetzt.
           </p>
           <p>
-            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die
-            zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
+            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
           </p>
           <p>
-            Entdecke mit unserer Hilfe Organisationen in Deiner Umgebung und
-            finde die passenden Begegnungsangebote für deine Bedürfnisse!
+            Entdecke mit unserer Hilfe Organisationen in Deiner Umgebung und finde die passenden Begegnungsangebote für deine Bedürfnisse!
           </p>
           <ul>
             <li><strong>Schnelle und bequeme Suche</strong></li>
             <li>
-              <strong
-                >Angebote zu verschiedensten Themen - gesammelt an einem
-                Ort</strong
-              >
+              <strong>Angebote zu verschiedensten Themen - gesammelt an einem Ort</strong>
             </li>
             <li>
-              <strong
-                >Einfacher, transparenter Kontakt zu sozialen
-                Organisationen</strong
-              >
+              <strong>Einfacher, transparenter Kontakt zu sozialen Organisationen</strong>
             </li>
           </ul>
-          <v-btn id="orange-button" to="/offerer"> jetzt Teil werden </v-btn>
+          <v-btn id="orange-button" to="/offerer">
+            jetzt Teil werden
+          </v-btn>
         </div>
       </div>
     </section>
 
     <!-- Wavy Transition Orange-->
 
-    <div id="wavy-transition-blue" style="display: none" />
+    <div id="wavy-transition-blue" />
 
     <!-- Wusstest du ... ? -->
 
-    <section id="did-you-know" style="display: none">
+    <section id="did-you-know">
       <div id="did-you-know-headers">
         <h4>WARUM AUFKLÄRWERK?</h4>
         <h3>Wusstest du ... ?</h3>
@@ -120,43 +90,33 @@
         <div class="flip-box">
           <div class="flip-box-inner">
             <div class="flip-box-front">
-              <img src="../assets/startpage/blm.jpg" alt="BLM" />
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
             </div>
             <div class="flip-box-back">
-              <img src="../assets/startpage/blm.jpg" alt="BLM" />
-              <p>
-                Dass die Zahl der Anfragen im Zusammenhang mit rassistischer
-                Diskriminierung 2020 ein Drittel (33 Prozent) aller Anfragen
-                ausmachte?
-              </p>
+              <img src="../assets/startpage/blm.jpg" alt="BLM">
+              <p>Dass die Zahl der Anfragen im Zusammenhang mit rassistischer Diskriminierung 2020 ein Drittel (33 Prozent) aller Anfragen ausmachte?</p>
             </div>
           </div>
         </div>
         <div class="flip-box">
           <div class="flip-box-inner">
             <div class="flip-box-front">
-              <img src="../assets/startpage/equality.jpg" alt="Equality" />
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
             </div>
             <div class="flip-box-back">
-              <img src="../assets/startpage/equality.jpg" alt="Equality" />
-              <p>
-                Dass über 80 Prozent der Bevölkerung wissen, dass Homo- und
-                Bisexuelle in Deutschland diskriminiert werden?
-              </p>
+              <img src="../assets/startpage/equality.jpg" alt="Equality">
+              <p>Dass über 80 Prozent der Bevölkerung wissen, dass Homo- und Bisexuelle in Deutschland diskriminiert werden?</p>
             </div>
           </div>
         </div>
         <div class="flip-box">
           <div class="flip-box-inner">
             <div class="flip-box-front">
-              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair" />
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
             </div>
             <div class="flip-box-back">
-              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair" />
-              <p>
-                Dass in Deutschland ein Fehlbedarf von 386.000 barrierefreier
-                Wohnungen für Rollstuhlfahrer herrscht?
-              </p>
+              <img src="../assets/startpage/wheelchair.jpg" alt="Wheelchair">
+              <p>Dass in Deutschland ein Fehlbedarf von 386.000 barrierefreier Wohnungen für Rollstuhlfahrer herrscht?</p>
             </div>
           </div>
         </div>
@@ -165,11 +125,11 @@
 
     <!-- Wavy Transition -->
 
-    <div id="wavy-transition" style="display: none" />
+    <div id="wavy-transition" />
 
     <!-- So funktioniert -->
 
-    <section id="so-funktioniert" style="display: none">
+    <section id="so-funktioniert">
       <div id="so-funktioniert-headers">
         <h4>DU MÖCHSTEST HELFEN VORURTEILE ABZUBAUEN?</h4>
         <h3>So funktioniert's</h3>
@@ -203,19 +163,17 @@
             <img src="../assets/icons/arrow.png" id="arrow" />
           </router-link>
         </div>
-        <button @click="$router.push('howitworks')">
-          mehr Infos zum Buchungsablauf gibt's hier
-        </button>
+        <button @click="$router.push('howitworks')">mehr Infos zum Buchungsablauf gibt's hier</button>
       </div>
     </section>
 
     <!-- Wavy Transition Orange-->
 
-    <div id="wavy-transition-orange" style="display: none" />
+    <div id="wavy-transition-orange" />
 
     <!-- Über Aufklärwerk -->
 
-    <section id="ueber-akw" style="display: none">
+    <section id="ueber-akw">
       <div id="ueber-akw-box-container">
         <div class="ueber-akw-box">
           <h4>WAS STECKT HINTER AUFKLÄRWERK</h4>
@@ -232,27 +190,28 @@
           </p>
           <p>
             Somit sollen Vorurteile und Diskriminierung in der Gesellschaft
-            abgebaut und die Vorraussetzungen für ein Miteinander geschaffen
-            werden.
+            abgebaut und die Vorraussetzungen für ein Miteinander geschaffen werden.
           </p>
           <v-btn id="about-us-to-button" to="/aboutus">
             Mehr zu uns & unserer Vision
           </v-btn>
         </div>
         <div>
-          <img
-            id="dude-in-subway"
-            src="../assets/startpage/mann-in-subway.jpg"
-          />
+          <img id="dude-in-subway" src="../assets/startpage/mann-in-subway.jpg" />
         </div>
       </div>
+    </section>
+    <!-- Kontaktformular -->
+
+    <section id="contact-landing">
+      <ContactForm />
     </section>
   </div>
 </template>
 
 <script>
 import SearchConfiguration from "../components/SearchConfiguration.vue";
-import SearchConfigurationTwo from "../components/SearchConfigurationTwo.vue";
+import ContactForm from "../components/DefaultContactForm";
 
 export default {
   data: () => ({
@@ -262,18 +221,18 @@ export default {
       choosenTags: "",
       choosenOfferingTypes: "",
       distance: "",
-    },
+    }
   }),
   components: {
-    SearchConfiguration,
-    SearchConfigurationTwo,
+    ContactForm,
+    SearchConfiguration
   },
   methods: {},
 };
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 #landingPage {
   background-color: #fffbf5;
@@ -281,48 +240,56 @@ export default {
   height: 100%;
 }
 
-#welcomeDesktop {
-  display: none;
-}
-#welcomeMobile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
+#landingPage section {
+  min-width: 100%;
 }
 
 /* Are you Interested? */
 
 #areyouinterested {
+  padding: 8vh 4% 0 4%;
+  min-height: 90vh;
+}
+
+#areyouinterested h2{
+  color:#ff5100;
+  font-size: 3em;
+  padding: 0 8vw;
+  font-family: 'Rubik', sans-serif;
+}
+
+#interested-weiterleitung {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 6vh 0 0 0;
+}
+
+#interested-weiterleitung h3 {
+  max-width: 30vw;
   text-align: left;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 1rem;
-  margin: 1rem;
-  column-gap: 3rem;
+  padding-bottom: 2vh; 
+  font-family: 'Rubik', sans-serif;
+  color: #004c45
 }
 
-#areyouinterested h2 {
-  color: #ff5100;
-  font-size: 30px;
-}
-
-#areyouinterested h3 {
-  font-size: 30px;
+#interested-text > p {
   color: #004c45;
+  max-width: 30vw;
+  text-align: left; 
 }
 
-.interested-text > p {
-  color: #004c45;
-  font-size: 20px !important;
+#interested-text {
+  min-height: 50vh;
 }
 
-#areyouinterested .v-btn {
+#interested-weiterleitung .v-btn {
   background-color: #004c45;
-  color: #fffbf5;
-  width: 100%;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  color:#fffbf5;
+  padding: 2em;
+  min-width: 16em;
+  font-size: 1.2em;
+  margin-bottom: 2em;
 }
 /* Celebration of Humanity */
 
@@ -479,8 +446,7 @@ export default {
 }
 
 /* Position the front and back side */
-.flip-box-front,
-.flip-box-back {
+.flip-box-front, .flip-box-back {
   border-radius: 5px;
   position: absolute;
   width: 100%;
@@ -489,15 +455,14 @@ export default {
   backface-visibility: hidden;
 }
 
-.flip-box-front img,
-.flip-box-back img {
+.flip-box-front img, .flip-box-back img{
   border-radius: 5px;
   max-width: 100%;
   max-height: 100%;
   size: cover;
 }
 
-.flip-box-back img {
+.flip-box-back img{
   filter: blur(4px);
   -webkit-filter: blur(4px);
   opacity: 0.6;
@@ -516,7 +481,7 @@ export default {
   transform: rotateY(180deg);
 }
 
-.flip-box-back p {
+.flip-box-back p{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -708,26 +673,8 @@ export default {
   height: 50em;
 }
 
+
 #contact-landing {
   padding: 0 20em 10em 20em;
-}
-
-@media only screen and (min-width: 900px) {
-  #areyouinterested {
-    grid-template-columns: 1fr 1fr;
-    margin: 1rem 3rem 1rem 3rem;
-  }
-  #areyouinterested h2 {
-    grid-column: span 2;
-  }
-  #areyouinterested h3 {
-    grid-row: 2;
-  }
-  #areyouinterested .interested-text {
-    grid-row: 3;
-  }
-  #areyouinterested .v-btn {
-    grid-row: 4;
-  }
 }
 </style>
