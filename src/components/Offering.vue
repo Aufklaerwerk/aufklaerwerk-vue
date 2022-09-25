@@ -176,6 +176,7 @@ export default {
           src: require("../assets/offeringPictures/statttourRoute.png"),
         },
       ],
+      require_imgs : [],
     };
   },
   methods: {

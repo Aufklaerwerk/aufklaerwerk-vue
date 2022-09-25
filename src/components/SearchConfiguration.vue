@@ -6,9 +6,8 @@
         <v-autocomplete
           v-model="model.choosenTags"
           :items="tagList"
-          label="Themengebiete"
+          label="Themengebiet wählen"
           multiple
-          menu-props="closeOnContentClick"
           clearable
           outlined
           dense
@@ -26,9 +25,8 @@
         <v-autocomplete
           v-model="model.choosenOfferingTypes"
           :items="offeringTypeList"
-          label="Angebotsart"
+          label="Angebotsart wählen"
           multiple
-          menu-props="closeOnContentClick"
           clearable
           outlined
           dense
