@@ -1,160 +1,85 @@
 <template>
-  <div v-if="currentOrganization" id="organizationPage">
-    <div id="organizationBox">
-      <div id="two-columns">
-        <!-- Name und Beschreibung -->
-
-        <section id="left-column">
-          <h3>{{ currentOrganization.name }}</h3>
-          <p>
-            {{ currentOrganization.description }} 
-          </p>
-        </section>
-
-        <!-- Bild mit Themen und Button -->
-
-        <section id="right-column">
-          <img
-            class="organziation-logo"
-            v-if="currentOrganization"
-            src="../assets/orgaLogos/statttour-logo.png"
-          />
-          <div id="themengebiete">
-            <div id="themen-header-logo">
-              <h4>Themengebiete</h4>
-              <img src="../assets/icons/three-bars.png" />
-            </div>
-            <ul>
-              <li>Behinderungen</li>
-              <li>Barrierefreiheit</li>
-              <li>Stadttouren</li>
-            </ul>
-          </div>
-
-          <v-btn id="to-offer-on-orga">Zu den Angeboten -></v-btn>
-        </section>
-      </div>
-
-      <!-- Untere Leiste -->
-
-      <div id="map-and-address">
-        <iframe
-          width="100%"
-          height="450"
-          style="border: 0"
-          loading="lazy"
-          allowfullscreen
-          :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOrganization.city.replace(' ', '+') + ',' + currentOrganization.postcode.replace(' ', '+') + ',' + currentOrganization.street.replace(' ', '+') + ',' + currentOrganization.houseNumber.replace(' ', '+') "
-          id="organization-map"
-        ></iframe>
-
-        <div id="organization-anschrift">
-          <h4>Anschrift</h4>
-          <p>
+  <div v-if="currentOrganization" id="orgaPage">
+    <img
+      src="../assets/orgaLogos/statttour-logo.png"
+      id="top-image"
+    />
+    <div id="orga-content">
+      <h5 id="orga-title">{{ currentOrganization.name }}</h5>
+      <div id="orga-address">
+        <v-icon left>mdi-map-marker</v-icon>
+        <div id="address-text-container">
+          <div>
             {{ currentOrganization.street }}
             {{ currentOrganization.houseNumber }}
-          </p>
-          <p>
-            {{ currentOrganization.postcode }} {{ currentOrganization.city }}
-          </p>
-          <p>Deutschland</p>
-        </div>
-
-        <div id="kontakt">
-          <h4>Kontakt</h4>
-          <div id="name-and-person">
-            <p>{{ currentOrganization.name }}</p>
           </div>
-          <div id="organization-contact-details">
-            <p>{{ currentOrganization.websiteURL }}</p>
-            <p>{{ currentOrganization.telefon }}</p>
-            <p>{{ currentOrganization.mailAdress }}</p>
+          <div>
+            {{ currentOrganization.postcode }} {{ currentOrganization.city }}
           </div>
         </div>
       </div>
-
-      <div id="not-in-ux-orga">
-        <h2>Themenbereiche</h2>
-        <div id="themen-tags-orga">
+      <div id="orga-mail">
+        <v-icon left>mdi-email</v-icon>{{ currentOrganization.mailAdress }}
+      </div>
+      <div id="orga-phone">
+        <v-icon left>mdi-phone</v-icon>{{ currentOrganization.telefon }}
+      </div>
+      <div id="orga-website">
+        <v-icon left>mdi-web</v-icon
+        ><a :href="currentOrganization.websiteURL">{{
+          currentOrganization.websiteURL
+        }}</a>
+      </div>
+      <v-divider class="divider divider-desktop-1"></v-divider>
+      <div id="orga-description">
+        <h6>Über die Organisation</h6>
+        <p>
+          {{ currentOrganization.description }}
+        </p>
+      </div>
+      <v-divider class="divider divider-desktop-2"></v-divider>
+      <iframe
+        v-if="currentOrganization.city"
+        width="100%"
+        height="300"
+        loading="lazy"
+        allowfullscreen
+        :src="
+          'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' +
+          currentOrganization.city.replace(' ', '+') +
+          ',' +
+          currentOrganization.postcode.replace(' ', '+') +
+          ',' +
+          currentOrganization.street.replace(' ', '+') +
+          ',' +
+          currentOrganization.houseNumber.replace(' ', '+')
+        "
+        id="map"
+      ></iframe>
+      <v-divider class="divider divider-desktop-3"></v-divider>
+      <div id="orga-tags-container">
+        <h6 class="section-title">Themenbereiche</h6>
+        <div id="orga-tags">
           <v-chip
             class="chip"
-            v-for="tag in currentOrganization.tags"
-            :key="tag._id"
-            color="blue"
+            small
+            color="primary lighten-1"
             text-color="white"
+            v-for="tag in currentOrganization.tags"
+            :key="tag.label"
+            ><span class="textwrap">{{ tag.label }}</span></v-chip
           >
-            {{ tag.label }}</v-chip
-          >
-        </div>
-
-        <div id="orga-photos">
-          <h2>Ein paar Impressionen:</h2>
-          <!--ToDo carousel noch einbauen
-          <v-carousel v-model="model">
-            <v-carousel-item v-for="(color, i) in colors" :key="color">
-              <v-sheet :color="color" height="100%" tile>
-                <v-row class="fill-height" align="center" justify="center">
-                  <div class="display-3">Bilder {{ i + 1 }}</div>
-                </v-row>
-              </v-sheet>
-            </v-carousel-item>
-          </v-carousel>
-          -->
         </div>
       </div>
-      <!--
-            <div class="descr-item-organization" id="angebotsliste">
-              <h2>Angebote:</h2>
-
-              <h1>Hier kommen Angebote hin</h1>
-              <div v-if="filteredOfferings">
-                <offeringEntry
-                  v-for="offeringEntry in filteredOfferings"
-                  :key="offeringEntry._id"
-                  :offeringId="offeringEntry._id"
-                />
-              </div>
-            </div>
-
-            <div class="descr-item-organization" id="orga-fotos">
-              <h2>Ein paar Impressionen:</h2>
-              <v-carousel v-model="model">
-                <v-carousel-item v-for="(color, i) in colors" :key="color">
-                  <v-sheet :color="color" height="100%" tile>
-                    <v-row class="fill-height" align="center" justify="center">
-                      <div class="display-3">Bilder {{ i + 1 }}</div>
-                    </v-row>
-                  </v-sheet>
-                </v-carousel-item>
-              </v-carousel>
-            </div>
-            <h2>Themenbereiche</h2>
-            <div class="descr-item-organization" id="themen-tags">
-              <v-chip
-                class="chip"
-                v-for="tag in organization.tags"
-                :key="tag._id"
-                color="blue"
-                text-color="white"
-              >
-                {{ tag.label }}
-              </v-chip>
-            </div>
-          </div>
-          <iframe
-            width="100%"
-            height="450"
-            style="border: 0"
-            loading="lazy"
-            allowfullscreen
-            src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ8WMga20Hl0cRuU8NdDkV99U&key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc"
-          ></iframe>
-        </section>
- -->
+      <v-divider class="divider"></v-divider>
+      <v-btn
+        id="offerings-button"
+        class="white--text pa-4"
+        color="secondary base"
+        block
+        ><strong>Zu den Angeboten</strong>
+      </v-btn>
     </div>
-    <section id="contact-offerer">
-      <ContactForm />
-    </section>
   </div>
 </template>
 
@@ -231,152 +156,145 @@ export default {
 };
 </script>
 
-<style>
-#organizationPage {
-  height: 100%;
-  color: #004c45;;
-  background: #fffbf5;
-  padding-top: 6%;
+  <style>
+#orgaPage {
+  display: flex;
+  flex-direction: column;
 }
-
-#organizationBox {
-  margin: 2% 7% 4% 7%;
-  box-shadow: 1px 1px 15px grey;
-  border-radius: 16px;
+#top-image{
+  max-height: 500px; 
+  object-fit: scale-down;
+} 
+#orga-content {
+  display: grid;
+  margin: 1rem;
   text-align: left;
-  padding: 2% 6% 2% 4%;
 }
-
-#two-columns {
+#orga-title {
+  margin-bottom: 1rem;
+}
+#orga-title,
+.section-title {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+#orga-organization {
+  grid-column-start: 1;
+}
+#orga-address {
+  grid-column-start: 2;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  align-items: flex-start;
+  grid-row-end: span 2;
 }
-
-/* Name und Beschreibung */
-
-#left-column {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  width: 44%;
-  padding-top: 4%;
-}
-
-#left-column h3 {
-  color: #ff5100;
-  padding-bottom: 4%;
-}
-
-#left-column p {
-  padding-bottom: 2%;
-}
-
-/* Bild mit Themen und Button */
-
-#right-column {
-  width: 44%;
+#address-text-container {
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
 }
-
-#right-column > img {
-  height: 30%;
-  margin-bottom: 10%;
+#orga-mail {
+  grid-row-start: 2;
+  grid-column-start: 1;
 }
-
-#themen-header-logo > img {
-  margin-left: 1em;
-  width: 3em;
-  height: 3em;
+#orga-phone {
+  grid-row-start: 3;
+  grid-column-start: 1;
 }
-
-#themen-header-logo {
+#orga-website {
+  grid-row-start: 4;
+  grid-column-start: 1;
+}
+#orga-description {
+  grid-column-end: span 2;
+}
+#map {
+  grid-column-end: span 2;
+  border-radius: 10px;
+}
+#orga-tags {
+  grid-column-start: 1;
+  grid-column-end: span 2;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
-
-#to-offer-on-orga {
-  background-color: transparent;
-  color: #004c45;
-  font-family: "DM Serif Text", serif;
-  margin: 3em 0 4em 0;
-  padding: 1em 1em 1em 1em;
-  max-width: 18em;
-  font-size: 1.5em;
-}
-/* Untere Leiste */
-
-#map-and-address {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding-top: 4%;
-}
-
-#organization-map {
-  max-height: 20em;
-  max-width: 40%;
-}
-
-#organization-anschrift,
-#kontakt {
-  display: flex;
-  flex-direction: column;
-  margin: 0 4% 0 8%;
-  width: 20%;
-}
-
-#organization-anschrift h4,
-#kontakt h4,
-#right-column h4 {
-  color: #f0956a;
-  padding-bottom: 3%;
-  font-size: 2em;
-}
-
-#organization-anschrift p,
-#name-and-person p,
-#organization-contact-details p {
-  margin-bottom: 0;
-}
-
-#name-and-person {
-  margin-bottom: 10%;
-}
-/* Not in UX Design */
-
-#not-in-ux-orga {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  padding: 6% 0 4% 0;
-  text-align: center;
-}
-
-#themen-tags-orga {
-  flex-direction: row;
-  margin: 1%;
-}
-
 .chip {
-  margin: 0 0.5% 0 0.5%;
+  max-width: 90vw;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.textwrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#offerings-button {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+.v-icon {
+  color: var(--v-secondary-base) !important;
+}
+.divider {
+  grid-column-end: span 2;
+  border-color: black !important;
 }
 
-#orga-photos {
-  width: 60%;
-  margin: 2% auto 0 auto;
+@media only screen and (max-width: 380px) {
+  #orga-address,
+  #orga-mail,
+  #orga-phone,
+  #orga-website {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+  }
 }
-
-#contact-offerer {
-  border-top: dashed;
-}
-
-/* Auskommentiertes Zeug */
-
-#angebotsliste {
-  background: #004c45;
-  color: #fffbf5;
+@media only screen and (min-width: 900px) {
+  #orgaPage {
+    margin: 2rem;
+  }
+  #orga-content {
+    margin: 2rem 0 0 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+  #orga-title {
+    grid-column-end: span 2;
+  }
+  #orga-description {
+    grid-column-start: 1;
+    grid-column-end: span 4;
+  }
+  #map {
+    grid-row-start: 1;
+    grid-row-end: span 6;
+    grid-column-start: 3;
+  }
+  #orga-tags-container {
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    grid-row-start: 6;
+  }
+  #offerings-button {
+    grid-column-start: 3;
+  }
+  .divider {
+    display: none !important;
+  }
+  .divider-desktop-1 {
+    display: block !important;
+    grid-row-start: 5;
+  }
+  .divider-desktop-2 {
+    display: block !important;
+    grid-row-start: 7;
+    grid-column-end: span 4;
+  }
+  .divider-desktop-3 {
+    display: block !important;
+    grid-row-start: 9;
+    grid-column-end: span 4;
+  }
+  img {
+    border-radius: 10px;
+  }
 }
 </style>

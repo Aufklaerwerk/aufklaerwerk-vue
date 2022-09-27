@@ -1,108 +1,90 @@
 <template>
-  <!-- -->
-  <div
-    id="root-SC"
-    class="seperation-container"
-    :class="{ 'reduced-height': !isStartPage }"
-  >
-    <h3 v-if="isStartPage">mit Vorurteilen aufräumen.</h3>
-    <v-form class="actual-form">
-      <div class="form-item-left form-item">
-        <strong class="dark-orange">Themengebiet</strong>
+  <div id="container">
+    <h3 id="search-title" v-if="isStartPage">mit Vorurteilen aufräumen.</h3>
+    <div class="search-card">
+      <v-form>
         <v-autocomplete
           v-model="model.choosenTags"
           :items="tagList"
           label="Themengebiet wählen"
           multiple
           clearable
+          outlined
+          dense
         >
           >
           <template v-slot:selection="{ item, index }">
             <v-chip small v-if="index === 0">
               <span>{{ item }}</span>
             </v-chip>
-            <span
-              v-if="index === 1"
-              class="grey--text text-caption"
-              style="margin-left: 0.25rem"
-            >
+            <span v-if="index === 1" style="margin-left: 0.25rem">
               (+{{ model.choosenTags.length - 1 }})
             </span>
           </template>
         </v-autocomplete>
-      </div>
-      <div class="form-item">
-        <strong class="dark-orange">Angebotsart</strong>
         <v-autocomplete
           v-model="model.choosenOfferingTypes"
           :items="offeringTypeList"
           label="Angebotsart wählen"
           multiple
           clearable
+          outlined
+          dense
         >
           >
           <template v-slot:selection="{ item, index }">
             <v-chip small v-if="index === 0">
               <span>{{ item }}</span>
             </v-chip>
-            <span
-              v-if="index === 1"
-              class="grey--text text-caption"
-              style="margin-left: 0.25rem"
-            >
+            <span v-if="index === 1" style="margin-left: 0.25rem">
               (+{{ model.choosenOfferingTypes.length - 1 }})
             </span>
           </template>
         </v-autocomplete>
-      </div>
-      <div class="form-item">
-        <strong class="dark-orange">Standort</strong>
         <v-autocomplete
           v-model="model.city"
           :items="cityNames"
-          label="Standort wählen"
+          label="Ort"
           menu-props="closeOnContentClick"
           clearable
+          outlined
+          dense
         >
           >
           <template v-slot:selection="{ item, index }">
             <v-chip small v-if="index === 0">
               <span>{{ item }}</span>
             </v-chip>
-            <span
-              v-if="index === 1"
-              class="grey--text text-caption"
-              style="margin-left: 0.25rem"
-            >
+            <span v-if="index === 1" style="margin-left: 0.25rem">
               (+{{ model.city.length - 1 }})
             </span>
           </template>
         </v-autocomplete>
-      </div>
-      <div class="form-item form-item-right">
-        <div>
-          <strong class="dark-orange radius-text">Radius</strong>
-          <v-slider
-            v-model="model.distance"
-            :thumb-size="24"
-            :disabled="!model.city"
-            thumb-label
-            class="slider"
-          ></v-slider>
-          <v-subheader class="pl-0"> {{ model.distance }} km</v-subheader>
+        <v-slider
+          v-model="model.distance"
+          :thumb-size="24"
+          :disabled="!model.city"
+          thumb-label
+        ></v-slider>
+        <div style="margin-bottom: 1rem; text-align: left">
+          {{ model.distance }} km
         </div>
-        <v-btn @click="submit" id="form-submit-button" class="dark-orange">
+        <v-btn
+          @click="submit"
+          class="submit-button white--text pa-4"
+          color="secondary base"
+          block
+        >
           <!-- <v-btn to="/inconstruction" id="form-submit-button" class="dark-orange"> -->
-          <img src="../assets/icons/search.png" id="search-icon-form" />
+          <v-icon small class="search-icon">mdi-magnify</v-icon
+          ><strong>Suchen</strong>
         </v-btn>
-      </div>
-    </v-form>
+      </v-form>
+    </div>
   </div>
 </template>
-
 <script>
 import OfferingDataService from "../services/OfferingDataService";
-
 export default {
   name: "searchConfiguration-component",
   props: ["isStartPage", "model"],
@@ -167,129 +149,29 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#root-SC {
+<style scoped>
+#container {
   background-image: url(../assets/banners/diversityHands.jpg);
-  background-position: 0 -12vh;
-  color: white;
-  background-size: cover;
-  height: 90vh;
-  width: 100%;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-}
-
-.reduced-height {
-  height: 40vh !important;
-  justify-content: center !important;
-}
-#root-SC h3 {
-  font-family: "DM Serif Text", serif;
-  font-size: 47px;
-  margin-top: 6rem !important;
-  margin-bottom: 6rem !important;
-}
-
-.v-menu__content {
-  text-align: left;
-}
-
-.v-label--active {
-  display: none;
-}
-
-.seperation-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.actual-form {
-  display: flex;
   justify-content: center;
-  width: 100%;
-  padding: 0 4em 0 4em;
-}
-
-.form-item {
-  background-color: #fffbf5;
-  padding: 2em 2em 2em 2em;
-  border-right: 1px solid rgba(10, 10, 10, 0.1);
-  align-self: center;
   align-items: center;
-  width: 22%;
-  box-shadow: rgba(0, 0, 0, 0.172549) 0 6px 12px 0;
-  height: 11em;
+  width: 100vw;
+  background-size: cover;
+}
+#search-title {
+  margin: 2rem 0 2rem 0;
+  color: white;
+}
+.search-card {
+  background-color: white;
+  margin: 1rem;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  border-radius: 10px;
 }
 
-.form-item-left {
-  border-top-left-radius: 8%;
-  border-bottom-left-radius: 8%;
-  //padding-left: 10%;
-  //width: 25%;
-  width: 22%;
-}
-
-.form-item-right {
-  display: flex;
-  flex-direction: row;
-  border-top-right-radius: 8%;
-  border-bottom-right-radius: 8%;
-  //border-bottom-right-radius: 50%;
-  //width: 25%;
-  width: 22%;
-}
-
-.form-item > strong,
-.radius-text {
-  font-weight: 700;
-  font-size: 1.5em;
-}
-
-.radius-text {
-  margin-bottom: 1em;
-}
-
-.v-select-item {
-  width: 100%;
-}
-
-#form-submit-button {
-  width: 7em;
-  background-color: #ff5100;
-  border-radius: 50%;
-  margin-left: 20%;
-}
-
-#search-icon-form {
-  margin: 50%;
-  width: 7em;
-  background-color: #ff5100;
-  padding: 1em;
-  border-radius: 50%;
-}
-
-.slider {
-  width: 10em;
-}
-
-.v-messages {
-  min-height: 0em !important;
-}
-.v-input__slot {
-  margin-bottom: 0em !important;
-}
-
-.v-subheader {
-  height: 2em;
-}
-
-@media (max-width: 1200px) {
-  .actual-form {
-    flex-direction: column;
-  }
-  .form-item-left {
-    width: 40%;
-  }
+.search-icon {
+  margin-top: 0.125rem;
 }
 </style>

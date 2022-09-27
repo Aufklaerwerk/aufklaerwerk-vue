@@ -8,14 +8,21 @@
         ref="searchConfiguration"
       />
     </section>
+    <section id="searchConfigurationDesktop">
+      <SearchConfiguration
+        @search-offering="startNewOfferingSearch"
+        :model.sync="searchParams"
+        ref="searchConfiguration"
+      />
+    </section>
 
-    <div class="content">
-      <offeringEntry
+    <div class="offering-list">
+      <OfferingEntry
         :class="{ active: index == currentIndex }"
         v-for="(Offering, index) in Offerings"
         :key="index"
         :offering="Offering"
-      ></offeringEntry>
+      ></OfferingEntry>
       <!-- TODO: Fix this 
       <div v-if="Offerings.length = 0">
         <h4>Keine Angebote mit den ausgewählten Suchparametern</h4>
@@ -30,12 +37,14 @@ import OfferingDataService from "../services/OfferingDataService";
 import OfferingEntry from "./OfferingEntry.vue";
 import SearchConfiguration from "./SearchConfiguration.vue";
 
+
 export default {
   name: "Offerings-list",
   data() {
     return {
       Offerings: [],
       currentIndex: -1,
+      filteringFinished: false,
       searchParams: {
         city: "",
         choosenTags: "",
@@ -45,8 +54,8 @@ export default {
     };
   },
   components: {
-    OfferingEntry,
     SearchConfiguration,
+    OfferingEntry,
   },
   methods: {
     startNewOfferingSearch() {
@@ -55,9 +64,15 @@ export default {
 
     retrieveOfferings() {
       function searchFunction(searchParams) {
-        return searchParams.city ? OfferingDataService.findByCityAndDistance(searchParams.city, searchParams.distance) : OfferingDataService.getAll();
+        return searchParams.city
+          ? OfferingDataService.findByCityAndDistance(
+              searchParams.city,
+              searchParams.distance
+            )
+          : OfferingDataService.getAll();
       }
-      searchFunction(this.searchParams).then((response) => {
+      searchFunction(this.searchParams)
+        .then((response) => {
           this.Offerings = response.data;
 
           //filter by Tags
@@ -104,10 +119,54 @@ export default {
 </script>
 
 <style>
-.content {
+.offering-list {
+  display: grid;
+  margin: 1rem;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
+#searchConfiguration {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 1rem 0;
+}
+
+#searchConfigurationDesktop {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .offering-list {
+    grid-template-columns: 1fr 1fr;
+    margin: 1.5rem;
+  }
+  #searchConfiguration {
+    margin: 1.5rem;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .offering-list {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1.5rem;
+  }
+  #searchConfiguration {
+    margin: 1.5rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .offering-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 2rem;
+  }
+  #searchConfiguration {
+    margin: 2rem;
+    display: none;
+  }
+  #searchConfigurationDesktop {
+    display: block;
+  }
 }
 </style>
