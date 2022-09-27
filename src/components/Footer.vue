@@ -1,5 +1,5 @@
 <template>
-  <div id="footer" class="p-4">
+  <div id="footer">
     <div id="footer-container">
       <div id="trademark">
         <strong>&copy; 2021, Aufklärwerk</strong>
@@ -24,7 +24,7 @@
           <img src="../assets/icons/instagram.png" id="icon1" />
         </a>
         <a href="https://www.linkedin.com/company/71180590">
-          <img src="../assets/icons/linkedin.png" id="icon1" />
+          <img src="../assets/icons/linkedin.png" id="icon2" />
         </a>
       </div>
     </div>
@@ -40,38 +40,52 @@
   width: 100vw;
   color: #004c45;
   padding: 0.6em !important;
+  display: flex;
+  justify-content: center;
 }
 
 #footer-container {
   display: flex;
-  direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh 2vw 2vh 2vw;
+  width: 95vw;
+  padding: 1rem
+
 }
 
 #footer-container a {
   color: #004c45;
 }
 
-#trademark {
-  margin-right: 10vw;
-}
-
-#footer-col {
+.footer-col {
   display: flex;
   direction: row;
+  margin-top: 0.5rem !important;
 }
 
 #icon {
   height: 32px;
   width: 32px;
-  margin-left: 10vw;
+  margin-right: 0.5rem;
 }
 
 #icon1 {
   height: 32px;
   width: 32px;
-  margin-left: 1vw;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+
+}
+#icon2 {
+  height: 32px;
+  width: 32px;
+  margin-left: 0.5rem;
+}
+
+@media only screen and (min-width: 1250px) {
+  #footer-container {
+    flex-direction: row;
+  }
 }
 </style>

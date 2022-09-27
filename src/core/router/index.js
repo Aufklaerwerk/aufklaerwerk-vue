@@ -69,6 +69,7 @@ const routes = [{
     component: Offering,
     name: "Offering"
   },
+
   {
     path: "/organization/:id",
     component: Organization,

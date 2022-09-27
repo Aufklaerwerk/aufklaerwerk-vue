@@ -1,11 +1,13 @@
 <template>
   <v-app>
     <div>
-     <PageLoader />
+      <PageLoader />
       <Nav />
     </div>
     <div class="content">
-      <router-view />
+      <v-main>
+        <router-view />
+      </v-main>
     </div>
     <div class="footer">
       <Footer />
@@ -19,6 +21,9 @@ import PageLoader from "./components/PageLoader.vue";
 import Footer from "./components/Footer.vue";
 
 export default {
+  data: () => ({
+    showDrawer: false,
+  }),
   components: {
     Nav,
     PageLoader,
@@ -41,23 +46,43 @@ export default {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Lato, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #000000;
+}
 
-  display: flex;
-  flex-direction: column;
+h4 {
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+}
 
-  height: 100vh;
-  width: 100vw;
+h3 {
+  font-family: "DM Serif Text", serif;
+  font-size: 47px;
+}
+
+h5 {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: normal;
+
+}
+
+h6 {
+  font-family: "Lato",sans-serif;
+  font-size: 20px;
+  line-height: normal;
+  font-weight: bold;
+
 }
 
 p,
 li {
   font-family: "Lato", sans-serif;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 h4 {
@@ -87,10 +112,10 @@ a {
 }
 
 .akw-green {
-  color: #004c45;
+  color: var(--v-primary-base);
 }
 
 .dark-orange {
-  color: #ff5100;
+  color: var(--v-secondary-base);
 }
 </style>

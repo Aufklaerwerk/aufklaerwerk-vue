@@ -11,30 +11,33 @@
           id="searcher-process-image"
           src="../assets/flowcharts/searcher-flowchart-white.png"
         />
-        <div id="searcher-pros">
-          <h2>Gründe über Aufklärwerk zu buchen</h2>
-          <ul div="pro">
-            <li>Lokale Angebote in Ihrer Nähe</li>
-            <li>Transparenz im Buchungsprozess</li>
-            <li>
-              Angebote in Kategorien, die sie vorheher nicht bedacht haben
-            </li>
-          </ul>
-        </div>
+      </div>
+      <div id="searcher-reasons-container">
+        <h2>Gründe über Aufklärwerk zu buchen</h2>
+        <ul div="pro">
+          <li>
+            <v-icon left color="#FF5100">mdi-check</v-icon>Lokale Angebote in
+            Ihrer Nähe
+          </li>
+          <li>
+            <v-icon left color="#FF5100">mdi-check</v-icon>Transparenz im
+            Buchungsprozess
+          </li>
+          <li style="display: flex; align-items: start">
+            <v-icon left color="#FF5100">mdi-check</v-icon
+            ><span
+              >Angebote in Kategorien, die sie vorher nicht bedacht haben</span
+            >
+          </li>
+        </ul>
       </div>
     </section>
 
     <hr />
-
-    <!-- Kontaktformular -->
-    <section id="contact">
-      <ContactForm />
-    </section>
   </div>
 </template>
 
 <script>
-import ContactForm from "../components/DefaultContactForm";
 import OfferingList from "../components/OfferingList.vue";
 
 export default {
@@ -48,62 +51,74 @@ export default {
     },
   }),
   components: {
-    ContactForm,
     OfferingList,
   },
 };
 </script>
 
-<style>
+<style scoped>
 html,
 body,
+h2 {
+  margin-bottom: 1rem;
+  text-align: left;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  text-align: left;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0 !important;
+}
 #searcherPage {
   height: 100%;
   width: 100%;
   background-color: #fffbf5;
 }
 
-#searcherPage {
-  padding-top: 2em;
-}
-
-/* Searcher Process */
-
-#searcher-process-container {
+#searcher-flowchart {
+  margin: 2rem 1rem 2rem 1rem;
   display: flex;
-  flex-direction: row;
-  padding: 8em;
-}
-
-#searcher-flowchart h2 {
-  margin-bottom: 5em;
-  margin-right: auto;
-  margin-left: auto;
-  font-size: 4vh;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 #searcher-process-image {
-  margin-left: 8vw;
-  width: 32vw;
+  width: 100%;
+  box-shadow: 0 0.4em 0.8em lightgrey;
+  border-radius: 10px;
 }
+
+#searcher-reasons-container {
+  margin-top: 2rem;
+}
+
 
 #searcher-pros {
   padding: auto;
   margin: auto;
 }
 
-#searcher-flowchart ul {
-  list-style: none;
-  font-size: 2em;
-  background-position: left;
-  background-size: 3em;
-  text-align: left;
+hr {
+  display: none;
 }
 
-#searcher-flowchart li {
-  margin-bottom: 2em;
-  list-style: none;
-  background-position: left;
-  background-size: 3em;
+@media only screen and (min-width: 900px) {
+  #searcher-flowchart {
+    flex-direction: row;
+    align-items: center;
+  }
+  #searcher-process-container {
+    width: 50%;
+  }
+  #searcher-reasons-container {
+    margin: 2rem
+  }
 }
 </style>

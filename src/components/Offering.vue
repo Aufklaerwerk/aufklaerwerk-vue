@@ -1,150 +1,164 @@
 <template>
   <div>
+    <v-bottom-sheet fullscreen scrollable v-model="descriptionExpanded"
+      ><v-sheet id="expanded-description"
+        ><div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h5>Über das Angebot</h5>
+          <v-icon color="black" large @click="descriptionExpanded = false"
+            >mdi-close</v-icon
+          >
+        </div>
+        <p id="expanded-description-text">
+          {{ currentOffering.description }}
+        </p></v-sheet
+      ></v-bottom-sheet
+    >
     <div v-if="currentOffering" id="offeringPage">
-      <!-- Start Screen  -->
-
-      <div id="offeringBox">
-        <div id="offering-image-and-details">
-          <!-- Hier sind Foto und Anschrift -->
-          <img
-            id="offering-image"
-            v-if="currentOffering"
-            src="../assets/orgaLogos/statttour-logo.png"
-          />
-          <!--        :src="currentOffering.imageUrl"-->
-          <div id="offering-details">
-            <h3 id="offering-name">{{ currentOffering.name }}</h3>
-            <div id="icon-with-data" class="entry-with-gap">
-              <img src="../assets/icons/three-bars.png" />
-              <p>{{ currentOffering.organame }}</p>
+      <div id="back-to-results">
+        <v-icon color="white" large @click="$router.go(-1)"
+          >mdi-chevron-left</v-icon
+        >
+      </div>
+      <v-carousel
+        :height="carouselHeight"
+        v-model="model"
+        hide-delimiter-background
+        :show-arrows-on-hover="true"
+      >
+        <v-carousel-item
+          v-for="(item, i) in items"
+          :key="i"
+          :src="item.src"
+        ></v-carousel-item>
+      </v-carousel>
+      <div id="offering-content">
+        <h5 id="offering-title">{{ currentOffering.name }}</h5>
+        <div id="offering-organization">
+          <v-icon left>mdi-charity</v-icon>{{ currentOffering.organame }}
+        </div>
+        <div id="offering-address">
+          <v-icon left>mdi-map-marker</v-icon>
+          <div id="address-text-container">
+            <div>
+              {{ currentOffering.street }} {{ currentOffering.houseNumber }}
             </div>
-            <div class="entry-without-gap">
-              <img src="../assets/icons/location.png" />
-              <p>
-                {{ currentOffering.postcode }}
-                {{ currentOffering.city }}
-              </p>
-            </div>
-            <div class="entry-with-gap">
-              <img src="../assets/icons/blank-space.png" />
-              <p>
-                {{ currentOffering.street }}
-                {{ currentOffering.houseNumber }}
-              </p>
-            </div>
-            <div class="entry-with-gap">
-              <img src="../assets/icons/phone.png" />
-              <p>
-                {{ currentOffering.telephone }}
-              </p>
-            </div>
-            <div class="entry-with-gap">
-              <img src="../assets/icons/mail-box.png" />
-              <p>
-                {{ currentOffering.mailAdress }}
-              </p>
-            </div>
-            <div class="entry-with-gap">
-              <img src="../assets/icons/price-tag.png" />
-              <p>
-                {{ currentOffering.price }}
-              </p>
-            </div>
+            <div>{{ currentOffering.postcode }} {{ currentOffering.city }}</div>
           </div>
         </div>
-
+        <div id="offering-mail">
+          <v-icon left>mdi-email</v-icon>{{ currentOffering.mailAdress }}
+        </div>
+        <div id="offering-phone">
+          <v-icon left>mdi-phone</v-icon>{{ currentOffering.telephone }}
+        </div>
+        <div id="offering-price">
+          <v-icon left>mdi-tag</v-icon>{{ currentOffering.price }}
+        </div>
+        <v-divider class="divider divider-desktop-1" />
         <div id="offering-description">
-          <p id="offering-descr">
-              {{ currentOffering.description }}
+          <h6>Über das Angebot</h6>
+          <p style="grid-column-end: span 2">
+            <span id="offering-description-text"
+              >{{ currentOffering.description }}
+            </span>
+            <span @click="descriptionExpanded = true" id="show-more-button"
+              >Mehr anzeigen</span
+            >
           </p>
         </div>
-
-        <div id="organisation-and-map">
-          <div id="organisation-descr">
-            <h3 class="left">Organisation</h3>
-            <p class="left">
-              StattTour ist eine studentische Initiative zum besseren Verständnis für die Bedürfnisse und Probleme von Rollstuhlfahrern im Alltag. Wir bieten verschiedenste Touren mit verschiedenen Guides durch verschiedene Teile Hamburgs an. Kommt auf unsere Seite und findet mehr über uns heraus!  
-            </p>
-            <v-btn id="to-orga" @click="openOrganisation"
-              >Mehr zur Organisation</v-btn
-            >
-          </div>
-          <iframe v-if="currentOffering.city"
-            width="100%"
-            height="450"
-            style="border: 0"
-            loading="lazy"
-            allowfullscreen
-            :src="'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' + currentOffering.city.replace(' ', '+') + ',' + currentOffering.postcode.replace(' ', '+') + ',' + currentOffering.street.replace(' ', '+') + ',' + currentOffering.houseNumber.replace(' ', '+') "
-            id="map"
-          ></iframe>
+        <v-divider class="divider divider-desktop-2" />
+        <iframe
+          v-if="currentOffering.city"
+          width="100%"
+          height="300"
+          loading="lazy"
+          allowfullscreen
+          :src="
+            'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' +
+            currentOffering.city.replace(' ', '+') +
+            ',' +
+            currentOffering.postcode.replace(' ', '+') +
+            ',' +
+            currentOffering.street.replace(' ', '+') +
+            ',' +
+            currentOffering.houseNumber.replace(' ', '+')
+          "
+          id="map"
+        ></iframe>
+        <v-divider class="divider divider-desktop-3" />
+        <div id="organization-description">
+          <h6>Über die Organisation</h6>
+          <p style="grid-column-end: span 2">
+            <span id="organization-description-text"
+              >{{ orgaDescription }}
+            </span>
+            <span id="show-more-organization" @click="openOrganisation">Mehr zur Organisation</span>
+          </p>
         </div>
-
-        <!-- Ab hier kommt Beschreibung und so -->
-        <div id="not-in-ux">
-          <h2>Themenbereiche</h2>
-          <div id="themen-tags-offering">
+        <v-divider class="divider" />
+        <div id="offering-tags-container">
+          <h6 class="section-title">Themenbereiche</h6>
+          <div id="offering-tags">
             <v-chip
               class="chip"
+              small
+              color="primary lighten-1"
+              text-color="white"
               v-for="tag in currentOffering.tags"
-              :key="tag._id"
-              color="blue"
-              text-color="white"
+              :key="tag.label"
+              ><span class="textwrap">{{ tag.label }}</span></v-chip
             >
-              {{ tag.label }}
-            </v-chip>
-          </div>
-
-          <h2>Angebotstypen</h2>
-          <div id="themen-tags-offering">
-            <v-chip
-              class="chip"
-              v-for="offeringType in currentOffering.offeringTypes"
-              :key="offeringType._id"
-              color="blue"
-              text-color="white"
-            >
-              {{ offeringType.label }}
-            </v-chip>
-          </div>
-
-          <div id="offering-photos">
-            <h2>Ein paar Impressionen</h2>
-            <v-carousel v-model="model">
-              <v-carousel-item
-                v-for="(image, i) in require_imgs"
-                :key="i"
-                :src="image.src"
-                reverse-transition="fade-transition"
-                transition="fade-transition"
-              ></v-carousel-item>
-            </v-carousel>
-          </div>
-          <div>
-            <v-btn id="booking-button" to="/contact">Angebot buchen</v-btn>
           </div>
         </div>
+        <v-divider class="divider" />
+        <div id="offering-types-container">
+          <h6 class="section-title">Angebotstypen</h6>
+          <div id="offering-tags">
+            <v-chip
+              class="chip"
+              small
+              text-color="white"
+              color="primary lighten-1"
+              v-for="offeringType in currentOffering.offeringTypes"
+              :key="offeringType.label"
+              ><span class="textwrap">{{ offeringType.label }}</span></v-chip
+            >
+          </div>
+        </div>
+        <v-divider class="divider" />
+        <v-btn
+          to="/contact"
+          id="book-button"
+          class="white--text pa-4"
+          color="#FF5100"
+          block
+        >
+          <v-icon color="white" left small>mdi-calendar</v-icon
+          ><strong>Angebot Buchen</strong>
+        </v-btn>
       </div>
-
-      <!-- TODO Kontaktformular-->
     </div>
   </div>
 </template>
-
 <script>
 import OfferingDataService from "../services/OfferingDataService";
+import OrganizationDataService from '../services/OrganizationDataService';
 
 export default {
   name: "Offering",
   data() {
     return {
+      descriptionExpanded: false,
+      carouselHeight: 300,
       currentOffering: null,
-      message: "",
+      orgaDescription: "",
       model: 0,
-      a: 'require(',
-      b: ')',
-      colors: ["primary", "secondary", "yellow darken-2", "red", "orange"],
-      imageDir: "",
       items: [
         {
           src: require("../assets/offeringPictures/statttourPicture1.jpg"),
@@ -166,6 +180,18 @@ export default {
     };
   },
   methods: {
+    // Returns true if the text in the element with the given id has been cut off
+    showMoreButton(id) {
+      const element = document.getElementById(id);
+      if (
+        element &&
+        (element.offsetHeight < element.scrollHeight ||
+          element.offsetWidth < element.scrollWidth)
+      ) {
+        return true;
+      }
+      return false;
+    },
     openOrganisation() {
       this.$router.push({
         name: "Organization",
@@ -176,236 +202,232 @@ export default {
       OfferingDataService.get(id)
         .then((response) => {
           this.currentOffering = response.data;
-          console.log("Offering data: " + response.data);
-          this.imageDir = this.currentOffering.image_folder_name;
-          // Require Context erlaubt keine Variablen. Also ist die Lösung:
-          
-          //this.getImages(require.context(`../assets/orgaLogos/${imageDirectory}`, true, /\.(png|jpg|jpeg)$/))
-          
-          // nicht möglich leider. Habe noch das hier versucht: 
-          
-          // const files = fs.readdirSync("../assets/orgaLogos/statttour")
-          // Source: https://stackoverflow.com/questions/2727167/how-do-you-get-a-list-of-the-names-of-all-files-present-in-a-directory-in-node-j
-          
-          // Hat aber auch nicht geklappt. Wir müssen eigentlich nur die Filenames als Parameter in die getImages Methode packen. Dann sind wir good to go
-          // Die hardcoded Lösung unten geht.
-          this.getImages(require.context(`../assets/orgaLogos`, true, /\.(png|jpg|jpeg)$/))
+          this.getOrgaDescription(this.currentOffering.organizationId);
         })
         .catch((e) => {
           console.log(e);
         });
     },
-    updatePublished(status) {
-      var data = {
-        id: this.currentOffering.id,
-        title: this.currentOffering.title,
-        description: this.currentOffering.description,
-        published: status,
-      };
-
-      OfferingDataService.update(this.currentOffering.id, data)
-        .then((response) => {
-          this.currentOffering.published = status;
-          console.log(response.data);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+    getOrgaDescription(id) {
+      OrganizationDataService.get(id).then((response) => {
+        this.orgaDescription = response.data.description;
+      })
     },
-
-    updateOffering() {
-      OfferingDataService.update(this.currentOffering.id, this.currentOffering)
-        .then((response) => {
-          console.log(response.data);
-          this.message = "The Offering was updated successfully!";
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-
-    deleteOffering() {
-      OfferingDataService.delete(this.currentOffering.id)
-        .then((response) => {
-          console.log(response.data);
-          this.$router.push({ name: "Offerings" });
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    },
-    getImages(path) {
-      var imgs = {}
-      path.keys().forEach(key => (imgs[key] = path(key)))
-      for (var imagepath in imgs) {
-        if (imagepath.startsWith("./" + this.imageDir + "/")) {
-          this.require_imgs.push({
-            src: require(`../assets/orgaLogos${imagepath.substr(1)}`)
-            }
-          )
-        }
-      }
-      console.log("Require Images: " + this.require_imgs)
+    onResize() {
+      this.carouselHeight =
+        window.innerWidth > 1200 ? 600 : window.innerWidth / 2;
     },
   },
   mounted() {
-    this.message = "";
-    console.log("übergebener Parameter: " + this.$route.params.id);
     this.getOffering(this.$route.params.id);
+  },
+  updated() {
+    if (this.showMoreButton("offering-description-text")) {
+      document.getElementById("show-more-button").style.display = "block";
+    }
+  },
+  created() {
+    this.carouselHeight =
+      window.innerWidth > 1200 ? 600 : window.innerWidth / 2;
+    window.addEventListener("resize", this.onResize);
   },
 };
 </script>
-
-<style>
+<style lang="scss" scoped>
+p {
+  margin-bottom: 0 !important;
+}
+.v-icon {
+  color: var(--v-secondary-base) !important;
+}
+.divider {
+  grid-column-end: span 2;
+  border-color: black !important;
+}
+#back-to-results {
+  position: absolute;
+  z-index: 1;
+  margin: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: var(--v-secondary-base);
+}
 #offeringPage {
-  height: 100%;
-  color: #004c45;
-  padding-top: 6%;
-  background: #fffbf5;
-}
-
-#offeringBox {
-  margin: 2% 7% 4% 7%;
-  box-shadow: 1px 1px 15px grey;
-  border-radius: 16px;
-  padding: 2% 6% 2% 4%;
-}
-
-#offering-image-and-details {
-  margin-top: 3em;
-  display: flex;
-  flex-direction: row;
-  color: #004c45;
-  background: #fffbf5;
-  margin-left: 4%;
-}
-
-#offering-image {
-  width: 30vw;
-  height: 20%;
-}
-
-#offering-name {
-  color: #ff5100;
-  padding-bottom: 1em;
-  text-align: left;
-  font-size: 2em;
-}
-
-#offering-details {
   display: flex;
   flex-direction: column;
-  margin-left: 16%;
 }
-
-#offering-descr {
-  padding: 4em 2em 0em 2em;
-  margin-top: 3%;
-  white-space: pre-wrap;
-}
-
-#offering-descr-middle {
-  padding: 0em 2em;
-}
-
-#offering-desc-end {
-  padding: 0em 2em 4em 2em;
-}
-
-.entry-with-gap,
-.entry-without-gap {
+#offering-content {
+  display: grid;
+  margin: 1rem;
   text-align: left;
+}
+#offering-title {
+  margin-bottom: 1rem;
+}
+#offering-title,
+.section-title {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+#offering-organization {
+  grid-column-start: 1;
+}
+#offering-address {
+  grid-column-start: 2;
+  grid-row-end: span 2;
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
 }
-
-.entry-with-gap {
-  padding-bottom: 1%;
-}
-
-.entry-with-gap img {
-  width: 4%;
-}
-
-.entry-with-gap p,
-.entry-without-gap p {
-  padding-left: 2%;
-}
-
-#offering-details p {
-  text-align: left;
-  margin-bottom: 0px;
-}
-
-#pro-list {
-  text-align: left;
-  padding-left: 10%;
-  margin-top: 2%;
-}
-/* Organisation and Map */
-
-#organisation-and-map {
+#address-text-container {
   display: flex;
-  flex-direction: row;
-  padding: 2% 0 6% 0;
+  flex-direction: column;
 }
-
-#organisation-descr h3 {
-  margin-bottom: 4%;
-  color: #ff5100;
+#offering-mail {
+  grid-column-start: 1;
 }
-
-#to-orga {
-  background: transparent;
-  color: #004c45;
-  font-size: 1.2em;
-  font-family: "DM Serif Text", serif;
-  margin: 1em;
-  padding: 1.4em;
+#offering-phone {
+  grid-column-start: 1;
 }
-
-.left {
-  text-align: left;
+#offering-price {
+  grid-column-start: 2;
 }
-
+#offering-description,
+#organization-description {
+  grid-column-end: span 2;
+}
+#offering-description-text,
+#organization-description-text {
+  line-height: normal;
+  overflow: clip;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+#show-more-button {
+  cursor: pointer;
+  display: none;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+#show-more-organization {
+  cursor: pointer;
+  text-decoration: underline;
+  display: block;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
 #map {
-  flex-shrink: 0.6;
-  max-height: 26em;
-  padding: 2% 0 0 4%;
+  grid-column-end: span 2;
+  border-radius: 10px;
 }
-/* Not in UX Design */
-
-#not-in-ux {
-  margin: auto;
+#offering-tags,
+#offering-types {
+  grid-column-start: 1;
+  grid-column-end: span 2;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+}
+.chip {
+  max-width: 90vw;
+  margin: 0 0.5rem 0.5rem 0;
+}
+.textwrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#book-button {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+#expanded-description {
+  text-align: left;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+#expanded-description-text {
+  margin-top: 1rem;
+  white-space: pre-line;
+}
+@media only screen and (max-width: 380px) {
+  #offering-organization,
+  #offering-address,
+  #offering-mail,
+  #offering-phone,
+  #offering-price {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+  }
+}
+@media only screen and (min-width: 900px) {
+  #offeringPage {
+    margin: 2rem;
+  }
+  #offering-content {
+    margin: 2rem 0 0 0;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+  }
+  #offering-title {
+    grid-column-end: span 2;
+  }
+  #offering-description {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+  }
+
+  #offering-description-text,
+#organization-description-text {
+  -webkit-line-clamp: 8;
+  line-clamp: 8;
 }
 
-#themen-tags-offering {
-  flex-direction: row;
-  margin: 1%;
-}
+  #organization-description {
+    grid-column-start: 3;
+  }
+  #map {
+    grid-row-start: 1;
+    grid-row-end: span 6;
+    grid-column-start: 3;
+  }
+  #offering-tags-container {
+    grid-column-start: 1;
+    grid-column-end: span 1;
+    grid-row-start: 6;
+  }
+  #offering-types-container {
+    grid-column-start: 2;
+    grid-column-end: span 1;
+    grid-row-start: 6;
+  }
+  #book-button {
+    grid-column-start: 3;
+  }
+  
 
-#offering-types-offering {
-  flex-direction: row;
-}
-
-#offering-photos {
-  width: 60%;
-  margin: 1% auto 0 auto;
-}
-
-#booking-button {
-  min-width: 20%;
-  color: #fffbf5;
-  font-size: 1.5em;
-  margin: 6em 0 2em 0;
-  padding: 1.4em;
-  font-family: "DM Serif Text", serif;
-  background-color: #004c45;
-}
-
-#contact-offering {
-  border-top: dashed;
+  .divider {
+    display: none;
+  }
+  .divider-desktop-1 {
+    display: block;
+    grid-row-start: 5;
+  }
+  .divider-desktop-2 {
+    display: block;
+    grid-row-start: 7;
+    grid-column-end: span 4;
+  }
+  .divider-desktop-3 {
+    display: block;
+    grid-row-start: 9;
+    grid-column-end: span 4;
+  }
+  .v-carousel {
+    border-radius: 10px;
+  }
 }
 </style>
