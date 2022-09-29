@@ -40,10 +40,10 @@
       <div id="offering-content">
         <h5 id="offering-title">{{ currentOffering.name }}</h5>
         <div id="offering-organization">
-          <v-icon left>mdi-charity</v-icon>{{ currentOffering.organame }}
+          <v-icon class="colored-icon" left>mdi-charity</v-icon>{{ currentOffering.organame }}
         </div>
         <div id="offering-address">
-          <v-icon left>mdi-map-marker</v-icon>
+          <v-icon class="colored-icon" left>mdi-map-marker</v-icon>
           <div id="address-text-container">
             <div>
               {{ currentOffering.street }} {{ currentOffering.houseNumber }}
@@ -52,13 +52,13 @@
           </div>
         </div>
         <div id="offering-mail">
-          <v-icon left>mdi-email</v-icon>{{ currentOffering.mailAdress }}
+          <v-icon class="colored-icon" left>mdi-email</v-icon>{{ currentOffering.mailAdress }}
         </div>
         <div id="offering-phone">
-          <v-icon left>mdi-phone</v-icon>{{ currentOffering.telephone }}
+          <v-icon class="colored-icon" left>mdi-phone</v-icon>{{ currentOffering.telephone }}
         </div>
         <div id="offering-price">
-          <v-icon left>mdi-tag</v-icon>{{ currentOffering.price }}
+          <v-icon class="colored-icon" left>mdi-tag</v-icon>{{ currentOffering.price }}
         </div>
         <v-divider class="divider divider-desktop-1" />
         <div id="offering-description">
@@ -236,7 +236,7 @@ export default {
 p {
   margin-bottom: 0 !important;
 }
-.v-icon {
+.colored-icon {
   color: var(--v-secondary-base) !important;
 }
 .divider {

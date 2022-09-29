@@ -1,5 +1,10 @@
 <template>
   <div v-if="currentOrganization" id="orgaPage">
+    <div id="back-to-results">
+        <v-icon color="white" large @click="$router.go(-1)"
+          >mdi-chevron-left</v-icon
+        >
+      </div>
     <img
       src="../assets/orgaLogos/statttour-logo.png"
       id="top-image"
@@ -7,7 +12,7 @@
     <div id="orga-content">
       <h5 id="orga-title">{{ currentOrganization.name }}</h5>
       <div id="orga-address">
-        <v-icon left>mdi-map-marker</v-icon>
+        <v-icon class="colored-icon" left>mdi-map-marker</v-icon>
         <div id="address-text-container">
           <div>
             {{ currentOrganization.street }}
@@ -19,13 +24,13 @@
         </div>
       </div>
       <div id="orga-mail">
-        <v-icon left>mdi-email</v-icon>{{ currentOrganization.mailAdress }}
+        <v-icon class="colored-icon" left>mdi-email</v-icon>{{ currentOrganization.mailAdress }}
       </div>
       <div id="orga-phone">
-        <v-icon left>mdi-phone</v-icon>{{ currentOrganization.telefon }}
+        <v-icon class="colored-icon" left>mdi-phone</v-icon>{{ currentOrganization.telefon }}
       </div>
       <div id="orga-website">
-        <v-icon left>mdi-web</v-icon
+        <v-icon class="colored-icon" left>mdi-web</v-icon
         ><a :href="currentOrganization.websiteURL">{{
           currentOrganization.websiteURL
         }}</a>
@@ -160,6 +165,14 @@ export default {
   display: flex;
   flex-direction: column;
 }
+#back-to-results {
+  position: absolute;
+  z-index: 1;
+  margin: 1rem;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: var(--v-secondary-base);
+}
 #top-image{
   max-height: 500px; 
   object-fit: scale-down;
@@ -215,6 +228,9 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
+.colored-icon {
+  color: var(--v-secondary-base) !important;
+}
 .chip {
   max-width: 90vw;
   margin: 0 0.5rem 0.5rem 0;
@@ -227,9 +243,6 @@ export default {
 #offerings-button {
   grid-column-start: 1;
   grid-column-end: span 2;
-}
-.v-icon {
-  color: var(--v-secondary-base) !important;
 }
 .divider {
   grid-column-end: span 2;
