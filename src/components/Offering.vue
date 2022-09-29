@@ -137,7 +137,6 @@
           id="book-button"
           class="white--text pa-4"
           color="#FF5100"
-          block
         >
           <v-icon color="white" left small>mdi-calendar</v-icon
           ><strong>Angebot Buchen</strong>
@@ -406,6 +405,7 @@ p {
   }
   #book-button {
     grid-column-start: 3;
+
   }
   
 

@@ -76,7 +76,6 @@
         id="offerings-button"
         class="white--text pa-4"
         color="secondary base"
-        block
         ><strong>Zu den Angeboten</strong>
       </v-btn>
     </div>
