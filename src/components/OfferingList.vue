@@ -37,7 +37,6 @@ import OfferingDataService from "../services/OfferingDataService";
 import OfferingEntry from "./OfferingEntry.vue";
 import SearchConfiguration from "./SearchConfiguration.vue";
 
-
 export default {
   name: "Offerings-list",
   data() {
@@ -63,42 +62,14 @@ export default {
     },
 
     retrieveOfferings() {
-      function searchFunction(searchParams) {
-        return searchParams.city
-          ? OfferingDataService.findByCityAndDistance(
-              searchParams.city,
-              searchParams.distance
-            )
-          : OfferingDataService.getAll();
-      }
-      searchFunction(this.searchParams)
-        .then((response) => {
-          this.Offerings = response.data;
-
-          //filter by Tags
-          if (this.searchParams.choosenTags.length > 0) {
-            this.Offerings = this.Offerings.filter((offeringEntry) =>
-              offeringEntry.tags.some((tag) => {
-                return this.searchParams.choosenTags.includes(tag.label);
-              })
-            );
-          }
-
-          //filter by Offering Types
-          if (this.searchParams.choosenOfferingTypes.length > 0) {
-            this.Offerings = this.Offerings.filter((offeringEntry) =>
-              offeringEntry.offeringTypes.some((offeringType) => {
-                return this.searchParams.choosenOfferingTypes.includes(
-                  offeringType.label
-                );
-              })
-            );
-          }
-          return this.Offerings;
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+      OfferingDataService.getAllPublished(
+        this.searchParams.city,
+        this.searchParams.distance,
+        this.searchParams.choosenTags,
+        this.searchParams.choosenOfferingTypes
+      ).then((response) => {
+        this.Offerings = response.data;
+      });
     },
   },
   mounted() {

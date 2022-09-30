@@ -1,8 +1,24 @@
 import http from "../http-common";
 
 class OfferingDataService {
+  getAllPublished(city, distance, tags, offeringTypes) {
+    let queryString = "?"
+    if (city) {
+      queryString += "city=" + city + "&";
+      if (distance) {
+        queryString += "distance=" + distance + "&";
+      }
+    }
+    if (tags) {
+      queryString += "tags=" + JSON.stringify(tags) + "&";
+    }
+    if (offeringTypes) {
+      queryString += "offeringTypes=" + JSON.stringify(offeringTypes);
+    }
+    return http.get("/offerings" + queryString);
+  }
   getAll() {
-    return http.get("/offerings");
+    return http.get("/offerings/all");
   }
 
   get(id) {
@@ -40,11 +56,6 @@ class OfferingDataService {
   getAllCities() {
     return http.get("/offerings/cities");
   }
-
-  findByCityAndDistance(city, distance){
-    return http.get(`/offerings/${city}/${distance}`)
-  }
-
 }
 
 export default new OfferingDataService();
