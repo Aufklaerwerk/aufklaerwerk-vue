@@ -257,6 +257,7 @@ p {
 }
 #offering-content {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 1rem;
   text-align: left;
 }
@@ -321,6 +322,10 @@ p {
 #map {
   grid-column-end: span 2;
   border-radius: 10px;
+}
+#offering-tags-container,
+#offering-types-container {
+  grid-column-end: span 2;
 }
 #offering-tags,
 #offering-types {
