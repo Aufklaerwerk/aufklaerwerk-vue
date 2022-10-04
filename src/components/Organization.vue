@@ -49,16 +49,7 @@
         height="300"
         loading="lazy"
         allowfullscreen
-        :src="
-          'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' +
-          currentOrganization.city.replace(' ', '+') +
-          ',' +
-          currentOrganization.postcode.replace(' ', '+') +
-          ',' +
-          currentOrganization.street.replace(' ', '+') +
-          ',' +
-          currentOrganization.houseNumber.replace(' ', '+')
-        "
+        :src="setGoogleMapString()"
         id="map"
       ></iframe>
       <v-divider class="divider divider-desktop-3"></v-divider>
@@ -150,6 +141,24 @@ export default {
         .catch((e) => {
           console.log(e);
         });
+    },
+    setGoogleMapString() {
+      let googleMapString =
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=";
+      if (this.currentOrganization.city)
+        googleMapString += this.currentOrganization.city.replace(" ", "+") + ",";
+
+      if (this.currentOrganization.postcode) {
+        googleMapString +=
+          this.currentOrganization.postcode.replace(" ", "+") + ",";
+      }
+      if (this.currentOrganization.street) {
+        googleMapString += this.currentOrganization.street.replace(" ", "+") + ",";
+      }
+      if (this.currentOrganization.houseNumber) {
+        googleMapString += this.currentOrganization.houseNumber.replace(" ", "+");
+      }
+      return googleMapString;
     },
   },
   mounted() {
