@@ -40,7 +40,8 @@
       <div id="offering-content">
         <h5 id="offering-title">{{ currentOffering.name }}</h5>
         <div id="offering-organization">
-          <v-icon class="colored-icon" left>mdi-charity</v-icon>{{ currentOffering.organame }}
+          <v-icon class="colored-icon" left>mdi-charity</v-icon
+          >{{ currentOffering.organame }}
         </div>
         <div id="offering-address">
           <v-icon class="colored-icon" left>mdi-map-marker</v-icon>
@@ -52,13 +53,16 @@
           </div>
         </div>
         <div id="offering-mail">
-          <v-icon class="colored-icon" left>mdi-email</v-icon>{{ currentOffering.mailAdress }}
+          <v-icon class="colored-icon" left>mdi-email</v-icon
+          >{{ currentOffering.mailAdress }}
         </div>
         <div id="offering-phone">
-          <v-icon class="colored-icon" left>mdi-phone</v-icon>{{ currentOffering.telephone }}
+          <v-icon class="colored-icon" left>mdi-phone</v-icon
+          >{{ currentOffering.telephone }}
         </div>
         <div id="offering-price">
-          <v-icon class="colored-icon" left>mdi-tag</v-icon>{{ currentOffering.price }}
+          <v-icon class="colored-icon" left>mdi-tag</v-icon
+          >{{ currentOffering.price }}
         </div>
         <v-divider class="divider divider-desktop-1" />
         <div id="offering-description">
@@ -79,16 +83,7 @@
           height="300"
           loading="lazy"
           allowfullscreen
-          :src="
-            'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' +
-            currentOffering.city.replace(' ', '+') +
-            ',' +
-            currentOffering.postcode.replace(' ', '+') +
-            ',' +
-            currentOffering.street.replace(' ', '+') +
-            ',' +
-            currentOffering.houseNumber.replace(' ', '+')
-          "
+          :src="setGoogleMapString()"
           id="map"
         ></iframe>
         <v-divider class="divider divider-desktop-3" />
@@ -98,7 +93,9 @@
             <span id="organization-description-text"
               >{{ orgaDescription }}
             </span>
-            <span id="show-more-organization" @click="openOrganisation">Mehr zur Organisation</span>
+            <span id="show-more-organization" @click="openOrganisation"
+              >Mehr zur Organisation</span
+            >
           </p>
         </div>
         <v-divider class="divider" />
@@ -147,7 +144,7 @@
 </template>
 <script>
 import OfferingDataService from "../services/OfferingDataService";
-import OrganizationDataService from '../services/OrganizationDataService';
+import OrganizationDataService from "../services/OrganizationDataService";
 
 export default {
   name: "Offering",
@@ -175,7 +172,7 @@ export default {
           src: require("../assets/offeringPictures/statttourRoute.png"),
         },
       ],
-      require_imgs : [],
+      require_imgs: [],
     };
   },
   methods: {
@@ -192,10 +189,14 @@ export default {
       return false;
     },
     openOrganisation() {
-      this.$router.push({
-        name: "Organization",
-        params: { id: this.currentOffering.organizationId },
-      });
+      if (this.currentOffering.organizationId) {
+        this.$router.push({
+          name: "Organization",
+          params: { id: this.currentOffering.organizationId },
+        });
+      } else {
+        alert("Hier ist leider noch keine Organisation hinterlegt.");
+      }
     },
     getOffering(id) {
       OfferingDataService.get(id)
@@ -210,11 +211,27 @@ export default {
     getOrgaDescription(id) {
       OrganizationDataService.get(id).then((response) => {
         this.orgaDescription = response.data.description;
-      })
+      });
     },
     onResize() {
       this.carouselHeight =
         window.innerWidth > 1200 ? 600 : window.innerWidth / 2;
+    },
+    setGoogleMapString() {
+      let googleMapString =
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=" +
+        this.currentOffering.city.replace(" ", "+") +
+        ",";
+
+      if (this.currentOffering.postcode) {
+        googleMapString +=
+          this.currentOffering.postcode.replace(" ", "+") + ",";
+      }
+      googleMapString +=
+        this.currentOffering.street.replace(" ", "+") +
+        "," +
+        this.currentOffering.houseNumber.replace(" ", "+");
+      return googleMapString;
     },
   },
   mounted() {
@@ -385,10 +402,10 @@ p {
   }
 
   #offering-description-text,
-#organization-description-text {
-  -webkit-line-clamp: 8;
-  line-clamp: 8;
-}
+  #organization-description-text {
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
+  }
 
   #organization-description {
     grid-column-start: 3;
@@ -410,9 +427,7 @@ p {
   }
   #book-button {
     grid-column-start: 3;
-
   }
-  
 
   .divider {
     display: none;
