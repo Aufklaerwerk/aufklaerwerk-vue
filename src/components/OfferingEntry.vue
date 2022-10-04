@@ -59,17 +59,12 @@
 <script>
 export default {
   name: "offering-component",
-  data() {
-    return {
-      offeringId: this.offering.id,
-    };
-  },
   props: ["offering"],
   methods: {
     openOfferingPage() {
       this.$router.push({
         name: "Offering",
-        params: { id: this.offeringId },
+        params: { id: this.offering.id },
       });
     },
   },
