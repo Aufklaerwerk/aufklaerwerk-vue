@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="currentOffering">
     <v-bottom-sheet fullscreen scrollable v-model="descriptionExpanded"
       ><v-sheet id="expanded-description"
         ><div
@@ -19,7 +19,7 @@
         </p></v-sheet
       ></v-bottom-sheet
     >
-    <div v-if="currentOffering" id="offeringPage">
+    <div id="offeringPage">
       <div id="back-to-results">
         <v-icon color="white" large @click="$router.go(-1)"
           >mdi-chevron-left</v-icon
