@@ -78,7 +78,7 @@
         </div>
         <v-divider class="divider divider-desktop-2" />
         <iframe
-          v-if="currentOffering.city"
+          v-if="currentOffering.city || currentOffering.postcode"
           width="100%"
           height="300"
           loading="lazy"
@@ -219,18 +219,20 @@ export default {
     },
     setGoogleMapString() {
       let googleMapString =
-        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=" +
-        this.currentOffering.city.replace(" ", "+") +
-        ",";
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=";
+      if (this.currentOffering.city)
+        googleMapString += this.currentOffering.city.replace(" ", "+") + ",";
 
       if (this.currentOffering.postcode) {
         googleMapString +=
           this.currentOffering.postcode.replace(" ", "+") + ",";
       }
-      googleMapString +=
-        this.currentOffering.street.replace(" ", "+") +
-        "," +
-        this.currentOffering.houseNumber.replace(" ", "+");
+      if (this.currentOffering.street) {
+        googleMapString += this.currentOffering.street.replace(" ", "+") + ",";
+      }
+      if (this.currentOffering.houseNumber) {
+        googleMapString += this.currentOffering.houseNumber.replace(" ", "+");
+      }
       return googleMapString;
     },
   },
