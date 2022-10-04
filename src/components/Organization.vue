@@ -1,14 +1,11 @@
 <template>
   <div v-if="currentOrganization" id="orgaPage">
     <div id="back-to-results">
-        <v-icon color="white" large @click="$router.go(-1)"
-          >mdi-chevron-left</v-icon
-        >
-      </div>
-    <img
-      src="../assets/orgaLogos/statttour-logo.png"
-      id="top-image"
-    />
+      <v-icon color="white" large @click="$router.go(-1)"
+        >mdi-chevron-left</v-icon
+      >
+    </div>
+    <img src="../assets/orgaLogos/statttour-logo.png" id="top-image" />
     <div id="orga-content">
       <h5 id="orga-title">{{ currentOrganization.name }}</h5>
       <div id="orga-address">
@@ -24,10 +21,12 @@
         </div>
       </div>
       <div id="orga-mail">
-        <v-icon class="colored-icon" left>mdi-email</v-icon>{{ currentOrganization.mailAdress }}
+        <v-icon class="colored-icon" left>mdi-email</v-icon
+        >{{ currentOrganization.mailAdress }}
       </div>
       <div id="orga-phone">
-        <v-icon class="colored-icon" left>mdi-phone</v-icon>{{ currentOrganization.telefon }}
+        <v-icon class="colored-icon" left>mdi-phone</v-icon
+        >{{ currentOrganization.telefon }}
       </div>
       <div id="orga-website">
         <v-icon class="colored-icon" left>mdi-web</v-icon
@@ -49,16 +48,7 @@
         height="300"
         loading="lazy"
         allowfullscreen
-        :src="
-          'https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=' +
-          currentOrganization.city.replace(' ', '+') +
-          ',' +
-          currentOrganization.postcode.replace(' ', '+') +
-          ',' +
-          currentOrganization.street.replace(' ', '+') +
-          ',' +
-          currentOrganization.houseNumber.replace(' ', '+')
-        "
+        :src="setGoogleMapString()"
         id="map"
       ></iframe>
       <v-divider class="divider divider-desktop-3"></v-divider>
@@ -151,6 +141,29 @@ export default {
           console.log(e);
         });
     },
+    setGoogleMapString() {
+      let googleMapString =
+        "https://www.google.com/maps/embed/v1/place?key=AIzaSyC1eu-m_SHUlD5IZ5JkkvMazRHMAgC02jc&q=";
+      if (this.currentOrganization.city)
+        googleMapString +=
+          this.currentOrganization.city.replace(" ", "+") + ",";
+
+      if (this.currentOrganization.postcode) {
+        googleMapString +=
+          this.currentOrganization.postcode.replace(" ", "+") + ",";
+      }
+      if (this.currentOrganization.street) {
+        googleMapString +=
+          this.currentOrganization.street.replace(" ", "+") + ",";
+      }
+      if (this.currentOrganization.houseNumber) {
+        googleMapString += this.currentOrganization.houseNumber.replace(
+          " ",
+          "+"
+        );
+      }
+      return googleMapString;
+    },
   },
   mounted() {
     this.message = "";
@@ -173,12 +186,13 @@ export default {
   display: inline-block;
   background-color: var(--v-secondary-base);
 }
-#top-image{
-  max-height: 500px; 
+#top-image {
+  max-height: 500px;
   object-fit: scale-down;
-} 
+}
 #orga-content {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 1rem;
   text-align: left;
 }
@@ -227,6 +241,9 @@ export default {
   grid-column-end: span 2;
   display: flex;
   flex-wrap: wrap;
+}
+#orga-tags-container {
+  grid-column-end: span 2;
 }
 .colored-icon {
   color: var(--v-secondary-base) !important;
