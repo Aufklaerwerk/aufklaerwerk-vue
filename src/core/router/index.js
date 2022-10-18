@@ -12,11 +12,22 @@ import Impressum from "../../pages/informationpages/Impressum.vue";
 import Datasec from "../../pages/informationpages/Datenschutz.vue";
 import inConstruction from "../../pages/InConstruction.vue";
 import Offering from "../../components/Offering.vue"
-import Organization from "../../components/Organization.vue"
+import Organization from "../../components/Organization.vue";
+import AdminPage from "../../pages/AdminPage.vue";
+import AdminOffering from "../../components/Admin/AdminOffering.vue";
 
 const routes = [{
     path: "/",
     component: LandingPage
+  },
+  {
+    path: "/admin",
+    component: AdminPage
+  },
+  {
+    path: "/admin/offering/:id",
+    component: AdminOffering,
+    name: "AdminOffering"
   },
   {
     path: "/searcher",
