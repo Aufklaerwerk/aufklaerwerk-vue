@@ -21,6 +21,7 @@ const routes = [{
     component: LandingPage
   },
   {
+    name: "Admin",
     path: "/admin",
     component: AdminPage
   },

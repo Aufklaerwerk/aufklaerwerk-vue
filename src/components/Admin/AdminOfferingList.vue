@@ -10,6 +10,13 @@
       @click:row="offeringClicked"
     >
     </v-data-table>
+    <v-btn
+      color="green"
+      class="mt-4"
+      style="color: white; font-weight: bold"
+      @click="newOffering"
+      >Neues Angebot erstellen</v-btn
+    >
   </v-container>
 </template>
 
@@ -26,6 +33,12 @@ export default {
     };
   },
   methods: {
+    newOffering() {
+      this.$router.push({
+        name: "AdminOffering",
+        params: { id: "new" },
+      });
+    },
     offeringClicked(item) {
       this.$router.push({
         name: "AdminOffering",

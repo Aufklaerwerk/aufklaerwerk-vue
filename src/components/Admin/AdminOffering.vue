@@ -6,6 +6,44 @@
         label="Beschreibung"
         v-model="currentOffering.description"
       ></v-textarea>
+      <v-textarea
+        label="Kurzbeschreibung"
+        v-model="currentOffering.carddescription"
+      ></v-textarea>
+      <v-row>
+        <v-col>
+          <v-text-field
+            label="E-Mail Adresse"
+            v-model="currentOffering.mailAdress"
+          ></v-text-field>
+        </v-col>
+        <v-col
+          ><v-autocomplete
+            v-model="currentOrganization"
+            @change="changeOrganization()"
+            :items="organizations"
+            ><template slot="selection" slot-scope="data">
+              {{ data.item.name }}
+            </template>
+            <template slot="item" slot-scope="data">
+              {{ data.item.name }}
+            </template></v-autocomplete
+          ></v-col
+        >
+      </v-row>
+      <v-row>
+        <v-col>
+          <v-text-field
+            label="Telefonnummer"
+            v-model="currentOffering.telephone"
+          ></v-text-field> </v-col
+        ><v-col>
+          <v-text-field
+            label="Preis"
+            v-model="currentOffering.price"
+          ></v-text-field
+        ></v-col>
+      </v-row>
       <v-row>
         <v-col>
           <h6>Themengebiete</h6>
@@ -67,7 +105,7 @@
         <v-img
           v-for="(imageFile, index) in imageFiles"
           :key="index"
-          :src="getUploadedImageURL(index)"
+          :src="imageFile"
           max-width="200px"
         >
           <div id="delete-image-button" @click="deleteUploadedImage(index)">
@@ -86,7 +124,6 @@
           ><v-col></v-col
         ></v-row>
       </v-row>
-      <v-btn id="upload_widget">Upload image</v-btn>
       <v-row>
         <v-col
           ><v-switch
@@ -112,6 +149,14 @@
         style="color: white; font-weight: bold"
         >Zurücksetzen</v-btn
       >
+      <v-btn
+        v-if="$route.params.id !== 'new'"
+        @click="deleteOffering()"
+        class="mr-4"
+        color="red"
+        style="color: white; font-weight: bold"
+        ><v-icon>mdi-delete</v-icon></v-btn
+      >
     </v-form>
     <div>{{ currentOffering }}</div>
     <div>{{ originalOffering }}</div>
@@ -119,57 +164,60 @@
 </template>
 <script>
 import OfferingDataService from "../../services/OfferingDataService";
+import OrganizationDataService from "../../services/OrganizationDataService";
 export default {
   data() {
     return {
+      currentOrganization: {},
       currentFile: null,
       imageFiles: [],
       currentOffering: [],
       originalOffering: [],
-      base64images: [],
+      organizations: [],
     };
   },
   mounted() {
     this.getOffering(this.$route.params.id);
-
-    var myWidget = window.cloudinary.createUploadWidget(
-      {
-        cloudName: "dygrsbi9x",
-        uploadPreset: "my_preset",
-      },
-      (error, result) => {
-        if (!error && result && result.event === "success") {
-          console.log("Done! Here is the image info: ", result.info);
-        }
-      }
-    );
-
-    document.getElementById("upload_widget").addEventListener(
-      "click",
-      function () {
-        myWidget.open();
-      },
-      false
-    );
   },
   methods: {
-    getBase64(file) {
-      var reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.base64images.push(reader.result);
-      };
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
+    changeOrganization() {
+      this.currentOffering.organizationId = this.currentOrganization.id;
+      this.currentOffering.organame = this.currentOrganization.name;
+    },
+    retrieveOrganizations() {
+      OrganizationDataService.getAll()
+        .then((response) => {
+          this.organizations = response.data;
+          this.currentOrganization = this.organizations.find(
+            (el) => el.id === this.currentOffering.organizationId
+          );
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    deleteOffering() {
+      if (
+        prompt(
+          "Willst du dieses Angebot wirklich löschen? Tippe 'JA' ein, um zu bestätigen."
+        ) === "JA"
+      ) {
+        OfferingDataService.delete(this.$route.params.id);
+        this.$router.push({ name: "Admin" });
+      }
     },
     addFile() {
-      this.imageFiles.push(this.currentFile);
-      this.getBase64(this.currentFile);
-      this.currentFile = null;
-    },
-    getUploadedImageURL(index) {
-      return URL.createObjectURL(this.imageFiles[index]);
+      if (this.currentFile) {
+        var reader = new FileReader();
+        reader.readAsDataURL(this.currentFile);
+        reader.onload = () => {
+          this.imageFiles.push(reader.result);
+          this.currentFile = null;
+        };
+        reader.onerror = function (error) {
+          console.log("Error: ", error);
+        };
+      }
     },
     deleteUploadedImage(index) {
       if (confirm("Willst du dieses Bild wirklich löschen?")) {
@@ -184,15 +232,22 @@ export default {
       }
     },
     saveChanges() {
-      this.currentOffering.images = this.base64images;
+      this.currentOffering.images = this.imageFiles;
       console.log(this.currentOffering);
-      OfferingDataService.create(this.currentOffering);
+      if (this.$route.params.id === "new") {
+        console.log("New");
+        OfferingDataService.create(this.currentOffering);
+      } else {
+        console.log("Update");
+        OfferingDataService.update(this.$route.params.id, this.currentOffering);
+      }
     },
     reset() {
       if (confirm("Willst du deine Änderungen zurücksetzen?")) {
         this.currentOffering = JSON.parse(
           JSON.stringify(this.originalOffering)
         );
+        this.imageFiles = [];
       }
     },
     deleteTag(index) {
@@ -234,6 +289,7 @@ export default {
       if (id === "new") {
         this.currentOffering = {
           imageUrls: [],
+          images: [],
           name: "",
           tags: [],
           offeringTypes: [],
@@ -252,6 +308,7 @@ export default {
             this.currentOffering = JSON.parse(JSON.stringify(response.data));
             this.currentOffering.deletedImages = [];
             this.originalOffering = JSON.parse(JSON.stringify(response.data));
+            this.retrieveOrganizations();
           })
           .catch((e) => {
             console.log(e);
