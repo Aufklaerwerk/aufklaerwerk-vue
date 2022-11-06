@@ -233,13 +233,25 @@ export default {
     },
     saveChanges() {
       this.currentOffering.images = this.imageFiles;
-      console.log(this.currentOffering);
+
       if (this.$route.params.id === "new") {
         console.log("New");
-        OfferingDataService.create(this.currentOffering);
+        OfferingDataService.create(this.currentOffering).then((result) => {
+          this.$router
+            .push({ path: "/admin/offering/" + result.data.id })
+            .then(() => {
+              this.$router.go();
+            });
+          //;
+        });
       } else {
         console.log("Update");
-        OfferingDataService.update(this.$route.params.id, this.currentOffering);
+        OfferingDataService.update(
+          this.$route.params.id,
+          this.currentOffering
+        ).then(() => {
+          this.$router.go();
+        });
       }
     },
     reset() {
