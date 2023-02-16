@@ -17,12 +17,8 @@ class OrganizationDataService {
     return http.put(`/organizations/${id}`, data);
   }
 
-  delete(id) {
-    return http.delete(`/organizations/${id}`);
-  }
-
-  deleteAll() {
-    return http.delete(`/organizations`);
+  delete(id, data) {
+    return http.delete(`/organizations/${id}`, data);
   }
 
   findByCity(city) {

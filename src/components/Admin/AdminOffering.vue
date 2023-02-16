@@ -179,6 +179,9 @@ export default {
   mounted() {
     this.getOffering(this.$route.params.id);
   },
+  props: {
+    password: String,
+  },
   methods: {
     changeOrganization() {
       this.currentOffering.organizationId = this.currentOrganization.id;
@@ -197,14 +200,13 @@ export default {
         });
     },
     deleteOffering() {
-      if (
-        prompt(
-          "Willst du dieses Angebot wirklich löschen? Tippe 'JA' ein, um zu bestätigen."
-        ) === "JA"
-      ) {
-        OfferingDataService.delete(this.$route.params.id);
-        this.$router.push({ name: "Admin" });
-      }
+      const pw = prompt("Gib das Passwort ein, um das Angebot zu löschen");
+      const data = {
+        "password": pw,
+      };
+      OfferingDataService.delete(this.$route.params.id, data)
+        .then(() => this.$router.push({ name: "Admin" }))
+        .catch(() => alert("Fehler beim Löschen des Angebots"));
     },
     addFile() {
       if (this.currentFile) {
@@ -235,23 +237,29 @@ export default {
       this.currentOffering.images = this.imageFiles;
 
       if (this.$route.params.id === "new") {
-        console.log("New");
-        OfferingDataService.create(this.currentOffering).then((result) => {
-          this.$router
-            .push({ path: "/admin/offering/" + result.data.id })
-            .then(() => {
-              this.$router.go();
-            });
-          //;
-        });
+        const pw = prompt("Gib das Passwort ein, um das Angebot zu erstellen!");
+        let data = JSON.parse(JSON.stringify(this.currentOffering));
+        data.password = pw;
+
+        OfferingDataService.create(data)
+          .then((result) => {
+            this.$router
+              .push({ path: "/admin/offering/" + result.data.id })
+              .then(() => {
+                this.$router.go();
+              });
+            //;
+          })
+          .catch(() => alert("Fehler beim Erstellen des Angebots"));
       } else {
-        console.log("Update");
-        OfferingDataService.update(
-          this.$route.params.id,
-          this.currentOffering
-        ).then(() => {
-          this.$router.go();
-        });
+        const pw = prompt("Gib das Passwort ein, um das Angebot zu erstellen!");
+        let data = JSON.parse(JSON.stringify(this.currentOffering));
+        data.password = pw;
+        OfferingDataService.update(this.$route.params.id, data)
+          .then(() => {
+            this.$router.go();
+          })
+          .catch(() => alert("Fehler beim Bearbeiten des Angebots"));
       }
     },
     reset() {
