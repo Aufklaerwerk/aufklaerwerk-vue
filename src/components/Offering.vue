@@ -32,9 +32,9 @@
         :show-arrows-on-hover="true"
       >
         <v-carousel-item
-          v-for="(item, i) in items"
+          v-for="(url, i) in currentOffering.imageUrls"
           :key="i"
-          :src="item.src"
+          :src="url"
         ></v-carousel-item>
       </v-carousel>
       <div id="offering-content">
@@ -155,24 +155,6 @@ export default {
       currentOffering: null,
       orgaDescription: "",
       model: 0,
-      items: [
-        {
-          src: require("../assets/offeringPictures/statttourPicture1.jpg"),
-        },
-        {
-          src: require("../assets/offeringPictures/statttourPicture2.jpg"),
-        },
-        {
-          src: require("../assets/offeringPictures/statttourPicture3.jpg"),
-        },
-        {
-          src: require("../assets/offeringPictures/statttourPicture4.jpg"),
-        },
-        {
-          src: require("../assets/offeringPictures/statttourRoute.png"),
-        },
-      ],
-      require_imgs: [],
     };
   },
   methods: {

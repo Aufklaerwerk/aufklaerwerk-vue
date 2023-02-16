@@ -5,6 +5,12 @@ import "vuetify/dist/vuetify.min.css";
 import VueToastr from "vue-toastr";
 
 Vue.use(Vuetify);
+import Cloudinary from 'cloudinary-vue';
+Vue.use(Cloudinary, {
+  configuration: {
+    cloudName: "dygrsbi9x"
+  }
+});
 
 Vue.use(VueRouter);
 Vue.use(VueToastr);

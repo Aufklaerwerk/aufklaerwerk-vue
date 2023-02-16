@@ -30,15 +30,11 @@ class OfferingDataService {
   }
 
   update(id, data) {
-    return http.put(`/offerings/offering/${id}`, data);
+    return http.put(`/offerings/offering/?id=${id}`, data);
   }
 
-  delete(id) {
-    return http.delete(`/offerings/offering/${id}`);
-  }
-
-  deleteAll() {
-    return http.delete(`/offerings`);
+  delete(id, data) {
+    return http.post(`/offerings/offering/delete/${id}`, data);
   }
 
   findByCity(city) {
