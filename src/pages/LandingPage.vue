@@ -13,69 +13,82 @@
       />
     </section>
 
-    <!-- Kontaktweiterleitung -->
-   <section id="areyouinterested">
-      <h2>Willkommen bei Aufklärwerk, DER digitalen Plattform für die Angebote sozialer Organisationen</h2>
-      <div id="interested-weiterleitung">
-        <div>
-          <div id="interested-text">
-            <h3>Seid ihr eine soziale Organisation?</h3>
-            <p>Aufklärwerk hilft Euch problemlos, schnell und ohne eigenen Aufwand eure existierenden Angebote auf unserer Plattform zu platzieren.</p>
-            <p>Wir sind eine soziale Initiative und wollen unsere Reichweite nutzen, um eure Angeboten für noch mehr Menschen zugänglich zu machen!</p>
-            <p>Falls euch interessiert, wie das ganze funktioniert und welche Daten wir dafür von euch benötigen - meldet euch bei uns!</p>
-          </div>
-          <v-btn to="/contact"><strong>Kontaktformular</strong></v-btn>
+     <!-- So funktioniert -->
+
+     <section id="so-funktioniert">
+      <div id="so-funktioniert-headers">
+        <h4>DU MÖCHSTEST HELFEN VORURTEILE ABZUBAUEN?</h4>
+        <h3>So funktioniert's</h3>
+      </div>
+      <div id="so-funktioniert-container">
+        <div class="so-funktioniert-vectors">
+          <img src="../assets/startpage/suchparameter.svg" />
+          <h4>
+            Gewünschtes Thema, den Ort und Datum für Begegnungsangebot angeben
+          </h4>
         </div>
-        <div>
-          <div id="interested-text">
-            <h3>Sucht ihr nach Angeboten?</h3>
-            <p>Schluss mit mühsamer Suche nach dem passenden Angebot!</p>
-            <p>Aufklärwerk bietet euch die Möglichkeit mit nur 3 Klicks die richtigen Angebote in Eurer Nähe zu finden!</p>
-            <p>Probiert es gerne oben in der Suchmaske aus!</p>
-            <p>Über unseren <strong> Newsletter</strong> könnt ihr auf dem Laufenden bleiben - was bei uns passiert, welche meue Organisationen mit dabei sind etc.!</p>
-          </div>
-          <v-btn href="https://mailchi.mp/605ff69ea1bd/newsletter-aufklrwerk"><strong>Zum Newsletter</strong></v-btn>
+        <div class="so-funktioniert-vectors">
+          <img src="../assets/startpage/angebot-suchen.svg" />
+          <h4>
+            Aus der Liste von Ergebnisse das Angebot auswählen, das am besten zu
+            deinem Vorhaben passt
+          </h4>
+        </div>
+        <div class="so-funktioniert-vectors">
+          <img src="../assets/startpage/jetzt-buchen.svg" />
+          <h4>Angebot buchen und den Rest machen wir!</h4>
         </div>
       </div>
-    </section>
-
-    <!-- Celebration of Humanity -->
-
-    <section id="orange-boxes">
-      <div id="box-container">
-        <div id="hugging-people-div">
-          <img id="huggingPeople" src="../assets/startpage/hugging-people.jpg" />
+      <div id="teil-werden">
+        <div id="teil-werden-blauer-kasten">
+          <div id="teil-werden-text">
+            <h2>Du bist Teil einer sozialen Organisation in Deutschland?</h2>
+            <p>Wir helfen dir Dein Angebot für Suchende sichtbar zu machen</p>
+          </div>
+          <router-link to="/offerer">
+            <img src="../assets/icons/arrow.png" id="arrow" />
+          </router-link>
         </div>
-        <div class="box">
-          <h4>UNSER ZIEL</h4>
-          <h3>Celebration of Humanity</h3>
-          <p>
-            Wir sind eine studentische Initiative, welche sich für mehr Offenheit und
-            Austausch in der Gesellschaft einsetzt.
-          </p>
-          <p>
-            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
-          </p>
-          <p>
-            Entdecke mit unserer Hilfe Organisationen in Deiner Umgebung und finde die passenden Begegnungsangebote für deine Bedürfnisse!
-          </p>
-          <ul>
-            <li><strong>Schnelle und bequeme Suche</strong></li>
-            <li>
-              <strong>Angebote zu verschiedensten Themen - gesammelt an einem Ort</strong>
-            </li>
-            <li>
-              <strong>Einfacher, transparenter Kontakt zu sozialen Organisationen</strong>
-            </li>
-          </ul>
-          <v-btn id="orange-button" to="/offerer">
-            jetzt Teil werden
-          </v-btn>
-        </div>
+        <button @click="$router.push('howitworks')">mehr Infos zum Buchungsablauf gibt's hier</button>
       </div>
     </section>
 
     <!-- Wavy Transition Orange-->
+
+
+
+    <div id="wavy-transition-orange" />
+
+    <!-- Über Aufklärwerk -->
+
+    <section id="ueber-akw">
+      <div id="ueber-akw-box-container">
+        <div class="ueber-akw-box">
+          <h4>WAS STECKT HINTER AUFKLÄRWERK</h4>
+          <h3>Über Aufklärwerk</h3>
+          <p>
+            Aufklärwerk ist eine Initiative von Studierenden für die gesamte
+            Gesellschaft. Wir sind davon überzeugt, dass durch
+            Begegnungsangebote Hass und Vorurteile in der Gesellschaft abgebaut
+            werden können.
+          </p>
+          <p>
+            Mit unserer Plattform wollen wir die Suche und Buchung von
+            Begegnungsangeboten deutlich einfacher und transparenter gestalten.
+          </p>
+          <p>
+            Somit sollen Vorurteile und Diskriminierung in der Gesellschaft
+            abgebaut und die Vorraussetzungen für ein Miteinander geschaffen werden.
+          </p>
+          <v-btn id="about-us-to-button" to="/aboutus">
+            Mehr zu uns & unserer Vision
+          </v-btn>
+        </div>
+        <div>
+          <img id="dude-in-subway" src="../assets/startpage/mann-in-subway.jpg" />
+        </div>
+      </div>
+    </section>
 
     <div id="wavy-transition-blue" />
 
@@ -125,93 +138,11 @@
 
     <!-- Wavy Transition -->
 
-    <div id="wavy-transition" />
-
-    <!-- So funktioniert -->
-
-    <section id="so-funktioniert">
-      <div id="so-funktioniert-headers">
-        <h4>DU MÖCHSTEST HELFEN VORURTEILE ABZUBAUEN?</h4>
-        <h3>So funktioniert's</h3>
-      </div>
-      <div id="so-funktioniert-container">
-        <div class="so-funktioniert-vectors">
-          <img src="../assets/startpage/suchparameter.svg" />
-          <h4>
-            Gewünschtes Thema, den Ort und Datum für Begegnungsangebot angeben
-          </h4>
-        </div>
-        <div class="so-funktioniert-vectors">
-          <img src="../assets/startpage/angebot-suchen.svg" />
-          <h4>
-            Aus der Liste von Ergebnisse das Angebot auswählen, das am besten zu
-            deinem Vorhaben passt
-          </h4>
-        </div>
-        <div class="so-funktioniert-vectors">
-          <img src="../assets/startpage/jetzt-buchen.svg" />
-          <h4>Angebot buchen und den Rest machen wir!</h4>
-        </div>
-      </div>
-      <div id="teil-werden">
-        <div id="teil-werden-blauer-kasten">
-          <div id="teil-werden-text">
-            <h2>Du bist Teil einer sozialen Organisation in Deutschland?</h2>
-            <p>Wir helfen dir Dein Angebot für Suchende sichtbar zu machen</p>
-          </div>
-          <router-link to="/offerer">
-            <img src="../assets/icons/arrow.png" id="arrow" />
-          </router-link>
-        </div>
-        <button @click="$router.push('howitworks')">mehr Infos zum Buchungsablauf gibt's hier</button>
-      </div>
-    </section>
-
-    <!-- Wavy Transition Orange-->
-
-    <div id="wavy-transition-orange" />
-
-    <!-- Über Aufklärwerk -->
-
-    <section id="ueber-akw">
-      <div id="ueber-akw-box-container">
-        <div class="ueber-akw-box">
-          <h4>WAS STECKT HINTER AUFKLÄRWERK</h4>
-          <h3>Über Aufklärwerk</h3>
-          <p>
-            Aufklärwerk ist eine Initiative von Studierenden für die gesamte
-            Gesellschaft. Wir sind davon überzeugt, dass durch
-            Begegnungsangebote Hass und Vorurteile in der Gesellschaft abgebaut
-            werden können.
-          </p>
-          <p>
-            Mit unserer Plattform wollen wir die Suche und Buchung von
-            Begegnungsangeboten deutlich einfacher und transparenter gestalten.
-          </p>
-          <p>
-            Somit sollen Vorurteile und Diskriminierung in der Gesellschaft
-            abgebaut und die Vorraussetzungen für ein Miteinander geschaffen werden.
-          </p>
-          <v-btn id="about-us-to-button" to="/aboutus">
-            Mehr zu uns & unserer Vision
-          </v-btn>
-        </div>
-        <div>
-          <img id="dude-in-subway" src="../assets/startpage/mann-in-subway.jpg" />
-        </div>
-      </div>
-    </section>
-    <!-- Kontaktformular -->
-
-    <section id="contact-landing">
-      <ContactForm />
-    </section>
   </div>
 </template>
 
 <script>
 import SearchConfiguration from "../components/SearchConfiguration.vue";
-import ContactForm from "../components/DefaultContactForm";
 
 export default {
   data: () => ({
@@ -224,7 +155,6 @@ export default {
     }
   }),
   components: {
-    ContactForm,
     SearchConfiguration
   },
   methods: {},
@@ -236,8 +166,6 @@ export default {
 
 #landingPage {
   background-color: #fffbf5;
-  width: 100%;
-  height: 100%;
 }
 
 #landingPage section {
@@ -291,78 +219,12 @@ export default {
   font-size: 1.2em;
   margin-bottom: 2em;
 }
-/* Celebration of Humanity */
-
-#box-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4em 6% 10em 6%;
-}
-
-.box {
-  width: 100%;
-  background-color: #f0956a;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  padding: 0 3% 0 3%;
-}
-
-.box h4 {
-  padding-top: 4%;
-  color: #ff5100;
-}
-
-.box h3 {
-  padding-bottom: 2%;
-  color: white;
-}
-
-.box p {
-  padding-bottom: 0.5em;
-}
-
-.box ul {
-  padding-bottom: 2em;
-}
-
-.box li {
-  padding-bottom: 0.4em;
-}
-
-#hugging-people-div {
-  width: 60%;
-}
-
-#huggingPeople {
-  height: 32rem;
-  width: 60rem;
-}
-
-#orange-button {
-  min-width: 72%;
-  margin: auto;
-  margin-bottom: 2em;
-  background-color: #ff5100;
-  padding: 1em 1em 1em 1em;
-  color: white;
-  font-family: "DM Serif Text", serif;
-  font-size: 1.5em;
-}
-
-#arrow-on-orange-box {
-  width: 10%;
-  margin-left: 1em;
-}
 
 /* Wavy Transition Blue */
 
 #wavy-transition-blue {
   position: relative;
-  height: 2%;
+  height: 10vh;
   width: 100%;
   background: #95aba9;
 }
@@ -371,7 +233,7 @@ export default {
   content: "";
   display: block;
   position: absolute;
-  border-radius: 60% 50%;
+  border-radius: 100% 100%;
   width: 51%;
   height: 100%;
   background-color: #95aba9;
@@ -386,10 +248,11 @@ export default {
   border-radius: 100% 200%;
   width: 62.4%;
   height: 100%;
-  background-color: #fffbf5;
+  background-color: #f0956a;
   right: -1.9%;
   top: -50.25%;
 }
+
 /* Wusstest du ... ? */
 
 #did-you-know {
@@ -538,7 +401,7 @@ export default {
 
 #so-funktioniert-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   margin: 0 10% 0 10%;
 }

@@ -26,6 +26,39 @@
         werden.
       </p>
     </div>
+    <section id="orange-boxes">
+      <div id="box-container">
+        <div id="hugging-people-div">
+          <img id="huggingPeople" src="../assets/startpage/hugging-people.jpg" />
+        </div>
+        <div class="box">
+          <h4>UNSER ZIEL</h4>
+          <h3>Celebration of Humanity</h3>
+          <p>
+            Wir sind eine studentische Initiative, welche sich für mehr Offenheit und
+            Austausch in der Gesellschaft einsetzt.
+          </p>
+          <p>
+            Dazu möchten wir aber nicht das Rad neu erfinden, sondern die zahlreichen, tollen Projekte, die es bereits gibt, unterstützen.
+          </p>
+          <p>
+            Entdecke mit unserer Hilfe Organisationen in Deiner Umgebung und finde die passenden Begegnungsangebote für deine Bedürfnisse!
+          </p>
+          <ul>
+            <li><strong>Schnelle und bequeme Suche</strong></li>
+            <li>
+              <strong>Angebote zu verschiedensten Themen - gesammelt an einem Ort</strong>
+            </li>
+            <li>
+              <strong>Einfacher, transparenter Kontakt zu sozialen Organisationen</strong>
+            </li>
+          </ul>
+          <v-btn id="orange-button" to="/offerer">
+            jetzt Teil werden
+          </v-btn>
+        </div>
+      </div>
+    </section>
     <div class="about-us-container">
       <div class="about-us-sub-container">
         <div id="about-us-header">
@@ -218,7 +251,7 @@ export default {
           roles: "PR | Strategie",
         },
         {
-          name: "Emelie",
+          name: "Emilie",
           id: 6,
           portrait: "emelie.png",
           responsibility: {
@@ -300,6 +333,20 @@ export default {
           age: "19",
           subject: "Wirtschaftsingenieurwesen",
           roles: "Marketing",
+        },
+        {
+          name: "Felix",
+          id: 12,
+          portrait: "felix_hasse.jpg",
+          responsibility: {
+            founder: false,
+            marketing: false,
+            it: true,
+            pr: false,
+          },
+          age: "23",
+          subject: "Wirtschaftsinformatik",
+          roles: "IT",
         },
       ],
     };
@@ -424,7 +471,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   border-spacing: 1em;
 }
 .img-with-text {
@@ -572,4 +619,72 @@ img[src="assets/orgaLogos/bosch.png"] {
   width: 50%;
   margin: auto;
 }
+
+/* Celebration of Humanity */
+
+#box-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4em 6% 10em 6%;
+}
+
+.box {
+  width: 100%;
+  background-color: #f0956a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 3% 0 3%;
+}
+
+.box h4 {
+  padding-top: 4%;
+  color: #ff5100;
+}
+
+.box h3 {
+  padding-bottom: 2%;
+  color: white;
+}
+
+.box p {
+  padding-bottom: 0.5em;
+}
+
+.box ul {
+  padding-bottom: 2em;
+}
+
+.box li {
+  padding-bottom: 0.4em;
+}
+
+#hugging-people-div {
+  width: 60%;
+}
+
+#huggingPeople {
+  height: 32rem;
+  width: 60rem;
+}
+
+#orange-button {
+  min-width: 72%;
+  margin: auto;
+  margin-bottom: 2em;
+  background-color: #ff5100;
+  padding: 1em 1em 1em 1em;
+  color: white;
+  font-family: "DM Serif Text", serif;
+  font-size: 1.5em;
+}
+
+#arrow-on-orange-box {
+  width: 10%;
+  margin-left: 1em;
+}
+
 </style>
