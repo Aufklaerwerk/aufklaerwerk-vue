@@ -3,8 +3,13 @@
     <div class="offering-content">
       <img
         class="image"
-        v-if="offering"
-        src="../assets/orgaLogos/statttour.png"
+        v-if="offering && offering.imageUrls.length"
+        :src="offering.imageUrls[0]"
+      />
+      <img
+        class="image"
+        v-else
+        src="../assets/fistbump.jpg"
       />
       <h5 class="offering-title">{{ offering.name }}</h5>
       <p class="offering-description">{{ offering.carddescription }}</p>
@@ -137,8 +142,9 @@ export default {
   grid-column-start: 1;
   grid-column-end: span 2;
   width: 100%;
-  height: auto;
+  height: 200px;
   border-radius: 0.625rem;
+  object-fit: cover;
 }
 
 .v-chip {
