@@ -251,7 +251,7 @@ export default {
           roles: "PR | Strategie",
         },
         {
-          name: "Emelie",
+          name: "Emilie",
           id: 6,
           portrait: "emelie.png",
           responsibility: {
@@ -333,6 +333,20 @@ export default {
           age: "19",
           subject: "Wirtschaftsingenieurwesen",
           roles: "Marketing",
+        },
+        {
+          name: "Felix",
+          id: 12,
+          portrait: "felix_hasse.jpg",
+          responsibility: {
+            founder: false,
+            marketing: false,
+            it: true,
+            pr: false,
+          },
+          age: "23",
+          subject: "Wirtschaftsinformatik",
+          roles: "IT",
         },
       ],
     };
@@ -457,7 +471,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   border-spacing: 1em;
 }
 .img-with-text {
