@@ -2,7 +2,7 @@
   <div id="footer">
     <div id="footer-container">
       <div id="trademark">
-        <strong>&copy; 2021, Aufklärwerk</strong>
+        <strong>&copy; 2023, Aufklärwerk</strong>
       </div>
       <div class="footer-column">
         <a href="/datasec"> <strong>Datenschutz</strong> </a>
